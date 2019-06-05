@@ -31,9 +31,8 @@ if (!isset($_SESSION['loggedin'])) {
 </nav>
 <div class="content">
     <h2>Home Page</h2>
-    <p>Welcome back, <?=$_SESSION['name']?>!</p>
     <?php if($_SESSION['create'] == 1) {?>
-    <div class="alert alert-error">New user created successfully<?=$_SESSION['create']?></div>
+    <div class="alert alert-error">New user created successfully</div>
     <?php $_SESSION['create'] = 0;}?>
     <a href="create.php"><i class="fas fa-user-circle"></i>Create new Profile</a>
 </div>

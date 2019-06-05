@@ -21,19 +21,19 @@ if (!isset($_SESSION['loggedin'])) {
     <h1>New profile</h1>
     <form action="createcheck.php" method="post">
         <div class="alert alert-error"><?= $_SESSION['message'] ?></div>
-        <input type="text" name="username" placeholder="username" id="username">
+        <input type="text" name="username" placeholder="username" id="username" required>
         <label for="username">
             <i class="fas fa-user"></i>
         </label>
-        <input type="email" name="email" placeholder="email" id="email">
+        <input type="email" name="email" placeholder="email" id="email" required>
         <label for="email">
             <i class="fas fa-at"></i>
         </label>
-        <input type="password" name="password" placeholder="password" id="new-password1">
+        <input type="password" name="password" placeholder="password" id="new-password1" required>
         <label for="new-password1">
             <i class="fas fa-lock"></i>
         </label>
-        <input type="password" name="confpassword" placeholder="confirm password" id="new-password2">
+        <input type="password" name="confpassword" placeholder="confirm password" id="new-password2" required>
         <label for="new-password2">
             <i class="fas fa-lock"></i>
         </label>

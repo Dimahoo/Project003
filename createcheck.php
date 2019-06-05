@@ -32,7 +32,7 @@ if($_POST['submitButton'] == 'Create') {
     echo($password);
     echo($password2);
     // Check new entry is admin or not
-    if (!isset($_POST['admin'])) {
+    if ($_POST['admin'] == 'Yes') {
         $admin = 1;
     } else {
         $admin = 0;
@@ -47,10 +47,10 @@ if($_POST['submitButton'] == 'Create') {
     } else {
 
         //Query the database for user
-        $sql = $mysqli->query("SELECT count(*) FROM users WHERE username = '$username' OR email = '$email'") or die($mysqli->error);
-        $row = mysqli_num_rows($sql)  ;
+        $sql = $mysqli->query("SELECT count(*) as 'c' FROM users WHERE username = '$username' OR email = '$email'") or die($mysqli->error);
+        $count = $sql->fetch_object()->c;
         // Verification user exist
-        if ($row > 0) {
+        if ($count > 0) {
 
             $_SESSION['message'] = 'Username or email already used!';
             header('Location: create.php');
