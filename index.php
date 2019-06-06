@@ -13,16 +13,18 @@ $mysqli = new mysqli($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_N
 
 //Query the database for user
 $sql = $mysqli->query("SELECT count(*) FROM users") or die($mysqli->error);
-$row = $sql->fetch_row();
+$count = $sql->fetch_object()->c;
 // check table is empty
-if ($row!="")
+if ($count > 0)
 {
     // Redirect to the create form page:
-    header('Location: login.php');
+    $_SESSION['message'] = '***********'.$count;
+    header('Location: errorlogin.php');
 }
 else
 {
-    // Redirect to the login form page:
-    header('Location: createadmin.php');
+    // Redirect to the login form page
+    $_SESSION['message'] = '***********'.$count;
+    header('Location: errorlogincreateadmin.php');
 }
 ?>

@@ -999,7 +999,6 @@
     <column id="248" parent="242" name="admin">
       <Position>6</Position>
       <DataType>int(11)|0s</DataType>
-      <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
     <key id="249" parent="242" name="PRIMARY">
