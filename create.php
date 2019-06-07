@@ -39,8 +39,9 @@ if (!isset($_SESSION['loggedin'])) {
         </label>
         <input type="text" name="admin" placeholder="check if the new profile is admin" id="admin" readonly>
         <input type="checkbox" name="admin" id="admin" value="Yes">
-        <input type="submit" name="submitButton" value="Create">
-        <input type="submit" name="submitButton" value="Cancel">
+        <input type="submit" name="submit" value="create">
+        <!-- <input type="submit" name="submitButton" value="Cancel"> -->
+        <input type="button" name="cancel" value="cancel" onClick="window.location='home.php';" />
     </form>
 </div>
 </body>

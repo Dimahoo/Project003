@@ -128,6 +128,21 @@ body {
     background-color: #2868c7;
     transition: background-color 0.2s;
 }
+.newprofile form input[type="button"] {
+    width: 50%;
+    padding: 15px;
+    margin-top: 20px;
+    background-color: #3274d6;
+    border: 0;
+    cursor: pointer;
+    font-weight: bold;
+    color: #ffffff;
+    transition: background-color 0.2s;
+}
+.newprofile form input[type="button"]:hover {
+    background-color: #2868c7;
+    transition: background-color 0.2s;
+}
 .createfirstadmin {
     width: 400px;
     background-color: #ffffff;
