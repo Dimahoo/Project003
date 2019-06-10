@@ -236,7 +236,38 @@ body {
     padding: 2px 8px 0 0;
 }
 .navtop div a:hover {
-    color: #eaebed;
+        color: #eaebed;
+}
+.navtop div ul {
+    margin: 0px;
+    padding: 10px;
+    list-style: none;
+    color: #c1c4c8;
+    font-weight: bold;
+    text-decoration: none;
+    line-height: 40px;
+    text-align: center;
+}
+.navtop div ul a {
+    text-decoration: none;
+    color: white;
+    display: block;
+}
+.navtop div ul li:hover {
+    background-color: #360e10;
+}
+.navtop div ul a:hover {
+    background-color: #360e10;
+}
+.navtop div ul li {
+    float: left;
+    width: 200px;
+    height: 40px;
+    background-color: #2868c7;
+    opacity: .8;
+}
+.navtop div ul li ul a {
+    display: none;
 }
 body.loggedin {
     background-color: #f3f4f7;

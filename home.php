@@ -25,6 +25,14 @@ if (!isset($_SESSION['loggedin'])) {
             <a href="home.php"><i class="fas fa-home"></i></a>
         </label>
         <h1>Website Title</h1>
+        <?php if($_SESSION['admin'] == 1) {?>
+        <ul>
+            <li><i class="fas fa-plus-square"></i> Manage profiles</li>
+                <ul>
+                    <a href="create.php">Create</a>
+                </ul>
+        </ul>
+        <?php }?>
         <a href="profile.php"><i class="fas fa-user-circle"></i><?=$_SESSION['name']?> Profile</a>
         <a href="logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
     </div>
@@ -34,7 +42,6 @@ if (!isset($_SESSION['loggedin'])) {
     <?php if($_SESSION['create'] == 1) {?>
     <div class="alert alert-error">New user created successfully</div>
     <?php $_SESSION['create'] = 0;}?>
-    <a href="create.php"><i class="fas fa-user-circle"></i>Create new Profile</a>
 </div>
 </body>
 </html>

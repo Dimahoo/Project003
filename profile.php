@@ -61,11 +61,11 @@ $admin = $row[5]
                 <td>Email:</td>
                 <td><?=$email?></td>
             </tr>
-            <? if ($admin == 1) { ?>
+            <?php if ($admin == 1) {?>
             <tr>
                 <td>Admin</td>
             </tr>
-            <? } ?>
+            <?php }?>
         </table>
     </div>
 </div>

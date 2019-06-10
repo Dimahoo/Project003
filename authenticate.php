@@ -24,9 +24,12 @@ if ($sql->num_rows > 0) {
 
             // Verification success! User has loggedin!
             // Create sessions so we know the user is logged in, they basically act like cookies but remember the data on the server.
+            $sql = $mysqli->query("SELECT admin as 'ad' FROM users WHERE username = '$username'") or die($mysqli->error);
+            $admin = $sql->fetch_object()->ad;
             session_regenerate_id();
             $_SESSION['loggedin'] = TRUE;
             $_SESSION['name'] = $_POST['username'];
+            $_SESSION['admin'] = $admin;
             $_SESSION['create'] = 0;
             $_SESSION['update'] = 0;
             $_SESSION['delete'] = 0;
