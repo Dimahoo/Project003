@@ -15,27 +15,31 @@ if (!isset($_SESSION['loggedin'])) {
 <head>
     <meta charset="utf-8">
     <title>Home Page</title>
-    <link href="style.css" rel="stylesheet" type="text/css">
+    <link href="home.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
 </head>
 <body class="loggedin">
 <nav class="navtop">
-    <div>
-        <label for="home">
-            <a href="home.php"><i class="fas fa-home"></i></a>
-        </label>
-        <h1>Website Title</h1>
+    <p>Website Title</p>
+    <ul>
+        <li><a href="home.php"><i class="fas fa-home"></i></a></li>
+        <li></li>
+        <li></li>
         <?php if($_SESSION['admin'] == 1) {?>
-        <ul>
-            <li><i class="fas fa-plus-square"></i> Manage profiles</li>
-                <ul>
-                    <a href="create.php">Create</a>
-                </ul>
-        </ul>
+        <li><a href="#">Manage profile</a>
+            <ul>
+                <li><a href="createadmin.php">Create</a></li>
+
+            </ul>
+        </li>
         <?php }?>
-        <a href="profile.php"><i class="fas fa-user-circle"></i><?=$_SESSION['name']?> Profile</a>
-        <a href="logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
-    </div>
+        <li style="padding-left:80em">
+            <a href="profile.php"><i class="fas fa-user-circle"></i> <?=$_SESSION['name']?> Profile</a>
+        </li>
+        <li>
+            <a href="logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
+        </li>
+    </ul>
 </nav>
 <div class="content">
     <h2>Home Page</h2>
