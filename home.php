@@ -28,13 +28,13 @@ if (!isset($_SESSION['loggedin'])) {
         <?php if($_SESSION['admin'] == 1) {?>
         <li><a href="#">Manage profile</a>
             <ul>
-                <li><a href="createadmin.php">Create</a></li>
-
+                <li><a href="create.php">Create</a></li>
+                <li><a href="delete.php">Delete</a></li>
             </ul>
         </li>
         <?php }?>
-        <li style="padding-left:80em">
-            <a href="profile.php"><i class="fas fa-user-circle"></i> <?=$_SESSION['name']?> Profile</a>
+        <li style="padding-left:75em">
+            <a href="profile.php"><i class="fas fa-user-circle"></i> <?=$_SESSION['name']?>  Profile</a>
         </li>
         <li>
             <a href="logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>

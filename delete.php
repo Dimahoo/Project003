@@ -1,5 +1,6 @@
 <?php
 // We need to use sessions, so you should always start sessions using the below code.
+include 'function.php';
 session_start();
 // If the user is not logged in redirect to the login page...
 if (!isset($_SESSION['loggedin'])) {
@@ -17,21 +18,20 @@ $mysqli = new mysqli($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_N
 $username = $mysqli->real_escape_string($_SESSION['name']);
 
 //Query the database for user
-$sql = $mysqli->query("SELECT * FROM users WHERE username = '$username'") or die($mysqli->error);
+$sql = $mysqli->query("SELECT * FROM users") or die($mysqli->error);
 
-$row = $sql->fetch_row();
-$password = $row[3];
-$email = $row[2];
-$admin = $row[5]
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Profile Page</title>
-    <link href="profile.css" rel="stylesheet" type="text/css">
+    <link href="delete.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 </head>
 <body class="loggedin">
 <nav class="navtop">
@@ -58,29 +58,39 @@ $admin = $row[5]
     </ul>
 </nav>
 <div class="content">
-    <h2>Profile Page</h2>
+    <h2>Delete profile</h2>
     <div>
-        <p>Your account details are below:</p>
+        <p>List of users:</p>
         <table>
             <tr>
-                <td>Username:</td>
-                <td><?=$_SESSION['name']?></td>
+                <th><input type="checkbox" id="checkAll"></th>
+                <th>Username</th>
+                <th>Email</th>
             </tr>
+            <?php while($row = mysqli_fetch_assoc($sql)) {?>
             <tr>
-                <td>Password:</td>
-                <td><?=$password?></td>
-            </tr>
-            <tr>
-                <td>Email:</td>
-                <td><?=$email?></td>
-            </tr>
-            <?php if ($admin == 1) {?>
-            <tr>
-                <td>Admin</td>
+                <td><input class="checkbox" type="checkbox" id="<?=$row['id'] ?>"</td>
+                <td><?=$row['username']?></td>
+                <td><?=$row['email']?></td>
             </tr>
             <?php }?>
         </table>
     </div>
+    <button type="button" class="btn btn-danger" id="delete">Delete Selected</button>
 </div>
+<script>
+    jQuery(document).ready(function(){
+        jQuery('#checkAll').click(function(){
+            if(this.checked){
+                jQuery('.checkbox').each(function(){
+                    this.checked = true;
+                });
+            }else{
+                jQuery('.checkbox').each(function(){
+                    this.checked = false;
+                });
+            }
+        });
+</script>
 </body>
 </html>

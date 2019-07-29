@@ -14,10 +14,10 @@ if (!isset($_SESSION['loggedin'])) {
     <meta charset="utf-8">
     <title>New profile</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
-    <link href="style.css" rel="stylesheet" type="text/css">
+    <link href="createadmin.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<div class="Newprofile">
+<div class="newprofile">
     <h1>New profile</h1>
     <form action="createadmin.php" method="post">
         <input type="text" name="username" placeholder="username" id="username" required>
@@ -36,6 +36,7 @@ if (!isset($_SESSION['loggedin'])) {
         <label for="new-password2">
             <i class="fas fa-lock"></i>
         </label>
+        <input type="submit" value="Create">
         <input type="submit" value="Create">
     </form>
 </div>

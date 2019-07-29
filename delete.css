@@ -46,7 +46,6 @@ body.loggedin {
     background-color: #2868c7;
     padding: 15px 30px;
     border-radius: 5px;
-    color: #c1c4c8;
 }
 .navtop ul li:hover ul {
     display: block;
@@ -66,6 +65,25 @@ body.loggedin {
     font-size: 22px;
     border-bottom: 1px solid #e0e0e3;
     color: #4a536e;
+}
+.content table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+.content table td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+.content table th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    background-color: cornflowerblue;
+}
+.content table tr:nth-child(even) {
+    background-color: #dddddd;
 }
 .alert {
     -moz-box-sizing: border-box;

@@ -14,7 +14,7 @@ if (!isset($_SESSION['loggedin'])) {
     <meta charset="utf-8">
     <title>New profile</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
-    <link href="style.css" rel="stylesheet" type="text/css">
+    <link href="create.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div class="newprofile">
