@@ -112,3 +112,64 @@ body.loggedin {
     background-color: #15360e;
     box-shadow: 0 0 0 1px #2a551e inset, 0 5px 10px rgba(0, 0, 0, 0.75);
 }
+.pagination {
+    margin:0 auto;
+    text-align:center;
+    padding:24px;
+}
+
+.pagination li {
+    display:inline;
+    color:#fff;
+    text-shadow: 0 1px 1px #eee;
+}
+
+.pagination li span {
+    letter-spacing:0.1em;
+    margin:0 6px;
+}
+
+.pagination li a {
+    background: cornflowerblue;
+    color:#fff;
+    border:1px solid #3274d6;
+    padding:10px 12px;
+    text-decoration:none;
+    -moz-border-radius: 5px;
+    border-radius: 3px;
+    text-shadow: 0 1px 1px #eee;
+    margin:0 3px;
+}
+
+.pagination li a:hover {
+    background:white;
+    color: #303438;
+}
+
+.pagination li a:active {
+    background:white;
+    border:none;
+    color: #303438;
+    font-weight: bolder;
+}
+
+.pagination li.active a {
+    background:white;
+    border:none;
+    color: #303438;
+    font-weight: bolder;
+}
+
+.pagination li .titik{
+    color:#303438;
+    font-weight: bolder;
+}
+.pagination li.symbol a{
+    font-weight: bolder;
+    font-size: 15pt;
+    padding:2px 12px 7px 10px;
+}
+.pagination li.disabled{
+    display: none;
+    visibility: hidden;
+}
