@@ -1,7 +1,7 @@
 <?php
 // We need to use sessions, so you should always start sessions using the below code.
 include 'function.php';
-include 'config.php';
+//include 'config.php';
 session_start();
 // If the user is not logged in redirect to the login page...
 if (!isset($_SESSION['loggedin'])) {
@@ -19,7 +19,7 @@ $mysqli = new mysqli($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_N
 $username = $mysqli->real_escape_string($_SESSION['name']);
 
 //Query the database for user
-//$sql = $mysqli->query("SELECT * FROM users") or die($mysqli->error);
+$sql = $mysqli->query("SELECT * FROM users") or die($mysqli->error);
 
 ?>
 
@@ -30,7 +30,14 @@ $username = $mysqli->real_escape_string($_SESSION['name']);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Profile Page</title>
     <link href="delete.css" rel="stylesheet" type="text/css">
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/dataTables.bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.dataTables.min.js"></script>
+    <script src="js/dataTables.bootstrap.min.js"></script>
+    <script src="js/dataTables.checkboxes.min.js"></script>
 </head>
 <body class="loggedin">
 <nav class="navtop">
@@ -55,43 +62,43 @@ $username = $mysqli->real_escape_string($_SESSION['name']);
         </li>
     </ul>
 </nav>
-<div class="content">
-    <h2>Delete profile</h2>
-    <div>
+<br/>
+<div class="container">
+    <h3>Delete profile</h3>
         <p>List of users:</p>
-        <table>
+        <div class="table-responsive">
+        <table id="employee_data" class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <td>Select</td>
+                    <td>Username</td>
+                    <td>Email</td>
+                    <td>Admin</td>
+                </tr>
+            </thead>
+            <?php while($row = mysqli_fetch_array($sql)) { ?>
             <tr>
-                <th>Select</th>
-                <th>Username</th>
-                <th>Email</th>
-                <th>Admin</th>
-            </tr>
-            <?php for( $i = 0; $i < count( $results->data ); $i++ ) : ?>
-            <tr>
-                <td><input class="checkbox" type="checkbox" id="<?=$results->data[$i]['id'] ?>"</td>
-                <td><?=$results->data[$i]['username']?></td>
-                <td><?=$results->data[$i]['email']?></td>
-                <?php if($results->data[$i]['admin'] == 1) {?>
+                <td><input class="checkbox" type="checkbox" id="<?=$row["id"] ?>"</td>
+                <td><?=$row["username"]?></td>
+                <td><?=$row["email"]?></td>
+                <?php if($row["admin"] == 1) {?>
                     <td>Yes</td>
                 <?php }else{ ?>
                     <td>No</td>
                 <?php } ?>
             </tr>
-            <?php endfor; ?>
+            <?php } ?>
         </table>
-        <?php echo $paginator->createLinks($links); ?>
+            <button type="button" class="btn btn-danger" id="delete">Delete Selected</button>
+        </div>
     </div>
-    <button type="button" class="btn btn-danger" id="delete">Delete Selected</button>
 </div>
-
-<script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.dataTables.min.js"></script>
-<script src="js/dataTables.bootstrap.min.js"></script>
-<script src="js/dataTables.checkboxes.min.js"></script>
+</body>
+</html>
 
 <script>
     $(document).ready(function(){
+        $('#employee_data').DataTable();
         $('#checkAll').click(function(){
             if(this.checked){
                 $('.checkbox').each(function(){
@@ -133,5 +140,3 @@ $username = $mysqli->real_escape_string($_SESSION['name']);
         }
     });
 </script>
-</body>
-</html>
