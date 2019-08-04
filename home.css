@@ -17,7 +17,7 @@ body.loggedin {
     font-family: Arial;
     color: white;
     font-size: 24px;
-    line-height: 10px;
+    line-height: 55px;
     float: left;
     padding: 0px 15px;
 }
@@ -34,7 +34,7 @@ body.loggedin {
     font-family: Arial;
     color: #c1c4c8;
     font-size: 19px;
-    padding: 5px 15px;
+    padding: 15px 10px;
     text-decoration: none;
 }
 .navtop ul li a:hover {
@@ -44,9 +44,8 @@ body.loggedin {
     display: none;
     position: absolute;
     background-color: #2868c7;
-    padding: 15px 30px;
+    padding: 10px 30px;
     border-radius: 5px;
-    color: #c1c4c8;
 }
 .navtop ul li:hover ul {
     display: block;
@@ -56,13 +55,13 @@ body.loggedin {
     border-radius: 2px;
 }
 .navtop ul li ul li a {
-    padding: 5px 0px;
+    padding: 1px 0px;
 }
 .navtop ul li ul li a:hover {
     color: white;
 }
 .content h2 {
-    padding: 25px 0;
+    padding: 25px 10px;
     font-size: 22px;
     border-bottom: 1px solid #e0e0e3;
     color: #4a536e;

@@ -31,17 +31,24 @@ $admin = $row[5]
     <meta charset="utf-8">
     <title>Profile Page</title>
     <link href="profile.css" rel="stylesheet" type="text/css">
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/dataTables.bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.dataTables.min.js"></script>
+    <script src="js/dataTables.bootstrap.min.js"></script>
+    <script src="js/dataTables.checkboxes.min.js"></script>
 </head>
 <body class="loggedin">
 <nav class="navtop">
     <p>Website Title</p>
     <ul>
-        <li><a href="home.php"><i class="fas fa-home"></i></a></li>
+        <li><a href="home.php"><i class="fas fa-home"></i> Home</a></li>
         <li></li>
         <li></li>
         <?php if($_SESSION['admin'] == 1) {?>
-            <li><a href="#">Manage profile</a>
+            <li><a href="#"><i class="fa fa-arrow-down"></i> Manage profile</a>
                 <ul>
                     <li><a href="create.php">Create</a></li>
                     <li><a href="delete.php">Delete</a></li>
@@ -49,7 +56,7 @@ $admin = $row[5]
                 </ul>
             </li>
         <?php }?>
-        <li style="padding-left:75em">
+        <li>
             <a href="profile.php"><i class="fas fa-user-circle"></i> <?=$_SESSION['name']?>  Profile</a>
         </li>
         <li>
@@ -60,7 +67,7 @@ $admin = $row[5]
 <div class="content">
     <h2>Profile Page</h2>
     <div>
-        <p>Your account details are below:</p>
+        <p>Your account details:</p>
         <table>
             <tr>
                 <td>Username:</td>

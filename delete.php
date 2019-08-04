@@ -43,18 +43,18 @@ $sql = $mysqli->query("SELECT * FROM users") or die($mysqli->error);
 <nav class="navtop">
     <p>Website Title</p>
     <ul>
-        <li><a href="home.php"><i class="fas fa-home"></i></a></li>
+        <li><a href="home.php"><i class="fas fa-home"></i> Home</a></li>
         <li></li>
         <li></li>
         <?php if($_SESSION['admin'] == 1) {?>
-            <li><a href="#">Manage profile</a>
+            <li><a href="#"><i class="fa fa-arrow-down"></i> Manage profile</a>
                 <ul>
                     <li><a href="create.php">Create</a></li>
                     <li><a href="delete.php">Delete</a></li>
                 </ul>
             </li>
         <?php }?>
-        <li style="padding-left:75em">
+        <li>
             <a href="profile.php"><i class="fas fa-user-circle"></i> <?=$_SESSION['name']?>  Profile</a>
         </li>
         <li>
@@ -63,9 +63,11 @@ $sql = $mysqli->query("SELECT * FROM users") or die($mysqli->error);
     </ul>
 </nav>
 <br/>
+<br/>
+<br/>
+<br/>
 <div class="container">
     <h3>Delete profile</h3>
-        <p>List of users:</p>
         <div class="table-responsive">
         <table id="employee_data" class="table table-striped table-bordered">
             <thead>
@@ -119,6 +121,7 @@ $sql = $mysqli->query("SELECT * FROM users") or die($mysqli->error);
                     $(this).closest('tr').remove();
                 });
                 sendResponse(dataArr)
+                location.reload();
             }else{
                 alert('No record selected ');
             }

@@ -17,7 +17,7 @@ body.loggedin {
     font-family: Arial;
     color: white;
     font-size: 24px;
-    line-height: 10px;
+    line-height: 55px;
     float: left;
     padding: 0px 15px;
 }
@@ -34,7 +34,7 @@ body.loggedin {
     font-family: Arial;
     color: #c1c4c8;
     font-size: 19px;
-    padding: 5px 15px;
+    padding: 15px 10px;
     text-decoration: none;
 }
 .navtop ul li a:hover {
@@ -44,7 +44,7 @@ body.loggedin {
     display: none;
     position: absolute;
     background-color: #2868c7;
-    padding: 15px 30px;
+    padding: 10px 30px;
     border-radius: 5px;
 }
 .navtop ul li:hover ul {
@@ -55,35 +55,10 @@ body.loggedin {
     border-radius: 2px;
 }
 .navtop ul li ul li a {
-    padding: 5px 0px;
+    padding: 1px 0px;
 }
 .navtop ul li ul li a:hover {
     color: white;
-}
-.content h2 {
-    padding: 25px 0;
-    font-size: 22px;
-    border-bottom: 1px solid #e0e0e3;
-    color: #4a536e;
-}
-.content table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-}
-.content table td {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-}
-.content table th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-    background-color: cornflowerblue;
-}
-.content table tr:nth-child(even) {
-    background-color: #dddddd;
 }
 .alert {
     -moz-box-sizing: border-box;
@@ -112,64 +87,3 @@ body.loggedin {
     background-color: #15360e;
     box-shadow: 0 0 0 1px #2a551e inset, 0 5px 10px rgba(0, 0, 0, 0.75);
 }
-/*.pagination {
-    margin:0 auto;
-    text-align:center;
-    padding:24px;
-}
-
-.pagination li {
-    display:inline;
-    color:#fff;
-    text-shadow: 0 1px 1px #eee;
-}
-
-.pagination li span {
-    letter-spacing:0.1em;
-    margin:0 6px;
-}
-
-.pagination li a {
-    background: cornflowerblue;
-    color:#fff;
-    border:1px solid #3274d6;
-    padding:10px 12px;
-    text-decoration:none;
-    -moz-border-radius: 5px;
-    border-radius: 3px;
-    text-shadow: 0 1px 1px #eee;
-    margin:0 3px;
-}
-
-.pagination li a:hover {
-    background:white;
-    color: #303438;
-}
-
-.pagination li a:active {
-    background:white;
-    border:none;
-    color: #303438;
-    font-weight: bolder;
-}
-
-.pagination li.active a {
-    background:white;
-    border:none;
-    color: #303438;
-    font-weight: bolder;
-}
-
-.pagination li .titik{
-    color:#303438;
-    font-weight: bolder;
-}
-.pagination li.symbol a{
-    font-weight: bolder;
-    font-size: 15pt;
-    padding:2px 12px 7px 10px;
-}
-.pagination li.disabled{
-    display: none;
-    visibility: hidden;
-}*/
