@@ -36,6 +36,7 @@ if (!isset($_SESSION['loggedin'])) {
         <li><a href="#"><i class="fa fa-arrow-down"></i> Manage profile</a>
             <ul>
                 <li><a href="create.php">Create</a></li>
+                <li><a href="modify.php">Modify</a></li>
                 <li><a href="delete.php">Delete</a></li>
             </ul>
         </li>

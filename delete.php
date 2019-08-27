@@ -38,6 +38,8 @@ $sql = $mysqli->query("SELECT * FROM users") or die($mysqli->error);
     <script src="js/jquery.dataTables.min.js"></script>
     <script src="js/dataTables.bootstrap.min.js"></script>
     <script src="js/dataTables.checkboxes.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
 </head>
 <body class="loggedin">
 <nav class="navtop">
@@ -50,6 +52,7 @@ $sql = $mysqli->query("SELECT * FROM users") or die($mysqli->error);
             <li><a href="#"><i class="fa fa-arrow-down"></i> Manage profile</a>
                 <ul>
                     <li><a href="create.php">Create</a></li>
+                    <li><a href="modify.php">Modify</a></li>
                     <li><a href="delete.php">Delete</a></li>
                 </ul>
             </li>
@@ -66,80 +69,63 @@ $sql = $mysqli->query("SELECT * FROM users") or die($mysqli->error);
 <br/>
 <br/>
 <br/>
-<div class="container">
-    <h3>Delete profile</h3>
-        <div class="table-responsive">
-        <table id="employee_data" class="table table-striped table-bordered">
+<div class="container box">
+    <h1>Delete profile</h1>
+    <br/>
+    <br/>
+    <div id="alert_message"></div>
+        <table id="user_data" class="table table-striped table-bordered">
             <thead>
                 <tr>
-                    <td>Select</td>
-                    <td>Username</td>
-                    <td>Email</td>
-                    <td>Admin</td>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Admin</th>
+                    <th></th>
                 </tr>
             </thead>
-            <?php while($row = mysqli_fetch_array($sql)) { ?>
-            <tr>
-                <td><input class="checkbox" type="checkbox" id="<?=$row["id"] ?>"</td>
-                <td><?=$row["username"]?></td>
-                <td><?=$row["email"]?></td>
-                <?php if($row["admin"] == 1) {?>
-                    <td>Yes</td>
-                <?php }else{ ?>
-                    <td>No</td>
-                <?php } ?>
-            </tr>
-            <?php } ?>
         </table>
-            <button type="button" class="btn btn-danger" id="delete">Delete Selected</button>
         </div>
     </div>
 </div>
 </body>
 </html>
 
-<script>
+<script type="text/javascript" language="javascript" >
     $(document).ready(function(){
-        $('#employee_data').DataTable();
-        $('#checkAll').click(function(){
-            if(this.checked){
-                $('.checkbox').each(function(){
-                    this.checked = true;
-                });
-            }else{
-                $('.checkbox').each(function(){
-                    this.checked = false;
-                });
-            }
-        });
 
-        $('#delete').click(function(){
-            var dataArr  = new Array();
-            if($('input:checkbox:checked').length > 0){
-                $('input:checkbox:checked').each(function(){
-                    dataArr.push($(this).attr('id'));
-                    $(this).closest('tr').remove();
-                });
-                sendResponse(dataArr)
-                location.reload();
-            }else{
-                alert('No record selected ');
-            }
+        fetch_data();
 
-        });
-
-        function sendResponse(dataArr){
-            $.ajax({
-                type    : 'post',
-                url     : 'function.php',
-                data    : {'data' : dataArr},
-                success : function(response){
-                    alert(response);
-                },
-                error   : function(errResponse){
-                    alert(errResponse);
+        function fetch_data()
+        {
+            var dataTable = $('#user_data').DataTable({
+                "processing" : true,
+                "serverSide" : true,
+                "order" : [],
+                "ajax" : {
+                    url:"fetch1.php",
+                    type:"POST"
                 }
             });
         }
+
+        $(document).on('click', '.delete', function(){
+            var id = $(this).attr("id");
+            if(confirm("Are you sure you want to remove this?"))
+            {
+                $.ajax({
+                    url:"erase.php",
+                    method:"POST",
+                    data:{id:id},
+                    success:function(data){
+                        $('#alert_message').html('<div class="alert alert-success">'+data+'</div>');
+                        $('#user_data').DataTable().destroy();
+                        fetch_data();
+                    }
+                });
+                setInterval(function(){
+                    $('#alert_message').html('');
+                }, 5000);
+            }
+        });
     });
 </script>
