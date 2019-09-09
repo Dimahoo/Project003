@@ -21,6 +21,12 @@ $username = $mysqli->real_escape_string($_SESSION['name']);
 //Query the database for user
 $sql = $mysqli->query("SELECT * FROM users") or die($mysqli->error);
 
+$month = date('m');
+$day = date('d');
+$year = date('Y');
+
+$today = $year . '-' . $month . '-' . $day;
+
 ?>
 
 <!DOCTYPE html>
@@ -138,7 +144,7 @@ $sql = $mysqli->query("SELECT * FROM users") or die($mysqli->error);
                     <!-- Row 1 -->
                     <tr>
                         <td><label>Date inscription:</label></td>
-                        <td><input id="date_inscription" name="date_inscription" type="date" value="<?php echo $today; ?>"></td>
+                        <td><input type="date" id="date_inscription" name="date_inscription" value="<?php echo $today; ?>"/></td>
                         <td><label>Description:</label></td>
                         <td>
                             <select name="description" id="description">

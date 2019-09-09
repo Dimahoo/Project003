@@ -68,12 +68,14 @@ if (!isset($_SESSION['loggedin'])) {
     <table id="" class="menu">
         <thead>
         <tr>
-            <td><button onclick="window.location.href = 'ecoute.php';" name="ecoute" class="btn btn-success">Fiche d'Ecoute & Suivi</button></td>
-            <td><button onclick="window.location.href = 'listecoute.php';" name="listecoute" class="btn btn-success">Liste d'Ecoute & Suivi</button></td>
+            <td><button onclick="window.location.href = 'ecoute.php';" name="ecoute" class="btn btn-primary">Fiche d'Ecoute & Suivi</button></td>
+            <td><button onclick="window.location.href = 'listecoute.php';" name="listecoute" class="btn btn-primary">Liste d'Ecoute & Suivi</button></td>
+            <td><button onclick="window.location.href = 'serverecoute.php';" name="exportecoute" class="btn btn-success">Exporter sous Excel</button></td>
         </tr>
         <tr>
-            <td><button onclick="window.location.href = 'statistics.php';" name="statistique" class="btn btn-success">Statistiques</button></td>
-            <td><button onclick="window.location.href = 'liststatistics.php';" name="liststatistics" class="btn btn-success">Liste des statistiques</button></td>
+            <td><button onclick="window.location.href = 'statistics.php';" name="statistique" class="btn btn-primary">Statistiques</button></td>
+            <td><button onclick="window.location.href = 'liststatistics.php';" name="liststatistics" class="btn btn-primary">Liste des statistiques</button></td>
+            <td><button onclick="window.location.href = 'serverstats.php';" name="exportecoute" class="btn btn-success">Exporter sous Excel</button></td>
         </tr>
         </thead>
     </table>
