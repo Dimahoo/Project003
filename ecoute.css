@@ -66,10 +66,32 @@ body.loggedin {
     border-bottom: 1px solid #e0e0e3;
     color: #4a536e;
 }
-.menu button {
+.three-col {
+    overflow: hidden;/* Makes this div contain its floats */
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.ecoute label {
+    width: 163px;
+    font-weight: normal;
+    margin: 10px;
+}
+
+.ecoute select {
     width: 163px;
     margin: 10px;
 }
+
+.ecoute input {
+    width: 163px;
+    margin: 10px;
+}
+
 .alert {
     -moz-box-sizing: border-box;
     box-sizing: border-box;

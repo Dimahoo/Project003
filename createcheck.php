@@ -57,7 +57,7 @@ if ($_POST['password'] != $_POST['confpassword']) {
         // Insert the new entry in the database table
         $sql = $mysqli->query("INSERT INTO users (username, email, password, admin) VALUES ('$username','$email','$password','$admin') ") or die($mysqli->error);
         // Create sessions so we know the user is logged in, they basically act like cookies but remember the data on the server.
-        $_SESSION['create'] = 1;
+        $_SESSION['addprof'] = 1;
         header('Location: home.php');
         }
     }

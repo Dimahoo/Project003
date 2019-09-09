@@ -25,6 +25,16 @@ if (!isset($_SESSION['loggedin'])) {
     <script src="js/dataTables.bootstrap.min.js"></script>
     <script src="js/dataTables.checkboxes.min.js"></script>
 </head>
+<script>
+    if ('<?php echo $_SESSION['addprof']?>' == 1) {
+        alert("New user created successfully!");
+        <?php $_SESSION['addprof'] = 0 ?>
+    }
+    if ('<?php echo $_SESSION['addecoute']?>' == 1) {
+        alert("nouvelle fiche cree!");
+        <?php $_SESSION['addecoute'] = 0 ?>
+    }
+</script>
 <body class="loggedin">
 <nav class="navtop">
     <p>Website Title</p>
@@ -51,9 +61,25 @@ if (!isset($_SESSION['loggedin'])) {
 </nav>
 <div class="content">
     <h2>Home Page</h2>
-    <?php if($_SESSION['create'] == 1) {?>
-    <div class="alert alert-error">New user created successfully</div>
-    <?php $_SESSION['create'] = 0;}?>
 </div>
+<div class="container box">
+    <br/>
+    <br/>
+    <table id="" class="menu">
+        <thead>
+        <tr>
+            <td><button onclick="window.location.href = 'ecoute.php';" name="ecoute" class="btn btn-success">Fiche d'Ecoute & Suivi</button></td>
+            <td><button onclick="window.location.href = 'listecoute.php';" name="listecoute" class="btn btn-success">Liste d'Ecoute & Suivi</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="window.location.href = 'statistics.php';" name="statistique" class="btn btn-success">Statistiques</button></td>
+            <td><button onclick="window.location.href = 'liststatistics.php';" name="liststatistics" class="btn btn-success">Liste des statistiques</button></td>
+        </tr>
+        </thead>
+    </table>
+</div>
+</div>
+</div>
+
 </body>
 </html>

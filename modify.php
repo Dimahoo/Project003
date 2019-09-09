@@ -30,20 +30,18 @@ $sql = $mysqli->query("SELECT * FROM users") or die($mysqli->error);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Profile Page</title>
     <link href="modify.css" rel="stylesheet" type="text/css">
-    <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/bootstrap.css" rel="stylesheet" />
     <link href="css/dataTables.bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" />
     <link href="css/font-awesome.css" rel="stylesheet" />
     <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.dataTables.min.js"></script>
-    <script src="js/dataTables.bootstrap.min.js"></script>
-    <script src="js/dataTables.checkboxes.min.js"></script>
     <script src="js/bootstrap.js"></script>
-    <script src="js/jquery.tabledit.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/dataTables.bootstrap.min.js"></script>
+
 </head>
-<body class="loggedin" onload="viewData()">
+<body class="loggedin">
 <nav class="navtop">
     <p>Website Title</p>
     <ul>
@@ -67,123 +65,111 @@ $sql = $mysqli->query("SELECT * FROM users") or die($mysqli->error);
         </li>
     </ul>
 </nav>
-<br/>
-<br/>
-<br/>
-<br/>
-<div class="container box">
-    <h3 align="left"><?php echo $title; ?></h3><br />
-    <div class="table-responsive">
-        <br /><br />
-        <table id="user_data" class="table table-bordered table-striped">
-            <thead>
-            <tr>
-                <th width="35%">Username</th>
-                <th width="35%">Email</th>
-                <th width="10%">Admin</th>
-                <th width="10%">Edit</th>
-            </tr>
-            </thead>
-        </table>
-    </div>
-</div>
-</body>
-</html>
-<div id="userModal" class="modal fade">
-    <div class="modal-dialog">
-        <form method="post" id="user_form">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Update User</h4>
-                </div>
-                <div class="modal-body">
-                    <label>Enter Username</label>
-                    <input type="text" name="username" id="username" class="form-control" />
-                    <br />
-                    <label>Enter email</label>
-                    <input type="text" name="email" id="email" class="form-control" />
-                    <br />
-                    <label>Admin ?</label>
-                    <input type="text" name="admin" id="admin" class="form-control" />
-                </div>
-                <div class="modal-footer">
-                    <input type="hidden" name="user_id" id="user_id" />
-                    <input type="submit" name="action" id="action" class="btn btn-success" value="Add" />
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
+
+</br>
+<div class="container">
+    <div class="jumbotron">
+        <div class="card">
+            <h2 align="left">Modify Profile</h2>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <table id="datatableid" class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>User name</th>
+                            <th>Email</th>
+                            <th>Admin</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                </table>
             </div>
-        </form>
+        </div>
     </div>
 </div>
 
-<script type="text/javascript" language="javascript" >
-    $(document).ready(function(){
-        $('#add_button').click(function(){
-            $('#user_form')[0].reset();
-            $('.modal-title').text("Add User");
-            $('#action').val("Add");
-            $('#user_uploaded_image').html('');
-        })
-        var dataTable = $('#user_data').DataTable({
-            "processing":true,
-            "serverSide":true,
-            "order":[],
-            "ajax":{
-                url:"<?php echo base_url() . 'crud/fetch_user'; ?>",
-                type:"POST"
-            },
-            "columnDefs":[
-                {
-                    "targets":[0, 3, 4],
-                    "orderable":false,
-                },
-            ],
-        });
-        $(document).on('submit', '#user_form', function(event){
-            event.preventDefault();
-            var username = $('#username').val();
-            var email = $('#email').val();
-            if(username != '' && email != '')
-            {
-                $.ajax({
-                    url:"<?php echo base_url() . 'crud/user_action'?>",
-                    method:'POST',
-                    data:new FormData(this),
-                    contentType:false,
-                    processData:false,
-                    success:function(data)
-                    {
-                        alert(data);
-                        $('#user_form')[0].reset();
-                        $('#userModal').modal('hide');
-                        dataTable.ajax.reload();
-                    }
-                });
-            }
-            else
-            {
-                alert("Bother Fields are Required");
-            }
-        });
-        $(document).on('click', '.update', function(){
-            var user_id = $(this).attr("id");
-            $.ajax({
-                url:"<?php echo base_url(); ?>crud/fetch_single_user",
-                method:"POST",
-                data:{user_id:user_id},
-                dataType:"json",
-                success:function(data)
-                {
-                    $('#userModal').modal('show');
-                    $('#username').val(data.username);
-                    $('#email').val(data.email);
-                    $('#admin').val(data.admin);
-                    $('.modal-title').text("Edit User");
-                    $('#user_id').val(user_id);
-                    $('#action').val("Edit");
+
+<!-- Modal -->
+<div class="modal fade" id="editmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLabel">Edit profile</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="updateprofile.php" method="post">
+            <div class="modal-body">
+                    <input type="hidden" name="update_id" id="update_id">
+                    <div class="form-group">
+                        <label>User name</label>
+                        <input type="text" name="username" id="username" class="form-control" placeholder="User name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" name="email" id="email" class="form-control" placeholder="Email" required>
+                    </div>
+                    <div class="form-group form-check">
+                        <input type="checkbox" name="admin" id="admin" class="form-check-input" value="Yes">
+                        <label class="form-check-label" for="exampleCheck1">Admin</label>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" name="updatedata" class="btn btn-primary">Update changes</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+    $(document).ready(function () {
+
+        fetch_data();
+
+        function fetch_data()
+        {
+            var dataTable = $('#datatableid').DataTable({
+                "processing" : true,
+                "serverSide" : true,
+                "order" : [],
+                "ajax" : {
+                    url:"fetch2.php",
+                    type:"POST"
                 }
-            })
+            });
+        }
+
+    $(document).on('click', '.editbtn', function() {
+
+            $('#editmodal').modal('show');
+
+            $tr = $(this).closest('tr');
+            var data = $tr.children("td").map(function() {
+                return $(this).text();
+            }).get();
+
+            console.log(data);
+
+            $('#update_id').val(data[0]);
+            $('#username').val($.trim(data[1]));
+            $('#email').val(data[2]);
+            if (data[3] == 1)
+            {
+                $("#admin").prop('checked', true);
+            } else {
+                $("#admin").prop('checked', false);
+            }
         });
     });
+
 </script>
+
+</body>
+</html>

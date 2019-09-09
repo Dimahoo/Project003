@@ -77,10 +77,10 @@ $sql = $mysqli->query("SELECT * FROM users") or die($mysqli->error);
         <table id="user_data" class="table table-striped table-bordered">
             <thead>
                 <tr>
-                    <th>Username</th>
+                    <th>User name</th>
                     <th>Email</th>
                     <th>Admin</th>
-                    <th></th>
+                    <th>Action</th>
                 </tr>
             </thead>
         </table>
@@ -117,7 +117,7 @@ $sql = $mysqli->query("SELECT * FROM users") or die($mysqli->error);
                     method:"POST",
                     data:{id:id},
                     success:function(data){
-                        $('#alert_message').html('<div class="alert alert-success">'+data+'</div>');
+                        alert("Profile deleted successfully!");
                         $('#user_data').DataTable().destroy();
                         fetch_data();
                     }

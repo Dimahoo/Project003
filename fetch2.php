@@ -1,6 +1,6 @@
 <?php
 $connect = mysqli_connect("localhost", "root", "", "accounts");
-$columns = array('User name','Email','Admin',);
+$columns = array('id','username','email','admin');
 
 $query = "SELECT * FROM users ";
 
@@ -8,7 +8,7 @@ if(isset($_POST["search"]["value"]))
 {
     $query .= '
  WHERE username LIKE "%'.$_POST["search"]["value"].'%" 
- OR email LIKE "%'.$_POST["search"]["value"].'%" 
+ OR email LIKE "%'.$_POST["search"]["value"].'%"
  ';
 }
 
@@ -38,10 +38,11 @@ $data = array();
 while($row = mysqli_fetch_array($result))
 {
     $sub_array = array();
+    $sub_array[] = '<div class="update" data-id="'.$row["id"].'" data-column="id">' . $row["id"] . '</div>';
     $sub_array[] = '<div class="update" data-id="'.$row["id"].'" data-column="username">' . $row["username"] . '</div>';
     $sub_array[] = '<div class="update" data-id="'.$row["id"].'" data-column="email">' . $row["email"] . '</div>';
     $sub_array[] = '<div class="update" data-id="'.$row["id"].'" data-column="admin">' . $row["admin"] . '</div>';
-    $sub_array[] = '<button type="button" name="delete" class="btn btn-danger btn-xs delete" id="'.$row["id"].'">Delete</button>';
+    $sub_array[] = '<button type="button" name="edit" class="btn btn-success editbtn" id="'.$row["id"].'">Edit</button>';
     $data[] = $sub_array;
 }
 
