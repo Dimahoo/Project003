@@ -140,6 +140,7 @@ $today = $year . '-' . $month . '-' . $day;
                 </button>
             </div>
             <form action="updateecoute.php" method="post">
+                <input type="hidden" name="rdv_id" id="rdv_id">
                 <table id="example" class="ecoute" style="width:100%">
                     <!-- Row 1 -->
                     <tr>
@@ -308,7 +309,7 @@ $today = $year . '-' . $month . '-' . $day;
                         <td></td>
                         <td></td>
                         <td>
-                            <input type="submit" name="validate" value="Mettre a jour" class="btn btn-primary" />
+                            <input type="submit" name="updatedata" value="Mettre a jour" class="btn btn-primary" />
                         </td>
                         <td>
                             <input type="button" name="cancel" value="Annuler" class="btn btn-secondary"  data-dismiss="modal" />
@@ -369,6 +370,7 @@ $today = $year . '-' . $month . '-' . $day;
                 data:{rdv_id:rdv_id},
                 dataType:"json",
                 success:function(data){
+                    $('#rdv_id').val(data.id);
                     $('#date_inscription').val(data.date_inscription);
                     $('#description').val(data.description);
                     $('#type_appelant').val(data.type_appelant);
