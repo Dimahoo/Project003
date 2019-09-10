@@ -36,26 +36,26 @@ $today = $year . '-' . $month . '-' . $day;
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Profile Page</title>
     <link href="listecoute.css" rel="stylesheet" type="text/css">
-    <link href="css/bootstrap.css" rel="stylesheet" />
-    <link href="css/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <!--<link href="css/dataTables.bootstrap.min.css" rel="stylesheet" />-->
     <link href="css/fixedColumns.dataTables.min.css" rel="stylesheet" />
     <link href="css/fixedColumns.bootstrap.min.css" rel="stylesheet" />
     <link href="css/jquery.dataTables.min.css" rel="stylesheet" />
     <link href="css/buttons.dataTables.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" />
     <link href="css/font-awesome.css" rel="stylesheet" />
-    <script src="js/jquery.js"></script>
+    <script src="js/jquery.min.js"></script>
     <script src="js/jquery.dataTables.min.js"></script>
-    <script src="js/bootstrap.js"></script>
+    <script src="js/bootstrap.min.js"></script>
     <script src="js/popper.min.js"></script>
-    <script src="js/dataTables.bootstrap.min.js"></script>
+    <!--<script src="js/dataTables.bootstrap.min.js"></script>-->
     <script src="js/dataTables.fixedColumns.min.js"></script>
     <script src="js/dataTables.buttons.min.js"></script>
     <script src="js/buttons.flash.min.js"></script>
     <script src="js/jszip.min.js"></script>
     <script src="js/pdfmake.min.js"></script>
     <script src="js/vfs_fonts.js"></script>
-    <script src="js/buttons.html5.min.js"></script>
+    <!--<script src="js/buttons.html5.min.js"></script>-->
     <script src="js/buttons.print.min.js"></script>
 
 
@@ -144,11 +144,12 @@ $today = $year . '-' . $month . '-' . $day;
                     <!-- Row 1 -->
                     <tr>
                         <td><label>Date inscription:</label></td>
-                        <td><input type="date" id="date_inscription" name="date_inscription" value="<?php echo $today; ?>"/></td>
+                        <td><input type="date" id="date_inscription" name="date_inscription" /></td>
                         <td><label>Description:</label></td>
                         <td>
                             <select name="description" id="description">
                                 <option>test1</option>
+                                <option>test2</option>
                             </select>
                         </td>
                         <td><label>Type d'appelant:</label></td>
@@ -332,12 +333,15 @@ $today = $year . '-' . $month . '-' . $day;
                 "serverSide": true,
                 "scrollX": true,
                 "order": [],
+                "columnDefs": [
+                    { "orderable": false, "targets": 23 }
+                ],
                 "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
                 "fixedColumns": {
                     rightColumns: 1,
                     leftColumns: 0
                 },
-                "dom": 'Blfrtip',
+                "dom": 'lfrtip',
                 "buttons": [
                     {
                         "extend": 'excel',
@@ -357,15 +361,35 @@ $today = $year . '-' . $month . '-' . $day;
 
         $(document).on('click', '.editbtn', function() {
 
-            $('#editecoutemodal').modal('show');
+            var rdv_id = $(this).attr("id");
 
-            $tr = $(this).closest('tr');
-            var data = $tr.children("td").map(function() {
-                return $(this).text();
-            }).get();
-
-            console.log(data);
-
+            $.ajax({
+                url:"rdvfetchupdate.php",
+                method:"POST",
+                data:{rdv_id:rdv_id},
+                dataType:"json",
+                success:function(data){
+                    $('#date_inscription').val(data.date_inscription);
+                    $('#description').val(data.description);
+                    $('#type_appelant').val(data.type_appelant);
+                    $('#mode_interv').val(data.mode_interv);
+                    $('#type_interv').val(data.type_interv);
+                    $('#langue').val(data.langue);
+                    $('#duree').val(data.duree);
+                    $('#ref_par').val(data.ref_par);
+                    $('#sexe').val(data.sexe);
+                    $('#age').val(data.age);
+                    $('#situ_finance').val(data.situ_finance);
+                    $('#origine').val(data.origine);
+                    $('#status_canada').val(data.status_canada);
+                    $('#prob_mentale').val(data.prob_mentale);
+                    $('#etat_civil').val(data.etat_civil);
+                    $('#nbr_enfant').val(data.nbr_enfant);
+                    $('#psy_apres_interv').val(data.psy_apres_interv);
+                    $('#psy_avant_interv').val(data.psy_avant_interv);
+                    $('#motif_consult').val(data.motif_consult);
+                }
+            });
         });
 
         $(document).on('click', '.delete', function(){

@@ -1,6 +1,7 @@
 <?php
 $con=mysqli_connect("localhost", "root", "", "accounts")
 or die("connection failed".mysqli_errno());
+$columns = array('id','id_interv','id_cli','date_inscription','description','type_appelant','mode_interv','type_interv','langue','duree','ref_par','date_arrivee','sexe','age','situ_finance','origine','status_canada','prob_mentale','etat_civil','nbr_enfant','psy_apres_interv','psy_avant_interv','motif_consult');
 $request=$_REQUEST;
 $col =array(
     0   =>  'id',
@@ -107,8 +108,8 @@ while($row=mysqli_fetch_array($query)){
     $subdata[]=$row[20]; //age
     $subdata[]=$row[21]; //age
     $subdata[]=$row[22]; //age
-    $subdata[]='<button type="button" name="edit" class="btn btn-primary editbtn" id="'.$row["id"].'">Edit</button>
-                <button type="button" name="delete" data-target=".bd-example-modal-xl" class="btn btn-danger delete" id="'.$row["id"].'">Delete</button>';//buttons
+    $subdata[]='<button type="button" name="edit" data-toggle="modal" data-target="#editecoutemodal" class="btn btn-primary editbtn" id="'.$row["id"].'">Edit</button>
+                <button type="button" name="delete" class="btn btn-danger delete" id="'.$row["id"].'">Delete</button>';//buttons
     $data[]=$subdata;
 }
 $json_data=array(

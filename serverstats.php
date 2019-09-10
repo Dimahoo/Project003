@@ -34,6 +34,7 @@ $sheet->setCellValue('U1', 'Etat psychologique avant intervention');
 $sheet->setCellValue('V1', 'Etat psychologique apres intervention');
 $sheet->setCellValue('W1', 'Motif consultation');
 
+
 $sql = "select * from rdv";
 $result = $conn->query($sql);
 if($result->num_rows > 0){
@@ -66,6 +67,8 @@ if($result->num_rows > 0){
 		$n++;
 	}
 }
+
+$sheet->getStyle('A1:X1')->applyFromArray(array('font' => array('bold' => true)));
 
 $filename = 'sample-'.time().'.xlsx';
 // Redirect output to a client's web browser (Xlsx)

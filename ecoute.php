@@ -80,6 +80,7 @@ $today = $year . '-' . $month . '-' . $day;
                             <td>
                                 <select name="description" id="description">
                                     <option>test1</option>
+                                    <option>test2</option>
                                 </select>
                             </td>
                             <td><label>Type d'appelant:</label></td>
