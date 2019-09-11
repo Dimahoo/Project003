@@ -1,4 +1,5 @@
 <?php
+session_start();
 $connection = mysqli_connect("localhost","root","");
 $db = mysqli_select_db($connection,'accounts');
 
@@ -18,10 +19,11 @@ if(isset($_POST['updatedata'])) {
     $query_run = mysqli_query($connection,$query);
 
     if($query_run) {
-        echo '<script> alert("Data Updated"); </script>';
+        $_SESSION['editprof'] = 1;
         header("location:modify.php");
     } else {
-        echo '<script> alert("Data Not Updated"); </script>';
+        echo "Error: " . $query . "<br>" . $mysqli->error;
+        //echo '<script> alert("Fiche non ajoutee"); </script>';
     }
 }
 ?>

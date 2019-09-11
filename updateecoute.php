@@ -3,9 +3,9 @@ session_start();
 $connection = mysqli_connect("localhost","root","");
 $db = mysqli_select_db($connection,'accounts');
 
-if(isset($_POST['updatedata'])) {
+if(isset($_POST['updateecoute'])) {
 
-    $id = $_POST['rdv_id'];
+    $id = $_POST['ecoute_id'];
 
     //$id_interv = $_POST['id_interv'];
     //$id_cli = $_POST['id_cli'];

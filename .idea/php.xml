@@ -3,6 +3,11 @@
   <component name="PhpIncludePathManager">
     <include_path>
       <path value="C:/xampp/php/PEAR" />
+      <path value="$PROJECT_DIR$/../../Soft-install/xampp/php/PEAR" />
+      <path value="$PROJECT_DIR$/vendor/psr/simple-cache" />
+      <path value="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet" />
+      <path value="$PROJECT_DIR$/vendor/markbaker/complex" />
+      <path value="$PROJECT_DIR$/vendor/composer" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />

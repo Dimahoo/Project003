@@ -41,6 +41,12 @@ $sql = $mysqli->query("SELECT * FROM users") or die($mysqli->error);
     <script src="js/dataTables.bootstrap.min.js"></script>
 
 </head>
+<script>
+    if ('<?php echo $_SESSION['editprof']?>' == 1) {
+        alert("Modification effectuee!");
+        <?php $_SESSION['editprof'] = 0 ?>
+    }
+</script>
 <body class="loggedin">
 <nav class="navtop">
     <p>Website Title</p>
