@@ -60,6 +60,12 @@ $today = $year . '-' . $month . '-' . $day;
 
 
 </head>
+<script>
+    if ('<?php echo $_SESSION['addprof']?>' == 1) {
+        alert("Modification effectuee!");
+        <?php $_SESSION['editecoute'] = 0 ?>
+    }
+</script>
 <body class="loggedin">
 <nav class="navtop">
     <p>Website Title</p>

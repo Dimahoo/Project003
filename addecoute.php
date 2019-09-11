@@ -95,3 +95,4 @@ if(isset($_POST['validate'])) {
         //echo '<script> alert("Fiche non ajoutee"); </script>';
     }
 }
+?>
