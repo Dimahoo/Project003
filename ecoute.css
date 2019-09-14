@@ -91,7 +91,12 @@ body.loggedin {
     width: 163px;
     margin: 10px;
 }
-
+.ecoute input[type="checkbox"] {
+    width: 30px;
+    height: 30px;
+    background-color: #3274d6;
+    color: #ffffff;
+}
 .alert {
     -moz-box-sizing: border-box;
     box-sizing: border-box;

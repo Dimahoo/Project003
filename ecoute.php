@@ -14,6 +14,7 @@ $day = date('d');
 $year = date('Y');
 
 $today = $year . '-' . $month . '-' . $day;
+
 ?>
 
 <!DOCTYPE html>
@@ -25,18 +26,15 @@ $today = $year . '-' . $month . '-' . $day;
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/dataTables.bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
-    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.dataTables.min.js"></script>
     <script src="js/dataTables.bootstrap.min.js"></script>
-    <script src="js/dataTables.checkboxes.min.js"></script>
 </head>
 <script>
-    var create = '<?php echo $_SESSION['create']?>';
-    console.log("voila " + create);
-    if (create == 1) {
-        alert("New user created successfully!");
-        <?php $_SESSION['create'] = 0 ?>
+    if (<?php echo $_SESSION['cli_exist'] ?> == 1) {
+        alert("Identifiant client non existant!");
+        <?php $_SESSION['cli_exist'] = 0 ?>
     }
 </script>
 <body class="loggedin">
@@ -74,6 +72,13 @@ $today = $year . '-' . $month . '-' . $day;
                     <table id="example" class="ecoute" style="width:100%">
                         <!-- Row 1 -->
                         <tr>
+                            <td><label>Cocher si client deja existant:</label></td>
+                            <td style="text-align:center;"><input type="checkbox" name="new_client" id="new_client" value="no" ></td>
+                            <td><label name="label_id_client" id="label_id_client">ID Client:</label></td>
+                            <td><input type="number" name="id_client" id="id_client" disabled required></td>
+                        </tr>
+                        <!-- Row 2 -->
+                        <tr>
                             <td><label>Date inscription:</label></td>
                             <td><input id="date_inscription" name="date_inscription" type="date" value="<?php echo $today; ?>"></td>
                             <td><label>Description:</label></td>
@@ -90,7 +95,7 @@ $today = $year . '-' . $month . '-' . $day;
                                 </select>
                             </td>
                         </tr>
-                        <!-- Row2 -->
+                        <!-- Row3 -->
                         <tr>
                             <td><label>Mode d'intervention:</label></td>
                             <td>
@@ -111,7 +116,7 @@ $today = $year . '-' . $month . '-' . $day;
                                 </select>
                             </td>
                         </tr>
-                        <!-- Row3 -->
+                        <!-- Row4 -->
                         <tr>
                             <td><label>Duree:</label></td>
                             <td>
@@ -128,7 +133,7 @@ $today = $year . '-' . $month . '-' . $day;
                             <td><label >Date arrivee au canada:</label></td>
                             <td><input id="date_arrivee" name="date_arrivee" type="date"></td>
                         </tr>
-                        <!-- Row4 -->
+                        <!-- Row5 -->
                         <tr>
                             <td><label>Sexe:</label></td>
                             <td>
@@ -149,7 +154,7 @@ $today = $year . '-' . $month . '-' . $day;
                                 </select>
                             </td>
                         </tr>
-                        <!-- Row5 -->
+                        <!-- Row6 -->
                         <tr>
                             <td><label>Origine:</label></td>
                             <td>
@@ -170,7 +175,7 @@ $today = $year . '-' . $month . '-' . $day;
                                 </select>
                             </td>
                         </tr>
-                        <!-- Row6 -->
+                        <!-- Row7 -->
                         <tr>
                             <td><label>Etat civil:</label></td>
                             <td>
@@ -198,7 +203,7 @@ $today = $year . '-' . $month . '-' . $day;
                                 </select>
                             </td>
                         </tr>
-                        <!-- Row7 -->
+                        <!-- Row8 -->
                         <tr>
                             <td><label>Etat psychologique au debut de l'intervention:</label></td>
                             <td>
@@ -232,7 +237,7 @@ $today = $year . '-' . $month . '-' . $day;
                                 </select>
                             </td>
                         </tr>
-                        <!-- Row7 buttons -->
+                        <!-- Row9 buttons -->
                         <tr>
                             <td></td>
                             <td></td>
@@ -253,6 +258,26 @@ $today = $year . '-' . $month . '-' . $day;
 </div>
 </div>
 </div>
+
+<script>
+
+$(document).ready(function () {
+
+        $('#new_client').click(function(){
+
+            if ($(this).is(":checked")) {
+
+                $('#id_client').attr('disabled',false);
+            }
+            else {
+
+                $('#id_client').attr('disabled',true);
+            }
+        });
+
+});
+
+</script>
 
 </body>
 </html>
