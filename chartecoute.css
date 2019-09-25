@@ -66,21 +66,16 @@ body.loggedin {
     border-bottom: 1px solid #e0e0e3;
     color: #4a536e;
 }
-.container {
-    float: left;
-}
-
 .menu button {
     width: 163px;
     margin: 10px;
 }
 canvas{
 
-    width:550px !important;
-    height:300px !important;
+    width:500px !important;
+    height:500px !important;
 
 }
-
 .alert {
     -moz-box-sizing: border-box;
     box-sizing: border-box;

@@ -30,7 +30,6 @@ if(isset($_POST['updateecoute'])) {
     $psy_avant_interv = $_POST['psy_avant_interv'];
     $motif_consult = $_POST['motif_consult'];
 
-
     $query = "UPDATE rdv SET date_inscription='$date_inscription', description='$description', type_appelant='$type_appelant', mode_interv='$mode_interv', type_interv='$type_interv', langue='$langue', duree='$duree', ref_par='$ref_par', date_arrivee='$date_arrivee', sexe='$sexe', age='$age', situ_finance='$situ_finance', origine='$origine', status_canada='$status_canada', prob_mentale='$prob_mentale', etat_civil='$etat_civil', nbr_enfant='$nbr_enfant', psy_apres_interv='$psy_apres_interv', psy_avant_interv='$psy_avant_interv', motif_consult='$motif_consult' WHERE id='$id'";
     $query_run = mysqli_query($connection,$query);
 

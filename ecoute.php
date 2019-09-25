@@ -57,7 +57,7 @@ $today = $year . '-' . $month . '-' . $day;
             <a href="profile.php"><i class="fas fa-user-circle"></i> <?=$_SESSION['name']?>  Profile</a>
         </li>
         <li>
-            <a href="logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
+            <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
         </li>
     </ul>
 </nav>

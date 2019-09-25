@@ -24,6 +24,7 @@ if (!isset($_SESSION['loggedin'])) {
     <script src="js/jquery.dataTables.min.js"></script>
     <script src="js/dataTables.bootstrap.min.js"></script>
     <script src="js/dataTables.checkboxes.min.js"></script>
+    <script src="js/chart.js"></script>
 </head>
 <script>
     if ('<?php echo $_SESSION['addprof']?>' == 1) {
@@ -55,33 +56,115 @@ if (!isset($_SESSION['loggedin'])) {
             <a href="profile.php"><i class="fas fa-user-circle"></i> <?=$_SESSION['name']?>  Profile</a>
         </li>
         <li>
-            <a href="logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
+            <a href="logout.php"><i class="fas fa-sign-out-alt"></i>  Logout</a>
         </li>
     </ul>
 </nav>
 <div class="content">
     <h2>Home Page</h2>
 </div>
-<div class="container box">
+<div class="container">
     <br/>
     <br/>
-    <table id="" class="menu">
-        <thead>
+    <table>
         <tr>
-            <td><button onclick="window.location.href = 'ecoute.php';" name="ecoute" class="btn btn-primary">Fiche d'Ecoute & Suivi</button></td>
-            <td><button onclick="window.location.href = 'listecoute.php';" name="listecoute" class="btn btn-primary">Liste d'Ecoute & Suivi</button></td>
-            <td><button onclick="window.location.href = 'serverecoute.php';" name="exportecoute" class="btn btn-success">Exporter sous Excel</button></td>
+            <td>
+            <table class="menu">
+                <tr>
+                    <td><button onclick="window.location.href = 'ecoute.php';" name="ecoute" class="btn btn-primary">Fiche d'Ecoute & Suivi</button></td>
+                    <td><button onclick="window.location.href = 'statistics.php';" name="statistique" class="btn btn-primary">Statistiques</button></td>
+                </tr>
+                <tr>
+                    <td><button onclick="window.location.href = 'listecoute.php';" name="listecoute" class="btn btn-primary">Liste d'Ecoute & Suivi</button></td>
+                    <td><button onclick="window.location.href = 'liststatistics.php';" name="liststatistics" class="btn btn-primary">Liste des statistiques</button></td>
+                </tr>
+                <tr>
+                    <td><button onclick="window.location.href = 'serverecoute.php';" name="exportecoute" class="btn btn-success">Exporter sous Excel</button></td>
+                    <td><button onclick="window.location.href = 'serverstats.php';" name="exportecoute" class="btn btn-success">Exporter sous Excel</button></td>
+                </tr>
+                <tr>
+                    <td><button onclick="window.location.href = 'chartecoute.php';" name="chartecoute" class="btn btn-success">Graphique</button></td>
+                </tr>
+            </table>
+            </td>
+            <td>
+            <table class="dashbord">
+                <tr>
+                    <td><canvas id="myChart1"></canvas></td>
+                    <td><canvas id="myChart2"></canvas></td>
+                </tr>
+            </table>
+            </td>
         </tr>
-        <tr>
-            <td><button onclick="window.location.href = 'statistics.php';" name="statistique" class="btn btn-primary">Statistiques</button></td>
-            <td><button onclick="window.location.href = 'liststatistics.php';" name="liststatistics" class="btn btn-primary">Liste des statistiques</button></td>
-            <td><button onclick="window.location.href = 'serverstats.php';" name="exportecoute" class="btn btn-success">Exporter sous Excel</button></td>
-        </tr>
-        </thead>
     </table>
 </div>
-</div>
-</div>
+<script>
+
+    var ctx1 = document.getElementById('myChart1').getContext("2d");
+    var ctx2 = document.getElementById('myChart2').getContext("2d");
+    Chart.defaults.global.animation.duration = 3000;
+    var myChart1 = new Chart(ctx1, {
+
+        type: 'doughnut',
+        data: {
+            labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
+            datasets: [
+                {
+                    label: "Population (millions)",
+                    backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+                    data: [2478,5267,734,784,433]
+                }
+            ]
+        },
+        options: {
+            title: {
+                display: true,
+                text: 'Predicted world population (millions) in 2050'
+            }
+        }
+    });
+    var myChart2 = new Chart(ctx2, {
+
+        type: 'line',
+        data: {
+            labels: [1500,1600,1700,1750,1800,1850,1900,1950,1999,2050],
+            datasets: [{
+                data: [86,114,106,106,107,111,133,221,783,2478],
+                label: "Africa",
+                borderColor: "#3e95cd",
+                fill: false
+            }, {
+                data: [282,350,411,502,635,809,947,1402,3700,5267],
+                label: "Asia",
+                borderColor: "#8e5ea2",
+                fill: false
+            }, {
+                data: [168,170,178,190,203,276,408,547,675,734],
+                label: "Europe",
+                borderColor: "#3cba9f",
+                fill: false
+            }, {
+                data: [40,20,10,16,24,38,74,167,508,784],
+                label: "Latin America",
+                borderColor: "#e8c3b9",
+                fill: false
+            }, {
+                data: [6,3,2,2,7,26,82,172,312,433],
+                label: "North America",
+                borderColor: "#c45850",
+                fill: false
+            }
+            ]
+        },
+        options: {
+            title: {
+                display: true,
+                text: 'World population per region (in millions)'
+            }
+        }
+    });
+
+</script>
 
 </body>
 </html>

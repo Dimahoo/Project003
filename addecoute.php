@@ -56,7 +56,12 @@ if(isset($_POST['validate'])) {
 
     if ($_SESSION['cli_exist'] != 1) {
 
+        $query = "SELECT username FROM users WHERE id='$_SESSION[id]'";
+        $result = mysqli_query($mysqli, $query);
+        $row = $result->fetch_assoc();
+
         $id_interv = $_SESSION['id'];
+        $name_interv = $row["username"];
         $id_cli = $id_client;
         $date_inscription = $mysqli->real_escape_string($_POST['date_inscription']);
         $description = $mysqli->real_escape_string($_POST['description']);
@@ -80,6 +85,7 @@ if(isset($_POST['validate'])) {
         $motif_consult = $mysqli->real_escape_string($_POST['motif_consult']);
 
         $query = "INSERT INTO rdv (id_interv,
+                                   name_interv,
                                    id_cli,
                                    date_inscription,
                                    description,
@@ -102,6 +108,7 @@ if(isset($_POST['validate'])) {
                                    psy_avant_interv,
                                    motif_consult)
                            VALUES ('$id_interv',
+                                   '$name_interv', 
                                    '$id_cli',
                                    '$date_inscription',
                                    '$description',

@@ -86,7 +86,7 @@ $today = $year . '-' . $month . '-' . $day;
             <a href="profile.php"><i class="fas fa-user-circle"></i> <?=$_SESSION['name']?>  Profile</a>
         </li>
         <li>
-            <a href="logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
+            <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
         </li>
     </ul>
 </nav>
@@ -104,7 +104,7 @@ $today = $year . '-' . $month . '-' . $day;
                     <tr>
                         <th>ID</th>
                         <th>Intervenant</th>
-                        <th>Client</th>
+                        <th>ID Client</th>
                         <th>Date d'inscription</th>
                         <th>Description</th>
                         <th>Type d'appelant</th>
