@@ -7,6 +7,12 @@
     <link href="login.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
 <div class="login">
     <h1>Login</h1>
     <form action="authenticate.php" method="post">

@@ -35,6 +35,9 @@ if ($password != $password2) {
     $_SESSION['loggedin'] = TRUE;
     $_SESSION['name'] = $_POST['username'];
     $_SESSION['create'] = 0;
+    $_SESSION['update'] = 0;
+    $_SESSION['delete'] = 0;
+    $_SESSION['admin'] = 1;
     header('Location: home.php');
 }
 ?>

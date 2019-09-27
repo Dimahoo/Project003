@@ -6,11 +6,11 @@
     -moz-osx-font-smoothing: grayscale;
 }
 body {
-    background-image: url("images/bleu-maple-leaf.jpg");
+    background-image: url("images/bleu-maple-leaf.png");
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    background-size: cover;
+    background-size: cove
 }
 .login {
     width: 400px;
