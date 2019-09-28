@@ -72,7 +72,7 @@ if (!isset($_SESSION['loggedin'])) {
             <table class="menu">
                 <tr>
                     <td><button onclick="window.location.href = 'ecoute.php';" name="ecoute" class="btn btn-primary">Fiche d'Ecoute & Suivi</button></td>
-                    <td><button onclick="window.location.href = 'statistics.php';" name="statistique" class="btn btn-primary">Statistiques</button></td>
+                    <td><button onclick="window.location.href = 'statistic.php';" name="statistique" class="btn btn-primary">Fiche des Statistiques</button></td>
                 </tr>
                 <tr>
                     <td><button onclick="window.location.href = 'listecoute.php';" name="listecoute" class="btn btn-primary">Liste d'Ecoute & Suivi</button></td>
