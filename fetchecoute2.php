@@ -1,4 +1,5 @@
 <?php
+session_start();
 $con=mysqli_connect("localhost", "root", "", "accounts")
 or die("connection failed".mysqli_errno());
 $columns = array('id','name_interv','id_cli','date_inscription','description','type_appelant','mode_interv','type_interv','langue','duree','ref_par','date_arrivee','sexe','age','situ_finance','origine','status_canada','prob_mentale','etat_civil','nbr_enfant','psy_apres_interv','psy_avant_interv','motif_consult');
@@ -29,12 +30,22 @@ $col =array(
     22   =>  'motif_consult'
 
 );  //create column like table in database
-$sql ="SELECT * FROM rdv";
+if($_SESSION['admin'] == 1) {
+    $sql = "SELECT * FROM rdv";
+} else {
+    $id_interv = $_SESSION['id'];
+    $sql = "SELECT * FROM rdv WHERE id_interv = '$id_interv'";
+}
+
 $query=mysqli_query($con,$sql);
 $totalData=mysqli_num_rows($query) - 1;
 $totalFilter=$totalData;
 //Search
-$sql ="SELECT * FROM rdv WHERE 1=1";
+if($_SESSION['admin'] == 1) {
+    $sql = "SELECT * FROM rdv WHERE 1=1";
+} else {
+    $sql = "SELECT * FROM rdv WHERE 1=1 AND id_interv = '$id_interv'";
+}
 if(isset($_POST["search"]["value"])){
     $sql.=" AND (id Like '".$_POST["search"]["value"]."%' ";
     $sql.=" OR name_interv Like '".$_POST["search"]["value"]."%' ";

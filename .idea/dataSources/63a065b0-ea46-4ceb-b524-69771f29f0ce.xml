@@ -1145,7 +1145,6 @@
     <column id="278" parent="244" name="admin">
       <Position>6</Position>
       <DataType>int(11)|0s</DataType>
-      <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
     <key id="279" parent="244" name="PRIMARY">
