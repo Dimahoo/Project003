@@ -85,11 +85,6 @@ if (!isset($_SESSION['loggedin'])) {
                 <tr>
                     <td><button onclick="window.location.href = 'chartecoute.php';" name="chartecoute" class="btn btn-success">Graphique</button></td>
                 </tr>
-                <tr>
-                    <?=$_SESSION['admin']?>
-                    <?=$_SESSION['id']?>
-                    <?=$_SESSION['name']?>
-                </tr>
             </table>
             </td>
             <td>
