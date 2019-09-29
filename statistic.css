@@ -69,25 +69,28 @@ body.loggedin {
 .three-col {
     overflow: hidden;/* Makes this div contain its floats */
 }
-
 .row:after {
     content: "";
     display: table;
     clear: both;
 }
-
 .statistic label {
     width: 163px;
     font-weight: normal;
     margin: 10px;
 }
-
 .statistic select {
     width: 163px;
     margin: 10px;
 }
-
 .statistic input {
+    width: 163px;
+    margin: 10px;
+}
+.button tr {
+    bottom: 50px;
+}
+.button input {
     width: 163px;
     margin: 10px;
 }

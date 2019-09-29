@@ -28,12 +28,16 @@ if (!isset($_SESSION['loggedin'])) {
 </head>
 <script>
     if ('<?php echo $_SESSION['addprof']?>' == 1) {
-        alert("New user created successfully!");
+        alert("Nouvel utilisateur cree!");
         <?php $_SESSION['addprof'] = 0 ?>
     }
     if ('<?php echo $_SESSION['addecoute']?>' == 1) {
-        alert("nouvelle fiche cree!");
+        alert("nouvelle fiche ecoute cree!");
         <?php $_SESSION['addecoute'] = 0 ?>
+    }
+    if ('<?php echo $_SESSION['addstatis']?>' == 1) {
+        alert("nouvelle fiche statistique cree!");
+        <?php $_SESSION['addstatis'] = 0 ?>
     }
 </script>
 <body class="loggedin">

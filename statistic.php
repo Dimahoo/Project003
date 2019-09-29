@@ -69,17 +69,18 @@ $today = $year . '-' . $month . '-' . $day;
         <thead>
         <tr>
             <form action="addstatistic.php" method="post">
-                    <table id="example" class="statistic" style="width:100%">
+                    <table id="example" class="statistic" style="width:50%" align="center">
                         <!-- Row 1 -->
                         <tr>
-                            <td><label>Date inscription:</label></td>
-                            <td><input id="date_inscription" name="date_inscription" type="date" value="<?php echo $today; ?>"></td>
+                            <td><label>Date ajout:</label></td>
+                            <td><input id="date_ajout" name="date_ajout" type="date" value="<?php echo $today; ?>"></td>
                         </tr>
                         <!-- Row2 -->
                         <tr>
                             <td><label>Description:</label></td>
                             <td>
-                                <select name="description" id="description">
+                                <select name="description" id="description" required>
+                                    <option value="">Choisissez ...</option>
                                     <option>Information</option>
                                     <option>Ecoute</option>
                                     <option>Formulaire</option>
@@ -98,7 +99,8 @@ $today = $year . '-' . $month . '-' . $day;
                         <tr>
                             <td><label>Sexe:</label></td>
                             <td>
-                                <select name="sexe" id="sexe">
+                                <select name="sexe" id="sexe" required>
+                                    <option value="">Choisissez ...</option>
                                     <option>Homme</option>
                                     <option>Femme</option>
                                 </select>
@@ -107,8 +109,8 @@ $today = $year . '-' . $month . '-' . $day;
                         <tr>
                             <td><label>Origine:</label></td>
                             <td>
-                                <select name="origine" id="origine">
-                                    <option value="Choice">Choisissez un pays ...</option>
+                                <select name="origine" id="origine" required>
+                                    <option value="">Choisissez ...</option>
                                     <!-- A -->
                                     <option value="Afghanistan">Afghanistan </option>
                                     <option value="Afrique_Centrale">Afrique_Centrale </option>
@@ -369,7 +371,8 @@ $today = $year . '-' . $month . '-' . $day;
                         <tr>
                             <td><label>Langue utilisee:</label></td>
                             <td>
-                                <select name="langue" id="langue">
+                                <select name="langue" id="langue" required>
+                                    <option value="">Choisissez ...</option>
                                     <option>Anglais</option>
                                     <option>Arabe</option>
                                     <option>Espagnol</option>
@@ -377,12 +380,25 @@ $today = $year . '-' . $month . '-' . $day;
                                     <option>Persan</option>
                                 </select>
                             </td>
-                        <!-- Row8 buttons -->
                         </tr>
-                        <tr></tr>
-                        <tr></tr>
+                        <!-- Row5 -->
                         <tr>
-                            <td></td>
+                            <td><label>Mode intervention:</label></td>
+                            <td>
+                                <select name="mode_interv" id="mode_interv" required>
+                                    <option value="">Choisissez ...</option>
+                                    <option>Telephone</option>
+                                    <option>Face a face</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+                        <!-- Row8 buttons -->
+                    <table id="example" class="button" style="width:15%" align="right" >
+                        <tr><td>&nbsp;</td></tr>
+                        <tr><td>&nbsp;</td></tr>
+                        <tr><td>&nbsp;</td></tr>
+                        <tr>
                             <td>
                                 <input type="submit" name="validate" value="Valider" class="btn btn-primary" />
                             </td>
