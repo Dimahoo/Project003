@@ -237,12 +237,13 @@ $today = $year . '-' . $month . '-' . $day;
                                 </select>
                             </td>
                         </tr>
-                        <!-- Row9 buttons -->
+                    </table>
+                    <!-- Row9 buttons -->
+                    <table id="example" class="button" style="width:15%" align="right">
+                        <tr><td>&nbsp;</td></tr>
+                        <tr><td>&nbsp;</td></tr>
+                        <tr><td>&nbsp;</td></tr>
                         <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
                             <td>
                                 <input type="submit" name="validate" value="Valider" class="btn btn-primary" />
                             </td>
@@ -274,7 +275,6 @@ $(document).ready(function () {
                 $('#id_client').attr('disabled',true);
             }
         });
-
 });
 
 </script>

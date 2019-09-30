@@ -75,19 +75,28 @@ if (!isset($_SESSION['loggedin'])) {
             <td>
             <table class="menu">
                 <tr>
-                    <td><button onclick="window.location.href = 'ecoute.php';" name="ecoute" class="btn btn-primary">Fiche d'Ecoute & Suivi</button></td>
-                    <td><button onclick="window.location.href = 'statistic.php';" name="statistique" class="btn btn-primary">Fiche des Statistiques</button></td>
+                    <?php if($_SESSION['admin'] == 0 OR $_SESSION['admin'] == 1) {?>
+                        <td><button onclick="window.location.href = 'ecoute.php';" name="ecoute" class="btn btn-primary">Fiche d'Ecoute & Suivi</button></td>
+                    <?php }?>
+                    <?php if($_SESSION['admin'] == 2 OR $_SESSION['admin'] == 1) {?>
+                        <td><button onclick="window.location.href = 'statistic.php';" name="statistic" class="btn btn-primary">Fiche des Statistiques</button></td>
+                    <?php }?>
                 </tr>
                 <tr>
-                    <td><button onclick="window.location.href = 'listecoute.php';" name="listecoute" class="btn btn-primary">Liste d'Ecoute & Suivi</button></td>
-                    <td><button onclick="window.location.href = 'liststatistics.php';" name="liststatistics" class="btn btn-primary">Liste des statistiques</button></td>
+                    <?php if($_SESSION['admin'] == 0 OR $_SESSION['admin'] == 1) {?>
+                        <td><button onclick="window.location.href = 'listecoute.php';" name="listecoute" class="btn btn-primary">Liste d'Ecoute & Suivi</button></td>
+                    <?php }?>
+                    <?php if($_SESSION['admin'] == 2 OR $_SESSION['admin'] == 1) {?>
+                        <td><button onclick="window.location.href = 'liststatis.php';" name="liststatis" class="btn btn-primary">Liste des statistiques</button></td>
+                    <?php }?>
                 </tr>
                 <tr>
-                    <td><button onclick="window.location.href = 'serverecoute.php';" name="exportecoute" class="btn btn-success">Exporter sous Excel</button></td>
-                    <td><button onclick="window.location.href = 'serverstats.php';" name="exportecoute" class="btn btn-success">Exporter sous Excel</button></td>
-                </tr>
-                <tr>
-                    <td><button onclick="window.location.href = 'chartecoute.php';" name="chartecoute" class="btn btn-success">Graphique</button></td>
+                    <?php if($_SESSION['admin'] == 0 OR $_SESSION['admin'] == 1) {?>
+                        <td><button onclick="window.location.href = 'serverecoute.php';" name="exportecoute" class="btn btn-success">Exporter sous Excel</button></td>
+                    <?php }?>
+                    <?php if($_SESSION['admin'] == 2 OR $_SESSION['admin'] == 1) {?>
+                        <td><button onclick="window.location.href = 'serverstatis.php';" name="exportecoute" class="btn btn-success">Exporter sous Excel</button></td>
+                    <?php }?>
                 </tr>
             </table>
             </td>

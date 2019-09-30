@@ -63,7 +63,7 @@ body.loggedin {
 
 th, td { white-space: nowrap; }
 
-.ecoute td label {
+.statis td label {
     width: 163px;
     font-weight: normal;
     margin: 10px;
@@ -75,11 +75,11 @@ th, td { white-space: nowrap; }
     word-wrap: break-word;
     max-width: 163px;
 }
-.ecoute select {
+.statis select {
     width: 163px;
     margin: 10px;
 }
-.ecoute input {
+.statis input {
     width: 163px;
     margin: 10px;
 }

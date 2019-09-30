@@ -146,182 +146,184 @@ $today = $year . '-' . $month . '-' . $day;
                 </button>
             </div>
             <form action="updateecoute.php" method="post">
-                <input type="hidden" name="ecoute_id" id="ecoute_id">
-                <table id="example" class="ecoute" style="width:100%">
-                    <!-- Row 1 -->
-                    <tr>
-                        <td><label>Date inscription:</label></td>
-                        <td><input type="date" id="date_inscription" name="date_inscription" /></td>
-                        <td><label>Description:</label></td>
-                        <td>
-                            <select name="description" id="description">
-                                <option>test1</option>
-                                <option>test2</option>
-                            </select>
-                        </td>
-                        <td><label>Type d'appelant:</label></td>
-                        <td>
-                            <select name="type_appelant" id="type_appelant">
-                                <option>test1</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <!-- Row2 -->
-                    <tr>
-                        <td><label>Mode d'intervention:</label></td>
-                        <td>
-                            <select name="mode_interv" id="mode_interv">
-                                <option>test1</option>
-                            </select>
-                        </td>
-                        <td><label>Type d'intervention:</label></td>
-                        <td>
-                            <select name="type_interv" id="type_interv">
-                                <option>test1</option>
-                            </select>
-                        </td>
-                        <td><label>Langue utilisee:</label></td>
-                        <td>
-                            <select name="langue" id="langue">
-                                <option>test1</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <!-- Row3 -->
-                    <tr>
-                        <td><label>Duree:</label></td>
-                        <td>
-                            <select name="duree" id="duree">
-                                <option>test1</option>
-                            </select>
-                        </td>
-                        <td><label>Referee Par:</label></td>
-                        <td>
-                            <select name="ref_par" id="ref_par">
-                                <option>test1</option>
-                            </select>
-                        </td>
-                        <td><label >Date arrivee au canada:</label></td>
-                        <td><input id="date_arrivee" name="date_arrivee" type="date"></td>
-                    </tr>
-                    <!-- Row4 -->
-                    <tr>
-                        <td><label>Sexe:</label></td>
-                        <td>
-                            <select name="sexe" id="sexe">
-                                <option>test1</option>
-                            </select>
-                        </td>
-                        <td><label>Age:</label></td>
-                        <td>
-                            <select name="age" id="age">
-                                <option>test1</option>
-                            </select>
-                        </td>
-                        <td><label>Situation Financiere:</label></td>
-                        <td>
-                            <select name="situ_finance" id="situ_finance">
-                                <option>test1</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <!-- Row5 -->
-                    <tr>
-                        <td><label>Origine:</label></td>
-                        <td>
-                            <select name="origine" id="origine">
-                                <option>test1</option>
-                            </select>
-                        </td>
-                        <td><label>Status au Canada:</label></td>
-                        <td>
-                            <select name="status_canada" id="status_canada">
-                                <option>test1</option>
-                            </select>
-                        </td>
-                        <td><label>Probleme au sante mentale:</label></td>
-                        <td>
-                            <select name="prob_mentale" id="prob_mentale">
-                                <option>test1</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <!-- Row6 -->
-                    <tr>
-                        <td><label>Etat civil:</label></td>
-                        <td>
-                            <select name="etat_civil" id="etat_civil">
-                                <option>test1</option>
-                            </select>
-                        </td>
-                        <td><label>Nombre enfants:</label></td>
-                        <td>
-                            <input id="nbr_enfant" name="nbr_enfant" type="number">
-                        </td>
-                        <td><label class="long">Etat psychologique apres l'intervention:</label></td>
-                        <td>
-                            <select name="psy_apres_interv" id="psy_apres_interv">
-                                <option>Joyeuse</option>
-                                <option>Colerique</option>
-                                <option>Deprimee</option>
-                                <option>Mal dans sa peau</option>
-                                <option>Angoissee</option>
-                                <option>Agressive</option>
-                                <option>Confuse</option>
-                                <option>Incoherante</option>
-                                <option>Triste</option>
-                                <option>Autre</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <!-- Row7 -->
-                    <tr>
-                        <td ><label class="long" >Etat psychologique au debut de l'intervention:</label></td>
-                        <td>
-                            <select name="psy_avant_interv" id="psy_avant_interv">
-                                <option>Joyeuse</option>
-                                <option>Colerique</option>
-                                <option>Deprimee</option>
-                                <option>Mal dans sa peau</option>
-                                <option>Angoissee</option>
-                                <option>Agressive</option>
-                                <option>Confuse</option>
-                                <option>Incoherante</option>
-                                <option>Triste</option>
-                                <option>Autre</option>
-                            </select>
-                        </td>
-                        <td><label>Motif consultation:</label></td>
-                        <td>
-                            <select name="motif_consult" id="motif_consult">
-                                <option>Dependance</option>
-                                <option>Diff d'attaptation</option>
-                                <option>Problemes d'immigration</option>
-                                <option>Probleme materiel</option>
-                                <option>Probleme psychologique</option>
-                                <option>Probleme de sante</option>
-                                <option>Sexualite</option>
-                                <option>Solitude</option>
-                                <option>Suicide</option>
-                                <option>Violance</option>
-                                <option>Autre</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <!-- Row7 buttons -->
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>
-                            <input type="submit" name="updateecoute" value="Mettre a jour" class="btn btn-primary" />
-                        </td>
-                        <td>
-                            <input type="button" name="cancel" value="Annuler" class="btn btn-secondary"  data-dismiss="modal" />
-                        </td>
-                    </tr>
-                </table>
+                <div class="modal-body">
+                    <input type="hidden" name="ecoute_id" id="ecoute_id">
+                    <table id="example" class="ecoute" style="width:100%">
+                        <!-- Row 1 -->
+                        <tr>
+                            <td><label>Date inscription:</label></td>
+                            <td><input type="date" id="date_inscription" name="date_inscription" /></td>
+                            <td><label>Description:</label></td>
+                            <td>
+                                <select name="description" id="description">
+                                    <option>test1</option>
+                                    <option>test2</option>
+                                </select>
+                            </td>
+                            <td><label>Type d'appelant:</label></td>
+                            <td>
+                                <select name="type_appelant" id="type_appelant">
+                                    <option>test1</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <!-- Row2 -->
+                        <tr>
+                            <td><label>Mode d'intervention:</label></td>
+                            <td>
+                                <select name="mode_interv" id="mode_interv">
+                                    <option>test1</option>
+                                </select>
+                            </td>
+                            <td><label>Type d'intervention:</label></td>
+                            <td>
+                                <select name="type_interv" id="type_interv">
+                                    <option>test1</option>
+                                </select>
+                            </td>
+                            <td><label>Langue utilisee:</label></td>
+                            <td>
+                                <select name="langue" id="langue">
+                                    <option>test1</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <!-- Row3 -->
+                        <tr>
+                            <td><label>Duree:</label></td>
+                            <td>
+                                <select name="duree" id="duree">
+                                    <option>test1</option>
+                                </select>
+                            </td>
+                            <td><label>Referee Par:</label></td>
+                            <td>
+                                <select name="ref_par" id="ref_par">
+                                    <option>test1</option>
+                                </select>
+                            </td>
+                            <td><label >Date arrivee au canada:</label></td>
+                            <td><input id="date_arrivee" name="date_arrivee" type="date"></td>
+                        </tr>
+                        <!-- Row4 -->
+                        <tr>
+                            <td><label>Sexe:</label></td>
+                            <td>
+                                <select name="sexe" id="sexe">
+                                    <option>test1</option>
+                                </select>
+                            </td>
+                            <td><label>Age:</label></td>
+                            <td>
+                                <select name="age" id="age">
+                                    <option>test1</option>
+                                </select>
+                            </td>
+                            <td><label>Situation Financiere:</label></td>
+                            <td>
+                                <select name="situ_finance" id="situ_finance">
+                                    <option>test1</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <!-- Row5 -->
+                        <tr>
+                            <td><label>Origine:</label></td>
+                            <td>
+                                <select name="origine" id="origine">
+                                    <option>test1</option>
+                                </select>
+                            </td>
+                            <td><label>Status au Canada:</label></td>
+                            <td>
+                                <select name="status_canada" id="status_canada">
+                                    <option>test1</option>
+                                </select>
+                            </td>
+                            <td><label>Probleme au sante mentale:</label></td>
+                            <td>
+                                <select name="prob_mentale" id="prob_mentale">
+                                    <option>test1</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <!-- Row6 -->
+                        <tr>
+                            <td><label>Etat civil:</label></td>
+                            <td>
+                                <select name="etat_civil" id="etat_civil">
+                                    <option>test1</option>
+                                </select>
+                            </td>
+                            <td><label>Nombre enfants:</label></td>
+                            <td>
+                                <input id="nbr_enfant" name="nbr_enfant" type="number">
+                            </td>
+                            <td><label class="long">Etat psychologique apres l'intervention:</label></td>
+                            <td>
+                                <select name="psy_apres_interv" id="psy_apres_interv">
+                                    <option>Joyeuse</option>
+                                    <option>Colerique</option>
+                                    <option>Deprimee</option>
+                                    <option>Mal dans sa peau</option>
+                                    <option>Angoissee</option>
+                                    <option>Agressive</option>
+                                    <option>Confuse</option>
+                                    <option>Incoherante</option>
+                                    <option>Triste</option>
+                                    <option>Autre</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <!-- Row7 -->
+                        <tr>
+                            <td ><label class="long" >Etat psychologique au debut de l'intervention:</label></td>
+                            <td>
+                                <select name="psy_avant_interv" id="psy_avant_interv">
+                                    <option>Joyeuse</option>
+                                    <option>Colerique</option>
+                                    <option>Deprimee</option>
+                                    <option>Mal dans sa peau</option>
+                                    <option>Angoissee</option>
+                                    <option>Agressive</option>
+                                    <option>Confuse</option>
+                                    <option>Incoherante</option>
+                                    <option>Triste</option>
+                                    <option>Autre</option>
+                                </select>
+                            </td>
+                            <td><label>Motif consultation:</label></td>
+                            <td>
+                                <select name="motif_consult" id="motif_consult">
+                                    <option>Dependance</option>
+                                    <option>Diff d'attaptation</option>
+                                    <option>Problemes d'immigration</option>
+                                    <option>Probleme materiel</option>
+                                    <option>Probleme psychologique</option>
+                                    <option>Probleme de sante</option>
+                                    <option>Sexualite</option>
+                                    <option>Solitude</option>
+                                    <option>Suicide</option>
+                                    <option>Violance</option>
+                                    <option>Autre</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                        <!-- Row7 buttons -->
+                    <table id="button" class="button" style="width:15%" align="right">
+                        <tr>
+                            <td>
+                                <input type="submit" name="updateecoute" value="Mettre a jour" class="btn btn-primary" />
+                            </td>
+                            <td>
+                                <input type="button" name="cancel" value="Annuler" class="btn btn-secondary"  data-dismiss="modal" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
             </form>
         </div>
     </div>

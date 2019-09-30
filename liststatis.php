@@ -1,13 +1,25 @@
 <?php
 // We need to use sessions, so you should always start sessions using the below code.
+include 'function.php';
+//include 'config.php';
 session_start();
-// Reset error message
-$_SESSION['message'] = '';
 // If the user is not logged in redirect to the login page...
 if (!isset($_SESSION['loggedin'])) {
     header('Location: login.php');
     exit();
 }
+$DATABASE_HOST = 'localhost';
+$DATABASE_USER = 'root';
+$DATABASE_PASS = '';
+$DATABASE_NAME = 'accounts';
+
+// connect using the info above.
+$mysqli = new mysqli($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
+
+$username = $mysqli->real_escape_string($_SESSION['name']);
+
+//Query the database for user
+$sql = $mysqli->query("SELECT * FROM users") or die($mysqli->error);
 
 $month = date('m');
 $day = date('d');
@@ -21,20 +33,37 @@ $today = $year . '-' . $month . '-' . $day;
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Home Page</title>
-    <link href="statistic.css" rel="stylesheet" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Profile Page</title>
+    <link href="liststatis.css" rel="stylesheet" type="text/css">
     <link href="css/bootstrap.min.css" rel="stylesheet" />
-    <link href="css/dataTables.bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
-    <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <!--<link href="css/dataTables.bootstrap.min.css" rel="stylesheet" />-->
+    <link href="css/fixedColumns.dataTables.min.css" rel="stylesheet" />
+    <link href="css/fixedColumns.bootstrap.min.css" rel="stylesheet" />
+    <link href="css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="css/buttons.dataTables.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" />
+    <link href="css/font-awesome.css" rel="stylesheet" />
+    <script src="js/jquery.min.js"></script>
     <script src="js/jquery.dataTables.min.js"></script>
-    <script src="js/dataTables.bootstrap.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <!--<script src="js/dataTables.bootstrap.min.js"></script>-->
+    <script src="js/dataTables.fixedColumns.min.js"></script>
+    <script src="js/dataTables.buttons.min.js"></script>
+    <script src="js/buttons.flash.min.js"></script>
+    <script src="js/jszip.min.js"></script>
+    <script src="js/pdfmake.min.js"></script>
+    <script src="js/vfs_fonts.js"></script>
+    <!--<script src="js/buttons.html5.min.js"></script>-->
+    <script src="js/buttons.print.min.js"></script>
+
+
 </head>
 <script>
-    if (<?php echo $_SESSION['cli_exist'] ?> == 1) {
-        alert("Identifiant client non existant!");
-        <?php $_SESSION['cli_exist'] = 0 ?>
+    if ('<?php echo $_SESSION['editstatis']?>' == 1) {
+        alert("Modification effectuee!");
+        <?php $_SESSION['editstatis'] = 0 ?>
     }
 </script>
 <body class="loggedin">
@@ -61,19 +90,52 @@ $today = $year . '-' . $month . '-' . $day;
         </li>
     </ul>
 </nav>
-<div class="content">
-    <h2>Fiche des Statistiques</h2>
+
+</br>
+<div class="container">
+    <div class="jumbotron">
+        <div class="card">
+            <h2 align="left">Liste des Statistiques</h2>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <table id="datatableid" class="table table-striped table-bordered">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Date ajout</th>
+                        <th>Description</th>
+                        <th>Sexe</th>
+                        <th>Origine</th>
+                        <th>Langue utilisee</th>
+                        <th>Mode intervention</th>
+                        <th style="width: 110px;">Action</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
-<div class="container box">
-    <table id="" class="table table-striped table-bordered">
-        <thead>
-        <tr>
-            <form action="addstatistic.php" method="post">
-                    <table id="example" class="statistic" style="width:50%" align="center">
+
+<!-- Modal -->
+<div class="modal fade bd-example-modal-xl" id="editstatismodal" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width:700px; height:700px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLabel">Modifier fiche</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="updatestatis.php" method="post">
+                <div class="modal-body">
+                    <input type="hidden" name="statis_id" id="statis_id">
+                    <table id="statis" class="statis" style="width:50%" align="center">
                         <!-- Row 1 -->
                         <tr>
                             <td><label>Date ajout:</label></td>
-                            <td><input id="date_ajout" name="date_ajout" type="date" value="<?php echo $today; ?>"></td>
+                            <td><input id="date_ajout" name="date_ajout" type="date"></td>
                         </tr>
                         <!-- Row2 -->
                         <tr>
@@ -394,27 +456,106 @@ $today = $year . '-' . $month . '-' . $day;
                             </td>
                         </tr>
                     </table>
-                        <!-- Row8 buttons -->
-                    <table id="example" class="button" style="width:15%" align="right" >
-                        <tr><td>&nbsp;</td></tr>
-                        <tr><td>&nbsp;</td></tr>
-                        <tr><td>&nbsp;</td></tr>
+                </div>
+                <!-- Row7 buttons -->
+                <div class="modal-footer">
+                    <table id="button" class="button" style="width:15%" align="right">
                         <tr>
                             <td>
-                                <input type="submit" name="validate" value="Valider" class="btn btn-primary" />
+                                <input type="submit" name="updatestatis" value="Mettre a jour" class="btn btn-primary" />
                             </td>
                             <td>
-                                <input type="button" name="cancel" value="Annuler" class="btn btn-secondary" onClick="window.location='home.php';" />
+                                <input type="button" name="cancel" value="Annuler" class="btn btn-secondary"  data-dismiss="modal" />
                             </td>
                         </tr>
                     </table>
+                </div>
             </form>
-        </tr>
-        </thead>
-    </table>
+        </div>
+    </div>
 </div>
-</div>
-</div>
+
+
+<script>
+
+    $(document).ready(function () {
+
+        fetch_data();
+
+        function fetch_data() {
+            var dataTable = $('#datatableid').DataTable({
+                "processing": true,
+                "serverSide": true,
+                "order": [],
+                "columnDefs": [
+                    { "orderable": false, "targets": 7 }
+                ],
+                "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+                "fixedColumns": {
+                    rightColumns: 1,
+                    leftColumns: 0
+                },
+                "dom": 'lfrtip',
+                "buttons": [
+                    {
+                        "extend": 'excel',
+                        "text": 'Exporter dans Excel',
+                        "exportOptions":
+                            {
+                                "columns": 'th:not(:last-child)'
+                            }
+                    }
+                ],
+                "ajax": {
+                    "url": 'fetchstatis.php',
+                    "type": 'POST'
+                }
+            });
+        }
+
+        $(document).on('click', '.editbtn', function() {
+
+            var statis_id = $(this).attr("id");
+
+            $.ajax({
+                url:"statisfetchupdate.php",
+                method:"POST",
+                data:{statis_id:statis_id},
+                dataType:"json",
+                success:function(data){
+                    $('#statis_id').val(data.id);
+                    $('#date_ajout').val(data.date_ajout);
+                    $('#description').val(data.description);
+                    $('#sexe').val(data.sexe);
+                    $('#origine').val(data.origine);
+                    $('#langue').val(data.langue);
+                    $('#mode_interv').val(data.mode_interv);
+                }
+            });
+        });
+
+        $(document).on('click', '.delete', function(){
+            var id = $(this).attr("id");
+            if(confirm("Vous etes sur de vouloir supprimer la fiche ?"))
+            {
+                $.ajax({
+                    url:"liststatiserase.php",
+                    method:"POST",
+                    data:{id:id},
+                    success:function(data){
+                        alert("fiche supprimee!");
+                        $('#datatableid').DataTable().destroy();
+                        fetch_data();
+                    }
+                });
+                setInterval(function(){
+                    $('#alert_message').html('');
+                }, 5000);
+            }
+        });
+    });
+
+</script>
 
 </body>
 </html>

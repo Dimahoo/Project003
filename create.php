@@ -15,6 +15,10 @@ if (!isset($_SESSION['loggedin'])) {
     <title>New profile</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
     <link href="create.css" rel="stylesheet" type="text/css">
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.dataTables.min.js"></script>
+    <script src="js/dataTables.bootstrap.min.js"></script>
 </head>
 <body>
 <div class="newprofile">
@@ -37,12 +41,38 @@ if (!isset($_SESSION['loggedin'])) {
         <label for="new-password2">
             <i class="fas fa-lock"></i>
         </label>
-        <input type="text" name="admin" placeholder="check if the new profile is admin" id="admin" readonly>
-        <input type="checkbox" name="admin" id="admin" value="Yes">
+        <input type="text" name="admin" id="admin" placeholder="Cocher si le profil est un admin" readonly>
+        <input type="checkbox" name="checkadmin" id="checkadmin" value="admin">
+        <input type="text" name="adj" id="adj" placeholder="Cocher si le profil est un adjoint admin" readonly>
+        <input type="checkbox" name="checkadj" id="checkadj" value="adj">
         <input type="submit" name="submit" value="create">
         <!-- <input type="submit" name="submitButton" value="Cancel"> -->
         <input type="button" name="cancel" value="cancel" onClick="window.location='home.php';" />
     </form>
 </div>
+
+<script>
+
+    $(document).ready(function () {
+
+        $("#checkadmin").click(function(){
+
+
+            if ($(this).is(":checked")) {
+
+                $("#checkadj").prop("checked", false);
+            }
+        });
+
+        $("#checkadj").click(function(){
+
+            if ($(this).is(":checked")) {
+
+                $("#checkadmin").prop("checked", false);
+            }
+        });
+    });
+
+</script>
 </body>
 </html>

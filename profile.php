@@ -83,6 +83,11 @@ $admin = $row[5]
                 <td>Admin</td>
             </tr>
             <?php }?>
+            <?php if ($admin == 2) {?>
+                <tr>
+                    <td>Adjoint Administratif</td>
+                </tr>
+            <?php }?>
         </table>
     </div>
 </div>

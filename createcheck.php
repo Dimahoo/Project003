@@ -32,11 +32,14 @@ $password2 = md5($_POST['confpassword']); //md5 hash password security
 echo($password);
 echo($password2);
 // Check new entry is admin or not
-if ($_POST['admin'] == 'Yes') {
+$admin = 0;
+if ($_POST['checkadmin'] == 'admin') {
     $admin = 1;
-} else {
-    $admin = 0;
 }
+if ($_POST['checkadj'] == 'adj') {
+    $admin = 2;
+}
+
 
 // Verification password confirmation
 if ($_POST['password'] != $_POST['confpassword']) {
