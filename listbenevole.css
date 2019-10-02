@@ -60,31 +60,43 @@ body.loggedin {
 .navtop ul li ul li a:hover {
     color: white;
 }
-.content h2 {
-    padding: 25px 10px;
-    font-size: 22px;
-    border-bottom: 1px solid #e0e0e3;
-    color: #4a536e;
-}
-.container {
-    float: left;
-}
 
-.menu1 button {
+th, td { white-space: nowrap; }
+
+.benevole td label {
+    width: 163px;
+    font-weight: normal;
+    margin: 10px;
+    background-color:#EBF4FB;
+}
+.long {
+    text-align: left;
+    height: 70px;
+    word-wrap: break-word;
+    max-width: 163px;
+}
+.benevole select {
     width: 163px;
     margin: 10px;
 }
-.menu2 button {
+.benevole input {
     width: 163px;
     margin: 10px;
 }
-canvas{
-
-    width:550px !important;
-    height:300px !important;
-
+.pime-grid-button{
+    float:left
 }
-
+.pime-grid-filter{
+    float:left;
+    margin-left:10px
+}
+.button tr {
+    bottom: 50px;
+}
+.button input {
+    width: 163px;
+    margin: 10px;
+}
 .alert {
     -moz-box-sizing: border-box;
     box-sizing: border-box;

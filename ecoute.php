@@ -245,7 +245,7 @@ $today = $year . '-' . $month . '-' . $day;
                         <tr><td>&nbsp;</td></tr>
                         <tr>
                             <td>
-                                <input type="submit" name="validate" value="Valider" class="btn btn-primary" />
+                                <input type="submit" name="validate" value="Ajouter" class="btn btn-primary" />
                             </td>
                             <td>
                                 <input type="button" name="cancel" value="Annuler" class="btn btn-secondary" onClick="window.location='home.php';" />

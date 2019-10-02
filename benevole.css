@@ -66,25 +66,40 @@ body.loggedin {
     border-bottom: 1px solid #e0e0e3;
     color: #4a536e;
 }
-.container {
-    float: left;
+.three-col {
+    overflow: hidden;/* Makes this div contain its floats */
 }
-
-.menu1 button {
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.benevole label {
+    width: 163px;
+    font-weight: normal;
+    margin: 10px;
+}
+.benevole select {
     width: 163px;
     margin: 10px;
 }
-.menu2 button {
+.benevole input {
     width: 163px;
     margin: 10px;
 }
-canvas{
-
-    width:550px !important;
-    height:300px !important;
-
+.button tr {
+    bottom: 50px;
 }
-
+.button input {
+    width: 163px;
+    margin: 10px;
+}
+.statistic input[type="checkbox"] {
+    width: 30px;
+    height: 30px;
+    background-color: #3274d6;
+    color: #ffffff;
+}
 .alert {
     -moz-box-sizing: border-box;
     box-sizing: border-box;

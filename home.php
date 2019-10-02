@@ -39,6 +39,10 @@ if (!isset($_SESSION['loggedin'])) {
         alert("nouvelle fiche statistique cree!");
         <?php $_SESSION['addstatis'] = 0 ?>
     }
+    if ('<?php echo $_SESSION['addbene']?>' == 1) {
+        alert("nouvelle fiche benevole cree!");
+        <?php $_SESSION['addbene'] = 0 ?>
+    }
 </script>
 <body class="loggedin">
 <nav class="navtop">
@@ -70,10 +74,11 @@ if (!isset($_SESSION['loggedin'])) {
 <div class="container">
     <br/>
     <br/>
+    <div>
     <table>
         <tr>
             <td>
-            <table class="menu">
+            <table class="menu1">
                 <tr>
                     <?php if($_SESSION['admin'] == 0 OR $_SESSION['admin'] == 1) {?>
                         <td><button onclick="window.location.href = 'ecoute.php';" name="ecoute" class="btn btn-primary">Fiche d'Ecoute & Suivi</button></td>
@@ -110,6 +115,30 @@ if (!isset($_SESSION['loggedin'])) {
             </td>
         </tr>
     </table>
+    </div>
+    <div>
+        <tr>
+            <td>
+                <table class="menu2">
+                    <tr>
+                        <?php if($_SESSION['admin'] == 1) {?>
+                            <td><button onclick="window.location.href = 'benevole.php';" name="benevole" class="btn btn-primary">Fiche des Benevoles</button></td>
+                        <?php }?>
+                    </tr>
+                    <tr>
+                        <?php if($_SESSION['admin'] == 1) {?>
+                            <td><button onclick="window.location.href = 'listbenevole.php';" name="listebenevole" class="btn btn-primary">Liste des Benevoles</button></td>
+                        <?php }?>
+                    </tr>
+                    <tr>
+                        <?php if($_SESSION['admin'] == 1) {?>
+                            <td><button onclick="window.location.href = 'serverbenevole.php';" name="exportbenevole" class="btn btn-success">Exporter sous Excel</button></td>
+                        <?php }?>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </div>
 </div>
 <script>
 

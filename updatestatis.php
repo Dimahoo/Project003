@@ -14,7 +14,7 @@ if(isset($_POST['updatestatis'])) {
     $langue = $_POST['langue'];
     $mode_interv = $_POST['mode_interv'];
 
-    $query = "UPDATE statis SET date_ajout='$date_ajout', description='$description', sexe='$sexe', origine='origine', langue='$langue', mode_interv='$mode_interv' WHERE id='$id'";
+    $query = "UPDATE statis SET date_ajout='$date_ajout', description='$description', sexe='$sexe', origine='$origine', langue='$langue', mode_interv='$mode_interv' WHERE id='$id'";
     $query_run = mysqli_query($connection,$query);
 
     if ($query_run) {
