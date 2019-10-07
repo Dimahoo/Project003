@@ -21,7 +21,7 @@ if(isset($_POST['updatestatis'])) {
         $_SESSION['editstatis'] = 1;
         header("location:liststatis.php");
     } else {
-        echo "Error: " . $query . "<br>" . $mysqli->error;
+        echo "Error: " . $query . "<br>" . $connection->error;
         //echo '<script> alert("Fiche non ajoutee"); </script>';
     }
 }

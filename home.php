@@ -8,6 +8,42 @@ if (!isset($_SESSION['loggedin'])) {
     header('Location: login.php');
     exit();
 }
+
+$connection = mysqli_connect("localhost","root","");
+$db = mysqli_select_db($connection,'accounts');
+
+
+//query to get data from the table
+$query = "select role, count(*) as count from benevole group by role order by id asc";
+
+//execute query
+$result = mysqli_query($connection,$query) or die(mysqli_error());
+
+//loop through the returned data
+$rolevalues1 = array();
+$rolevalues2 = '';
+
+while($row = mysqli_fetch_array($result)) {
+
+    $rolevalues1[] = array(
+      'label'   =>  $row["role"],
+      'value'   =>  $row["count"]
+    );
+    $rolevalues2 .= "{ role:'".$row["role"]."', count:".$row["count"]."}, ";
+}
+
+//free memory associated with result
+$result->close();
+
+//close connection
+$connection->close();
+
+//now print the data
+$data1 = json_encode($rolevalues1);
+$data2 = substr($rolevalues2, 0, -2);
+
+echo $data2;
+
 ?>
 
 <!DOCTYPE html>
@@ -18,6 +54,7 @@ if (!isset($_SESSION['loggedin'])) {
     <link href="home.css" rel="stylesheet" type="text/css">
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <link href="css/morris.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -25,6 +62,8 @@ if (!isset($_SESSION['loggedin'])) {
     <script src="js/dataTables.bootstrap.min.js"></script>
     <script src="js/dataTables.checkboxes.min.js"></script>
     <script src="js/chart.js"></script>
+    <script src="js/morris.min.js"></script>
+    <script src="js/raphael-min.js"></script>
 </head>
 <script>
     if ('<?php echo $_SESSION['addprof']?>' == 1) {
@@ -108,8 +147,8 @@ if (!isset($_SESSION['loggedin'])) {
             <td>
             <table class="dashbord">
                 <tr>
-                    <td><canvas id="myChart1"></canvas></td>
-                    <td><canvas id="myChart2"></canvas></td>
+                    <td><div id="donut-chart" class="donut-chart"></div></td>
+                    <td><div id="bar-chart" class="bar-chart"></div></td>
                 </tr>
             </table>
             </td>
@@ -142,67 +181,30 @@ if (!isset($_SESSION['loggedin'])) {
 </div>
 <script>
 
-    var ctx1 = document.getElementById('myChart1').getContext("2d");
-    var ctx2 = document.getElementById('myChart2').getContext("2d");
-    Chart.defaults.global.animation.duration = 3000;
-    var myChart1 = new Chart(ctx1, {
+    $(document).ready(function () {
 
-        type: 'doughnut',
-        data: {
-            labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
-            datasets: [
-                {
-                    label: "Population (millions)",
-                    backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
-                    data: [2478,5267,734,784,433]
-                }
-            ]
-        },
-        options: {
-            title: {
-                display: true,
-                text: 'Predicted world population (millions) in 2050'
-            }
+        donutChart();
+        barChart();
+
+        function donutChart() {
+
+            var donut_chart = Morris.Donut({
+                element: 'donut-chart',
+                data: <?php echo $data1; ?>
+            });
         }
-    });
-    var myChart2 = new Chart(ctx2, {
 
-        type: 'line',
-        data: {
-            labels: [1500,1600,1700,1750,1800,1850,1900,1950,1999,2050],
-            datasets: [{
-                data: [86,114,106,106,107,111,133,221,783,2478],
-                label: "Africa",
-                borderColor: "#3e95cd",
-                fill: false
-            }, {
-                data: [282,350,411,502,635,809,947,1402,3700,5267],
-                label: "Asia",
-                borderColor: "#8e5ea2",
-                fill: false
-            }, {
-                data: [168,170,178,190,203,276,408,547,675,734],
-                label: "Europe",
-                borderColor: "#3cba9f",
-                fill: false
-            }, {
-                data: [40,20,10,16,24,38,74,167,508,784],
-                label: "Latin America",
-                borderColor: "#e8c3b9",
-                fill: false
-            }, {
-                data: [6,3,2,2,7,26,82,172,312,433],
-                label: "North America",
-                borderColor: "#c45850",
-                fill: false
-            }
-            ]
-        },
-        options: {
-            title: {
-                display: true,
-                text: 'World population per region (in millions)'
-            }
+        function barChart() {
+
+            var bar_chart = Morris.Bar({
+                element: 'bar-chart',
+                data: [<?php echo $data2; ?>],
+                xkey: 'role',
+                ykeys: ['count'],
+                labels: ['count'],
+                hideHover: 'auto',
+                stacked: true
+            });
         }
     });
 

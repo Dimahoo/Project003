@@ -96,7 +96,7 @@ $today = $year . '-' . $month . '-' . $day;
                             <td><label>Prenom:</label></td>
                             <td><input type="text" name="prenom" id="prenom"></td>
                         </tr>
-                        <!-- Row3 -->
+                        <!-- Row5 -->
                         <tr>
                             <td><label>Sexe:</label></td>
                             <td>
@@ -107,6 +107,7 @@ $today = $year . '-' . $month . '-' . $day;
                                 </select>
                             </td>
                         </tr>
+                        <!-- Row6 -->
                         <tr>
                             <td><label>Tache:</label></td>
                             <td>
@@ -114,11 +115,14 @@ $today = $year . '-' . $month . '-' . $day;
                                     <option value="">Choisissez ...</option>
                                     <option>Tache1</option>
                                     <option>Tache2</option>
+                                    <option>Tache3</option>
+                                    <option>Tache4</option>
+                                    <option>Tache5</option>
                                 </select>
                             </td>
                         </tr>
                     </table>
-                        <!-- Row8 buttons -->
+                        <!-- Row7 buttons -->
                     <table id="example" class="button" style="width:15%" align="right" >
                         <tr><td>&nbsp;</td></tr>
                         <tr><td>&nbsp;</td></tr>

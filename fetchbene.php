@@ -2,7 +2,7 @@
 session_start();
 $con=mysqli_connect("localhost", "root", "", "accounts")
 or die("connection failed".mysqli_errno());
-$columns = array('id','date_entree','role','nom','prenom','sexe','tache');
+$columns = array('id','date_entree','role','nom','prenom','sexe','tache','date_sortie');
 $request=$_REQUEST;
 $col =array(
     0   =>  'id',
@@ -11,7 +11,8 @@ $col =array(
     3   =>  'nom',
     4   =>  'prenom',
     5   =>  'sexe',
-    6   =>  'tache'
+    6   =>  'tache',
+    7   =>  'date_sortie'
 );  //create column like table in database
 
 $sql = "SELECT * FROM benevole";
@@ -30,7 +31,8 @@ if(isset($_POST["search"]["value"])){
     $sql.=" OR nom Like '".$_POST["search"]["value"]."%' ";
     $sql.=" OR prenom Like '".$_POST["search"]["value"]."%' ";
     $sql.=" OR sexe Like '".$_POST["search"]["value"]."%' ";
-    $sql.=" OR tache Like '".$_POST["search"]["value"]."%' )";
+    $sql.=" OR tache Like '".$_POST["search"]["value"]."%' ";
+    $sql.=" OR date_sortie Like '".$_POST["search"]["value"]."%' )";
 }
 $query=mysqli_query($con,$sql);
 $totalData=mysqli_num_rows($query);
@@ -64,6 +66,12 @@ while($row=mysqli_fetch_array($query)){
     $subdata[]=$row[4];  //prenom
     $subdata[]=$row[5];  //sexe
     $subdata[]=$row[6];  //tache
+    if($row[7] == '')
+    {
+        $subdata[]='N/A';  //date_sortie
+    } else {
+        $subdata[]=$row[7];  //date_sortie
+    }
     $subdata[]='<button type="button" name="edit" data-toggle="modal" data-target="#editbenemodal" class="btn btn-primary editbtn" id="'.$row["id"].'">Edit</button>
                 <button type="button" name="delete" class="btn btn-danger delete" id="'.$row["id"].'">Delete</button>';//buttons
     $data[]=$subdata;

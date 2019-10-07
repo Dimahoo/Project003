@@ -109,6 +109,7 @@ $today = $year . '-' . $month . '-' . $day;
                         <th>Prenom</th>
                         <th>Sexe</th>
                         <th>Tache</th>
+                        <th>Date_sortie</th>
                         <th style="width: 110px;">Action</th>
                     </tr>
                     </thead>
@@ -177,12 +178,20 @@ $today = $year . '-' . $month . '-' . $day;
                                     <option value="">Choisissez ...</option>
                                     <option>Tache1</option>
                                     <option>Tache2</option>
+                                    <option>Tache3</option>
+                                    <option>Tache4</option>
+                                    <option>Tache5</option>
                                 </select>
                             </td>
                         </tr>
+                        <!-- Row7 -->
+                        <tr>
+                            <td><label>Date Sortie:</label></td>
+                            <td><input id="date_sortie" name="date_sortie" type="date"></td>
+                        </tr>
                     </table>
                 </div>
-                <!-- Row7 buttons -->
+                <!-- Row8 buttons -->
                 <div class="modal-footer">
                     <table id="button" class="button" style="width:15%" align="right">
                         <tr>
@@ -213,7 +222,7 @@ $today = $year . '-' . $month . '-' . $day;
                 "serverSide": true,
                 "order": [],
                 "columnDefs": [
-                    { "orderable": false, "targets": 7 }
+                    { "orderable": false, "targets": 8 }
                 ],
                 "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
                 "fixedColumns": {
@@ -255,6 +264,7 @@ $today = $year . '-' . $month . '-' . $day;
                     $('#prenom').val(data.prenom);
                     $('#sexe').val(data.sexe);
                     $('#tache').val(data.tache);
+                    $('#date_sortie').val(data.date_sortie);
                 }
             });
         });
