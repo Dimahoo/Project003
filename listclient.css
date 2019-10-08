@@ -60,44 +60,67 @@ body.loggedin {
 .navtop ul li ul li a:hover {
     color: white;
 }
-.content h2 {
-    padding: 25px 10px;
-    font-size: 22px;
-    border-bottom: 1px solid #e0e0e3;
-    color: #4a536e;
-}
-.container {
-    float: left;
-}
-.menu1 button {
-    width: 163px;
-    margin: 10px;
 
+th, td { white-space: nowrap; }
+
+.benevole td label {
+    width: 163px;
+    font-weight: normal;
+    margin: 10px;
+    background-color:#EBF4FB;
 }
-.menu2 button {
+.long {
+    text-align: left;
+    height: 70px;
+    word-wrap: break-word;
+    max-width: 163px;
+}
+.benevole select {
     width: 163px;
     margin: 10px;
 }
-.numBeneStag-chart {
-    width:700px !important;
-    height:200px !important;
+.benevole input {
+    width: 163px;
+    margin: 10px;
 }
-.bar-chart {
-    width:700px !important;
-    height:200px !important;
+.pime-grid-button{
+    float:left
 }
-.clientNumber-chart {
-    width:340px !important;
-    height:200px !important;
+.pime-grid-filter{
+    float:left;
+    margin-left:10px
 }
-.dashbord1 label {
-    width: 500px;
-    font-weight: bold;
-    text-align: center;
-    margin-top: 5px;
+.button tr {
+    bottom: 50px;
 }
-.dashbord2 label {
-    width: 700px;
-    font-weight: bold;
-    text-align: center;
+.button input {
+    width: 163px;
+    margin: 10px;
+}
+.alert {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 4px 20px 4px 20px;
+    font-size: 13px;
+    line-height: 20px;
+    margin-bottom: 20px;
+    text-shadow: none;
+    position: relative;
+    background-color: #272e3b;
+    color: rgba(255, 255, 255, 0.7);
+    border: 1px solid #000;
+    box-shadow: 0 0 0 1px #363d49 inset, 0 5px 10px rgba(0, 0, 0, 0.75);
+}
+.alert-error {
+    color: #f00;
+    background-color: #360e10;
+    box-shadow: 0 0 0 1px #551e21 inset, 0 5px 10px rgba(0, 0, 0, 0.75);
+}
+.alert:empty{
+    display: none;
+}
+.alert-success {
+    color: #21ec0c;
+    background-color: #15360e;
+    box-shadow: 0 0 0 1px #2a551e inset, 0 5px 10px rgba(0, 0, 0, 0.75);
 }

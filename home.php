@@ -12,38 +12,86 @@ if (!isset($_SESSION['loggedin'])) {
 $connection = mysqli_connect("localhost","root","");
 $db = mysqli_select_db($connection,'accounts');
 
+$data = '';
+$data2 = '[]';
+$data3 = '';
 
-//query to get data from the table
-$query = "select role, count(*) as count from benevole group by role order by id asc";
 
-//execute query
-$result = mysqli_query($connection,$query) or die(mysqli_error());
+if($_SESSION['admin'] == 1) {
 
-//loop through the returned data
-$rolevalues1 = array();
-$rolevalues2 = '';
+    //query to get data from the table
+    $query = "select role, count(*) as count from benevole group by role order by id asc";
 
-while($row = mysqli_fetch_array($result)) {
+    //execute query
+    $result1 = mysqli_query($connection, $query) or die(mysqli_error());
 
-    $rolevalues1[] = array(
-      'label'   =>  $row["role"],
-      'value'   =>  $row["count"]
-    );
-    $rolevalues2 .= "{ role:'".$row["role"]."', count:".$row["count"]."}, ";
+    //query to get data from the table
+    $query = "select count(*) as count from client";
+
+    //execute query
+    $result2 = mysqli_query($connection, $query) or die(mysqli_error());
+
+    //loop through the returned data
+    $rolevalues1 = array();
+    $rolevalues2 = '';
+    $clientnumber = array();
+
+    while($row = mysqli_fetch_array($result1)) {
+
+        $rolevalues1[] = array(
+            'label'   =>  $row["role"],
+            'value'   =>  $row["count"]
+        );
+        $rolevalues2 .= "{ role:'".$row["role"]."', count:".$row["count"]."}, ";
+    }
+
+    while($row = mysqli_fetch_array($result2)) {
+
+        $clientnumber[] = array(
+            'label'   =>  "Nombre Clients",
+            'value'   =>  $row["count"]
+        );
+    }
+
+    //free memory associated with result
+    $result1->close();
+    $result2->close();
+
+    //now print the data
+    $data = json_encode($clientnumber);
+    $data2 = json_encode($rolevalues1);
+    $data3 = substr($rolevalues2, 0, -2);
 }
 
-//free memory associated with result
-$result->close();
+if($_SESSION['admin'] == 0) {
+
+    $id_interv = $_SESSION['id'];
+
+    //query to get data from the table
+    $query = "select count(*) as count from client where id_interv='$id_interv'";
+
+    //execute query
+    $result3 = mysqli_query($connection,$query) or die(mysqli_error());
+
+    $clinumbinterv = array();
+
+    while($row = mysqli_fetch_array($result3)) {
+
+        $clinumbinterv[] = array(
+            'label'   =>  "Nombre Clients",
+            'value'   =>  $row["count"]
+        );
+    }
+
+    //free memory associated with result
+    $result3->close();
+
+    $data = json_encode($clinumbinterv);
+}
+
 
 //close connection
 $connection->close();
-
-//now print the data
-$data1 = json_encode($rolevalues1);
-$data2 = substr($rolevalues2, 0, -2);
-
-echo $data2;
-
 ?>
 
 <!DOCTYPE html>
@@ -142,20 +190,26 @@ echo $data2;
                         <td><button onclick="window.location.href = 'serverstatis.php';" name="exportecoute" class="btn btn-success">Exporter sous Excel</button></td>
                     <?php }?>
                 </tr>
+                <tr>
+                    <?php if($_SESSION['admin'] == 0 OR $_SESSION['admin'] == 1) {?>
+                        <td><button onclick="window.location.href = 'Listclient.php';" name="listeclient" class="btn btn-primary">Liste des Clients</button></td>
+                    <?php }?>
+                </tr>
             </table>
             </td>
             <td>
-            <table class="dashbord">
+            <table class="dashbord1">
                 <tr>
-                    <td><div id="donut-chart" class="donut-chart"></div></td>
-                    <td><div id="bar-chart" class="bar-chart"></div></td>
+                    <td><div id="clientNumber-chart" class="clientNumber-chart"></div></td>
                 </tr>
             </table>
             </td>
         </tr>
     </table>
     </div>
+    <hr style="width: 150%;">
     <div>
+        <table>
         <tr>
             <td>
                 <table class="menu2">
@@ -176,29 +230,54 @@ echo $data2;
                     </tr>
                 </table>
             </td>
+            <td>
+
+                <table class="dashbord2">
+                    <tr>
+                        <?php if($_SESSION['admin'] == 1) {?>
+                                <td><label>Nombre de benevoles et stagiaires</label></td>
+                                <td><label>Nombre de benevoles et stagiaires</label></td>
+                            </tr>
+                            <tr>
+                                <td><div id="numBeneStag-chart" class="numBeneStag-chart"></div></td>
+                                <td><div id="bar-chart" class="bar-chart"></div></td>
+                        <?php }?>
+                    </tr>
+                </table>
+            </td>
         </tr>
+        </table>
     </div>
 </div>
 <script>
 
     $(document).ready(function () {
 
-        donutChart();
-        barChart();
+        clientNumber();
+        adminNumBeneStag();
+        adminBarChart();
 
-        function donutChart() {
+        function clientNumber() {
 
-            var donut_chart = Morris.Donut({
-                element: 'donut-chart',
-                data: <?php echo $data1; ?>
+            var clientNumber = Morris.Donut({
+                element: 'clientNumber-chart',
+                data: <?php echo $data; ?>
             });
         }
 
-        function barChart() {
+        function adminNumBeneStag() {
+
+            var numBeneStag = Morris.Donut({
+                element: 'numBeneStag-chart',
+                data: <?php echo $data2; ?>
+            });
+        }
+
+        function adminBarChart() {
 
             var bar_chart = Morris.Bar({
                 element: 'bar-chart',
-                data: [<?php echo $data2; ?>],
+                data: [<?php echo $data3; ?>],
                 xkey: 'role',
                 ykeys: ['count'],
                 labels: ['count'],

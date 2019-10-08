@@ -14,6 +14,12 @@ if ($mysqli->connect_error) {
     die("Connection failed: " . $mysql->connect_error);
 }
 
+$month = date('m');
+$day = date('d');
+$year = date('Y');
+
+$today = $year . '-' . $month . '-' . $day;
+
 if(!isset($_POST['new_client']))
 {
     $new_client = 'yes';
@@ -22,6 +28,13 @@ if(!isset($_POST['new_client']))
     $new_client = 'no';
     $id_client = $_POST['id_client'];
 }
+
+// Get id & Name of the intervenant
+$id_interv = $_SESSION['id'];
+$query = "SELECT username FROM users WHERE id='$_SESSION[id]'";
+$result = mysqli_query($mysqli, $query);
+$row = $result->fetch_assoc();
+$name_interv = $row["username"];
 
 if(isset($_POST['validate'])) {
 
@@ -33,7 +46,7 @@ if(isset($_POST['validate'])) {
         $query = "SELECT id FROM client WHERE id=$id_client";
         $result = mysqli_query($mysqli, $query);
         if(mysqli_num_rows($result) == 0){
-            echo 'hhhhhhhhhhhhh';
+
             $_SESSION['cli_exist'] = 1;
             header("location:ecoute.php");
         } else {
@@ -48,9 +61,9 @@ if(isset($_POST['validate'])) {
         }
     } else {
 
-            $query = "insert into client (name) value ('N/A');";
-            $query_run = mysqli_query($mysqli, $query);
-            $id_client = mysqli_insert_id($mysqli);
+        $query = "insert into client (date_creation, id_interv, interv) value ('$today','$id_interv','$name_interv')";
+        $query_run = mysqli_query($mysqli, $query);
+        $id_client = mysqli_insert_id($mysqli);
     }
 
 
@@ -60,8 +73,6 @@ if(isset($_POST['validate'])) {
         $result = mysqli_query($mysqli, $query);
         $row = $result->fetch_assoc();
 
-        $id_interv = $_SESSION['id'];
-        $name_interv = $row["username"];
         $id_cli = $id_client;
         $date_inscription = $mysqli->real_escape_string($_POST['date_inscription']);
         $description = $mysqli->real_escape_string($_POST['description']);
