@@ -10,16 +10,25 @@ $col =array(
     2   =>  'interv',
     3   =>  'date_creation',
     4   =>  'date_cloture'
-);  //create column like table in database
 
-$sql = "SELECT * FROM client";
+);  //create column like table in database
+if($_SESSION['admin'] == 1) {
+    $sql = "SELECT * FROM client";
+} else {
+    $id_interv = $_SESSION['id'];
+    $sql = "SELECT * FROM client WHERE id_interv = '$id_interv'";
+}
 
 $query=mysqli_query($con,$sql);
 $totalData=mysqli_num_rows($query);
 $totalFilter=$totalData;
 //Search
 
-$sql = "SELECT * FROM client WHERE 1=1";
+if($_SESSION['admin'] == 1) {
+    $sql = "SELECT * FROM client WHERE 1=1";
+} else {
+    $sql = "SELECT * FROM client WHERE 1=1 AND id_interv = '$id_interv'";
+}
 
 if(isset($_POST["search"]["value"])){
     $sql.=" AND (id Like '".$_POST["search"]["value"]."%' ";

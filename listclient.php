@@ -136,8 +136,8 @@ $today = $year . '-' . $month . '-' . $day;
                         </tr>
                         <!-- Row 2 -->
                         <tr>
-                            <td><label>Date cloture:</label></td>
-                            <td><input id="id_interv" name="id_interv" type="text" readonly></td>
+                            <td><label>Identifiant Intervenant:</label></td>
+                            <td><input type="text" name="id_interv" id="id_interv" readonly></td>
                         </tr>
                         <!-- Row 3 -->
                         <tr>
@@ -219,6 +219,7 @@ $today = $year . '-' . $month . '-' . $day;
                 dataType:"json",
                 success:function(data){
                     $('#client_id').val(data.id);
+                    $('#id_interv').val(data.id_interv);
                     $('#date_creation').val(data.date_creation);
                     $('#date_cloture').val(data.date_cloture);
                 }

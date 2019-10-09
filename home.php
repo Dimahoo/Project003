@@ -89,7 +89,6 @@ if($_SESSION['admin'] == 0) {
     $data = json_encode($clinumbinterv);
 }
 
-
 //close connection
 $connection->close();
 ?>
@@ -160,7 +159,6 @@ $connection->close();
 </div>
 <div class="container">
     <br/>
-    <br/>
     <div>
     <table>
         <tr>
@@ -193,6 +191,11 @@ $connection->close();
                 <tr>
                     <?php if($_SESSION['admin'] == 0 OR $_SESSION['admin'] == 1) {?>
                         <td><button onclick="window.location.href = 'Listclient.php';" name="listeclient" class="btn btn-primary">Liste des Clients</button></td>
+                    <?php }?>
+                </tr>
+                <tr>
+                    <?php if($_SESSION['admin'] == 1) {?>
+                        <td><button onclick="window.location.href = 'migrateclient.php';" name="migrateclient" class="btn btn-primary">Migration des Clients</button></td>
                     <?php }?>
                 </tr>
             </table>
