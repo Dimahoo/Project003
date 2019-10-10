@@ -8,24 +8,23 @@ if (!isset($_SESSION['loggedin'])) {
     header('Location: login.php');
     exit();
 }
-$DATABASE_HOST = 'localhost';
-$DATABASE_USER = 'root';
-$DATABASE_PASS = '';
-$DATABASE_NAME = 'accounts';
 
-// connect using the info above.
-$mysqli = new mysqli($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
+$connection = mysqli_connect("localhost","root","");
+$db = mysqli_select_db($connection,'accounts');
 
-$username = $mysqli->real_escape_string($_SESSION['name']);
+//query to get data from the table
+$query = "select id, username from users";
 
-//Query the database for user
-$sql = $mysqli->query("SELECT * FROM users") or die($mysqli->error);
+//execute query
+$result = mysqli_query($connection, $query) or die(mysqli_error());
 
 $month = date('m');
 $day = date('d');
 $year = date('Y');
 
 $today = $year . '-' . $month . '-' . $day;
+
+
 
 ?>
 
@@ -47,6 +46,7 @@ $today = $year . '-' . $month . '-' . $day;
     <script src="js/bootstrap.min.js"></script>
     <script src="js/dataTables.bootstrap.min.js"></script>
     <script src="js/dataTables.checkboxes.min.js"></script>
+    <script src="js/popper.min.js"></script>
 
 
 </head>
@@ -83,14 +83,22 @@ $today = $year . '-' . $month . '-' . $day;
 
 </br>
 <div class="container">
+    <form id="myform" method="post">
         <div class="card">
             <h2 align="left">Migration des Clients</h2>
         </div>
         <div class="card">
             <div class="card-body">
-                <form id="myform" action="domigration.php" method="post">
-                <pre id="view-rows"></pre>
-                <pre id="view-form"></pre>
+                <hr width="100%">
+                <label>Choisissez Intervenant :</label>
+                <select name="interv" id="interv">
+                    <?php while($row = mysqli_fetch_array($result))
+                    {
+                        echo "<option value=" .$row['id'] . ">" . $row['username'] . "</option>";
+                    }
+                echo "</select>"
+                ?>
+                <hr width="100%">
                 <table id="datatableid" class="table table-striped table-bordered">
                     <thead>
                     <tr>
@@ -103,10 +111,10 @@ $today = $year . '-' . $month . '-' . $day;
                     </tr>
                     </thead>
                 </table>
-                    <p><button class="btn btn-primary">View Selected</button></p>
-                </form>
+                    <p class="submit"><button type="button" name="migrate" class="btn btn-primary migrate">Migrer la selection</button></p>
             </div>
         </div>
+    </form>
 </div>
 
 <script>
@@ -128,26 +136,71 @@ $today = $year . '-' . $month . '-' . $day;
             order: [[1, 'asc']]
         })
 
-        $("#myform").on('submit', function(e){
+
+        $("#myform").on('click', '.migrate', function() {
 
             var form = this;
             var rowsel = dataTable.column(0).checkboxes.selected();
-            $.each(rowsel, function(index, rowId){
+            var interv = $('#interv');
+            var selection = rowsel.join(",");
+            console.log(rowsel.join(","));
 
-                $(form).append(
+            var send = {
+                interv: interv.val(),
+                list: selection,
+            };
+            console.log(send);
 
-                    $('<input>').attr('type','hidden').attr('name','id[]').val(rowId)
-                )
-            })
+            if(confirm("Vous etes sur de vouloir faire cette migration ?")) {
 
-
-
-            $("#view-rows").text(rowsel.join(","))
-            $("#view-form").text($(form).serialize())
-            $('input[name="id\[\]"]', form).remove()
-            e.preventDefault()
+                $.ajax({
+                    url:"domigration.php",
+                    method:"POST",
+                    data:send,
+                    success:function(){
+                        alert('OK');
+                    },
+                    error:function () {
+                        alert('error loading orders');
+                    }
+                })
+                //$("#view-rows").text(rowsel.join(","))
+                //$("#view-form").text($(form).serialize())
+                //$('input[name="id\[\]"]', form).remove()
+            }
         })
 
+        /*
+        $(document).on('click', '.migrate', function() {
+
+            var form = this;
+            var rowsel = dataTable.column(0).checkboxes.selected();
+            if(confirm("Vous etes sur de vouloir faire cette migration ?")) {
+
+                $.each(rowsel, function (index, rowId) {
+
+                    $(form).append(
+                        $('<input>').attr('type', 'hidden').attr('name', 'id[]').val(rowId)
+                    )
+                })
+
+                $.ajax({
+                    url: "domigration.php",
+                    method: "POST",
+                    data: {rowsel:rowsel},
+                    dataType: "json",
+                    success: function (data) {
+                        alert("Migration effectuee!");
+                        $('#datatableid').DataTable().destroy();
+                        fetch_data();
+                    }
+                });
+                setInterval(function () {
+                    $('#alert_message').html('');
+                }, 5000);
+            }
+        })
+        */
     })
 
 </script>
