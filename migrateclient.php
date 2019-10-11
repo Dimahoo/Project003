@@ -121,26 +121,31 @@ $today = $year . '-' . $month . '-' . $day;
 
     $(document).ready(function () {
 
-        var dataTable = $("#datatableid").DataTable({
-            ajax: 'fetchmigrateclient.php',
-            lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
-            columnDefs: [{
-                targets: 0,
-                checkboxes: {
-                    seletRow: true
-                }
-            }],
-            select: {
-                style: 'multi'
-            },
-            order: [[1, 'asc']]
-        })
+        fetch_data();
+
+        function fetch_data() {
+
+            var dataTable = $('#datatableid').DataTable({
+                ajax: 'fetchmigrateclient.php',
+                lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
+                columnDefs: [{
+                    targets: 0,
+                    checkboxes: {
+                        seletRow: true
+                    }
+                }],
+                select: {
+                    style: 'multi'
+                },
+                order: [[1, 'asc']]
+            });
+        }
 
 
-        $("#myform").on('click', '.migrate', function() {
+        $(document).on('click', '.migrate', function() {
 
             var form = this;
-            var rowsel = dataTable.column(0).checkboxes.selected();
+            var rowsel = $('#datatableid').DataTable().column(0).checkboxes.selected();
             var interv = $('#interv');
             var selection = rowsel.join(",");
             console.log(rowsel.join(","));
@@ -158,49 +163,19 @@ $today = $year . '-' . $month . '-' . $day;
                     method:"POST",
                     data:send,
                     success:function(){
-                        alert('OK');
+                        alert('Migration effectuee !');
+                        $('#datatableid').DataTable().destroy();
+                        fetch_data();
                     },
                     error:function () {
                         alert('error loading orders');
                     }
                 })
-                //$("#view-rows").text(rowsel.join(","))
-                //$("#view-form").text($(form).serialize())
-                //$('input[name="id\[\]"]', form).remove()
+
             }
-        })
+        });
 
-        /*
-        $(document).on('click', '.migrate', function() {
 
-            var form = this;
-            var rowsel = dataTable.column(0).checkboxes.selected();
-            if(confirm("Vous etes sur de vouloir faire cette migration ?")) {
-
-                $.each(rowsel, function (index, rowId) {
-
-                    $(form).append(
-                        $('<input>').attr('type', 'hidden').attr('name', 'id[]').val(rowId)
-                    )
-                })
-
-                $.ajax({
-                    url: "domigration.php",
-                    method: "POST",
-                    data: {rowsel:rowsel},
-                    dataType: "json",
-                    success: function (data) {
-                        alert("Migration effectuee!");
-                        $('#datatableid').DataTable().destroy();
-                        fetch_data();
-                    }
-                });
-                setInterval(function () {
-                    $('#alert_message').html('');
-                }, 5000);
-            }
-        })
-        */
     })
 
 </script>

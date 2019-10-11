@@ -42,8 +42,9 @@ if(isset($_POST['validate'])) {
 
     if ($new_client == 'no') {
 
+        // Check if ID_CLIENT exist in CLIENT table
         $id_client = $_POST['id_client'];
-        $query = "SELECT id FROM client WHERE id=$id_client";
+        $query = "SELECT id FROM client WHERE id=$id_client AND id_interv='$id_interv'";
         $result = mysqli_query($mysqli, $query);
         if(mysqli_num_rows($result) == 0){
 
@@ -51,7 +52,8 @@ if(isset($_POST['validate'])) {
             header("location:ecoute.php");
         } else {
 
-            $query = "SELECT id_cli FROM rdv WHERE id_cli=$id_client";
+            // Check if ID_CLIENT exist in RDV table
+            $query = "SELECT id_cli FROM rdv WHERE id_cli='$id_client'";
             $result = mysqli_query($mysqli, $query);
             if(mysqli_num_rows($result) == 0){
 

@@ -33,7 +33,7 @@ $today = $year . '-' . $month . '-' . $day;
 </head>
 <script>
     if (<?php echo $_SESSION['cli_exist'] ?> == 1) {
-        alert("Identifiant client non existant!");
+        alert("Identifiant client non existant ou non appartenant a votre liste de clients!");
         <?php $_SESSION['cli_exist'] = 0 ?>
     }
 </script>
