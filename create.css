@@ -6,7 +6,11 @@
     -moz-osx-font-smoothing: grayscale;
 }
 body {
-    background-color: #435165;
+    background-image: url("images/bleu-maple-leaf.png");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 .newprofile {
     width: 400px;

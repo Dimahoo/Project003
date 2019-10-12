@@ -166,36 +166,45 @@ $today = $year . '-' . $month . '-' . $day;
                 interv: interv.val(),
                 list: selection,
             };
-            console.log(send);
 
-            if(confirm("Vous etes sur de vouloir faire cette migration ?")) {
-
-                $.ajax({
-                    url:"domigration.php",
-                    method:"POST",
-                    data:send,
-                    success:function(){
-                        $.alert({
-                            title: 'Notification!',
-                            icon: 'fa fa-warning',
-                            type: 'orange',
-                            animation: 'rotate',
-                            content: 'Migration effectuee!',
-                            buttons: {
-                                Fermer: function () {
-                                    this.setCloseAnimation('rotate');
-                                }
+            $.confirm({
+                title: 'Notification!',
+                icon: 'fa fa-warning',
+                type: 'orange',
+                animation: 'rotate',
+                closeAnimation: 'rotate',
+                content: 'Vous etes sur de vouloir faire cette migration ?',
+                buttons: {
+                    Confirmer: function () {
+                        $.ajax({
+                            url:"domigration.php",
+                            method:"POST",
+                            data:send,
+                            success:function(){
+                                $.alert({
+                                    title: 'Notification!',
+                                    icon: 'fa fa-warning',
+                                    type: 'orange',
+                                    animation: 'rotate',
+                                    content: 'Migration effectuee!',
+                                    buttons: {
+                                        Fermer: function () {
+                                            this.setCloseAnimation('rotate');
+                                        }
+                                    }
+                                });
+                                $('#datatableid').DataTable().destroy();
+                                fetch_data();
+                            },
+                            error:function () {
+                                alert('error loading orders');
                             }
-                        });
-                        $('#datatableid').DataTable().destroy();
-                        fetch_data();
+                        })
                     },
-                    error:function () {
-                        alert('error loading orders');
+                    Annuler: function () {
                     }
-                })
-
-            }
+                }
+            });
         });
 
 
