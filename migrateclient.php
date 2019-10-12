@@ -38,7 +38,7 @@ $today = $year . '-' . $month . '-' . $day;
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/dataTables.bootstrap.min.css" rel="stylesheet" />
     <link href="css/dataTables.checkboxes.css" rel="stylesheet" />
-
+    <link href="css/jquery-confirm.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" />
     <link href="css/font-awesome.css" rel="stylesheet" />
     <script src="js/jquery.min.js"></script>
@@ -47,12 +47,24 @@ $today = $year . '-' . $month . '-' . $day;
     <script src="js/dataTables.bootstrap.min.js"></script>
     <script src="js/dataTables.checkboxes.min.js"></script>
     <script src="js/popper.min.js"></script>
+    <script src="js/jquery-confirm.min.js"></script>
 
 
 </head>
 <script>
     if ('<?php echo $_SESSION['editclient']?>' == 1) {
-        alert("Modification effectuee!");
+        $.alert({
+            title: 'Notification!',
+            icon: 'fa fa-warning',
+            type: 'orange',
+            animation: 'rotate',
+            content: 'Modification effectuee!',
+            buttons: {
+                Fermer: function () {
+                    this.setCloseAnimation('rotate');
+                }
+            }
+        });
         <?php $_SESSION['editclient'] = 0 ?>
     }
 </script>
@@ -163,7 +175,18 @@ $today = $year . '-' . $month . '-' . $day;
                     method:"POST",
                     data:send,
                     success:function(){
-                        alert('Migration effectuee !');
+                        $.alert({
+                            title: 'OK!',
+                            icon: 'fa fa-warning',
+                            type: 'orange',
+                            animation: 'rotate',
+                            content: 'Migration effectuee!',
+                            buttons: {
+                                Fermer: function () {
+                                    this.setCloseAnimation('rotate');
+                                }
+                            }
+                        });
                         $('#datatableid').DataTable().destroy();
                         fetch_data();
                     },

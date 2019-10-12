@@ -12,9 +12,9 @@ if (!isset($_SESSION['loggedin'])) {
 $connection = mysqli_connect("localhost","root","");
 $db = mysqli_select_db($connection,'accounts');
 
-$data = '';
-$data2 = '[]';
-$data3 = '';
+$data1 =  '[{"label":"","value":"0"}]';
+$data2 =  '[{"label":" ","value":"0"}]';
+$data3 = '{"description":" ", count:0}';
 
 
 if($_SESSION['admin'] == 1) {
@@ -48,7 +48,7 @@ if($_SESSION['admin'] == 1) {
     while($row = mysqli_fetch_array($result2)) {
 
         $clientnumber[] = array(
-            'label'   =>  "Nombre Clients",
+            'label'   =>  " ",
             'value'   =>  $row["count"]
         );
     }
@@ -58,7 +58,7 @@ if($_SESSION['admin'] == 1) {
     $result2->close();
 
     //now print the data
-    $data = json_encode($clientnumber);
+    $data1 = json_encode($clientnumber);
     $data2 = json_encode($rolevalues1);
     $data3 = substr($rolevalues2, 0, -2);
 }
@@ -78,7 +78,7 @@ if($_SESSION['admin'] == 0) {
     while($row = mysqli_fetch_array($result3)) {
 
         $clinumbinterv[] = array(
-            'label'   =>  "Nombre Clients",
+            'label'   =>  " ",
             'value'   =>  $row["count"]
         );
     }
@@ -86,7 +86,28 @@ if($_SESSION['admin'] == 0) {
     //free memory associated with result
     $result3->close();
 
-    $data = json_encode($clinumbinterv);
+    $data1 = json_encode($clinumbinterv);
+}
+
+if($_SESSION['admin'] == 1 or $_SESSION['admin'] == 2) {
+
+    //query to get data from the table
+    $query = "select description, count(*) as count from statis group by description order by id asc";
+
+    //execute query
+    $result4 = mysqli_query($connection, $query) or die(mysqli_error());
+
+    $statistics = '';
+
+    while($row = mysqli_fetch_array($result4)) {
+
+        $statistics .= "{ description:'".$row["description"]."', count:".$row["count"]."}, ";
+    }
+
+    //free memory associated with result
+    $result4->close();
+
+    $data3 = substr($statistics, 0, -2);
 }
 
 //close connection
@@ -103,14 +124,6 @@ $connection->close();
     <link href="css/dataTables.bootstrap.min.css" rel="stylesheet" />
     <link href="css/morris.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.dataTables.min.js"></script>
-    <script src="js/dataTables.bootstrap.min.js"></script>
-    <script src="js/dataTables.checkboxes.min.js"></script>
-    <script src="js/chart.js"></script>
-    <script src="js/morris.min.js"></script>
-    <script src="js/raphael-min.js"></script>
 </head>
 <script>
     if ('<?php echo $_SESSION['addprof']?>' == 1) {
@@ -203,7 +216,12 @@ $connection->close();
             <td>
             <table class="dashbord1">
                 <tr>
-                    <td><div id="clientNumber-chart" class="clientNumber-chart"></div></td>
+                        <td id="nbrclientlabel"><label class="label1">Nombre de clients</label></td>
+                        <td id="statislabel"><label class="label2">Statistiques</label></td>
+                </tr>
+                <tr>
+                        <td id="nbrclientchart"><div id="clientNumberchart" class="clientNumberchart"></div></td>
+                        <td id="statischart"><div id="statisbarchart" class="statisbarchart"></div></td>
                 </tr>
             </table>
             </td>
@@ -237,14 +255,10 @@ $connection->close();
 
                 <table class="dashbord2">
                     <tr>
-                        <?php if($_SESSION['admin'] == 1) {?>
-                                <td><label>Nombre de benevoles et stagiaires</label></td>
-                                <td><label>Nombre de benevoles et stagiaires</label></td>
-                            </tr>
-                            <tr>
-                                <td><div id="numBeneStag-chart" class="numBeneStag-chart"></div></td>
-                                <td><div id="bar-chart" class="bar-chart"></div></td>
-                        <?php }?>
+                        <td id="benelabel"><label>Nombre de benevoles et stagiaires</label></td>
+                    </tr>
+                    <tr>
+                        <td id="benechart"><div id="numBeneStagchart" class="numBeneStagchart"></div></td>
                     </tr>
                 </table>
             </td>
@@ -252,36 +266,75 @@ $connection->close();
         </table>
     </div>
 </div>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.dataTables.min.js"></script>
+<script src="js/dataTables.bootstrap.min.js"></script>
+<script src="js/dataTables.checkboxes.min.js"></script>
+<script src="js/chart.js"></script>
+<script src="js/morris.min.js"></script>
+<script src="js/raphael-min.js"></script>
+
+
 <script>
 
     $(document).ready(function () {
 
         clientNumber();
         adminNumBeneStag();
-        adminBarChart();
+        statistics();
+        $("#benelabel").hide();
+        $("#benechart").hide();
+        $("#nbrclientlabel").hide();
+        $("#nbrclientchart").hide();
+        $("#statislabel").hide();
+        $("#statischart").hide();
+
+        if ('<?php echo $_SESSION['admin']?>' == 1)  {
+
+            $("#benelabel").show();
+            $("#benechart").show();
+            $("#nbrclientlabel").show();
+            $("#nbrclientchart").show();
+            $("#statislabel").show();
+            $("#statischart").show();
+        }
+
+        if ('<?php echo $_SESSION['admin']?>' == 0)  {
+
+            $("#nbrclientlabel").show();
+            $("#nbrclientchart").show();
+        }
+
+        if ('<?php echo $_SESSION['admin']?>' == 2)  {
+
+            $("#statislabel").show();
+            $("#statischart").show();
+        }
 
         function clientNumber() {
 
-            var clientNumber = Morris.Donut({
-                element: 'clientNumber-chart',
-                data: <?php echo $data; ?>
+            var cliNumber = Morris.Donut({
+                element: 'clientNumberchart',
+                data: <?php echo $data1; ?>
             });
         }
 
         function adminNumBeneStag() {
 
             var numBeneStag = Morris.Donut({
-                element: 'numBeneStag-chart',
+                element: 'numBeneStagchart',
                 data: <?php echo $data2; ?>
             });
         }
 
-        function adminBarChart() {
+        function statistics() {
 
-            var bar_chart = Morris.Bar({
-                element: 'bar-chart',
+            var statis_bar_chart = Morris.Bar({
+                element: 'statisbarchart',
                 data: [<?php echo $data3; ?>],
-                xkey: 'role',
+                xkey: 'description',
                 ykeys: ['count'],
                 labels: ['count'],
                 hideHover: 'auto',

@@ -78,26 +78,33 @@ body.loggedin {
     width: 163px;
     margin: 10px;
 }
-.numBeneStag-chart {
+.numBeneStagchart {
+    width:1300px !important;
+    height:200px !important;
+}
+.clientNumberchart {
+    width:500px !important;
+    height:200px !important;
+}
+.statisbarchart {
     width:700px !important;
     height:200px !important;
+    margin-left: 100px;
 }
-.bar-chart {
-    width:700px !important;
-    height:200px !important;
-}
-.clientNumber-chart {
-    width:340px !important;
-    height:200px !important;
-}
-.dashbord1 label {
+.label1{
     width: 500px;
     font-weight: bold;
     text-align: center;
     margin-top: 5px;
 }
-.dashbord2 label {
+.label2{
     width: 700px;
+    font-weight: bold;
+    text-align: center;
+    margin-left: 100px;
+}
+.dashbord2 label {
+    width: 1300px;
     font-weight: bold;
     text-align: center;
 }

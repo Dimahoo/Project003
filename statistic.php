@@ -31,12 +31,6 @@ $today = $year . '-' . $month . '-' . $day;
     <script src="js/jquery.dataTables.min.js"></script>
     <script src="js/dataTables.bootstrap.min.js"></script>
 </head>
-<script>
-    if (<?php echo $_SESSION['cli_exist'] ?> == 1) {
-        alert("Identifiant client non existant!");
-        <?php $_SESSION['cli_exist'] = 0 ?>
-    }
-</script>
 <body class="loggedin">
 <nav class="navtop">
     <p>Website Title</p>

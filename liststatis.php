@@ -42,6 +42,7 @@ $today = $year . '-' . $month . '-' . $day;
     <link href="css/fixedColumns.bootstrap.min.css" rel="stylesheet" />
     <link href="css/jquery.dataTables.min.css" rel="stylesheet" />
     <link href="css/buttons.dataTables.min.css" rel="stylesheet" />
+    <link href="css/jquery-confirm.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" />
     <link href="css/font-awesome.css" rel="stylesheet" />
     <script src="js/jquery.min.js"></script>
@@ -52,17 +53,24 @@ $today = $year . '-' . $month . '-' . $day;
     <script src="js/dataTables.fixedColumns.min.js"></script>
     <script src="js/dataTables.buttons.min.js"></script>
     <script src="js/buttons.flash.min.js"></script>
-    <script src="js/jszip.min.js"></script>
-    <script src="js/pdfmake.min.js"></script>
-    <script src="js/vfs_fonts.js"></script>
-    <!--<script src="js/buttons.html5.min.js"></script>-->
-    <script src="js/buttons.print.min.js"></script>
+    <script src="js/jquery-confirm.min.js"></script>
 
 
 </head>
 <script>
     if ('<?php echo $_SESSION['editstatis']?>' == 1) {
-        alert("Modification effectuee!");
+        $.alert({
+            title: 'Notification!',
+            icon: 'fa fa-warning',
+            type: 'orange',
+            animation: 'rotate',
+            content: 'Modification effectuee!',
+            buttons: {
+                Fermer: function () {
+                    this.setCloseAnimation('rotate');
+                }
+            }
+        });
         <?php $_SESSION['editstatis'] = 0 ?>
     }
 </script>
@@ -543,7 +551,18 @@ $today = $year . '-' . $month . '-' . $day;
                     method:"POST",
                     data:{id:id},
                     success:function(data){
-                        alert("fiche supprimee!");
+                        $.alert({
+                            title: 'OK!',
+                            icon: 'fa fa-warning',
+                            type: 'orange',
+                            animation: 'rotate',
+                            content: 'fiche supprimee!',
+                            buttons: {
+                                Fermer: function () {
+                                    this.setCloseAnimation('rotate');
+                                }
+                            }
+                        });
                         $('#datatableid').DataTable().destroy();
                         fetch_data();
                     }
