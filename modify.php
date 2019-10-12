@@ -32,6 +32,7 @@ $sql = $mysqli->query("SELECT * FROM users") or die($mysqli->error);
     <link href="modify.css" rel="stylesheet" type="text/css">
     <link href="css/bootstrap.css" rel="stylesheet" />
     <link href="css/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <link href="css/jquery-confirm.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" />
     <link href="css/font-awesome.css" rel="stylesheet" />
     <script src="js/jquery.min.js"></script>
@@ -39,11 +40,23 @@ $sql = $mysqli->query("SELECT * FROM users") or die($mysqli->error);
     <script src="js/bootstrap.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/dataTables.bootstrap.min.js"></script>
+    <script src="js/jquery-confirm.min.js"></script>
 
 </head>
 <script>
     if ('<?php echo $_SESSION['editprof']?>' == 1) {
-        alert("Modification effectuee!");
+        $.alert({
+            title: 'Notification!',
+            icon: 'fa fa-warning',
+            type: 'orange',
+            animation: 'rotate',
+            content: 'Modification effectuee!',
+            buttons: {
+                Fermer: function () {
+                    this.setCloseAnimation('rotate');
+                }
+            }
+        });
         <?php $_SESSION['editprof'] = 0 ?>
     }
 </script>

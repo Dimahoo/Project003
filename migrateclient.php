@@ -176,7 +176,7 @@ $today = $year . '-' . $month . '-' . $day;
                     data:send,
                     success:function(){
                         $.alert({
-                            title: 'OK!',
+                            title: 'Notification!',
                             icon: 'fa fa-warning',
                             type: 'orange',
                             animation: 'rotate',

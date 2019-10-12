@@ -411,33 +411,44 @@ $today = $year . '-' . $month . '-' . $day;
 
         $(document).on('click', '.delete', function(){
             var id = $(this).attr("id");
-            if(confirm("Vous etes sur de vouloir supprimer la fiche ?"))
-            {
-                $.ajax({
-                    url:"listecouteerase.php",
-                    method:"POST",
-                    data:{id:id},
-                    success:function(data){
-                        $.alert({
-                            title: 'Alerte!',
-                            icon: 'fa fa-warning',
-                            type: 'orange',
-                            animation: 'rotate',
-                            content: 'fiche supprimee!',
-                            buttons: {
-                                Fermer: function () {
-                                    this.setCloseAnimation('rotate');
-                                }
+            $.confirm({
+                title: 'Notification!',
+                icon: 'fa fa-warning',
+                type: 'orange',
+                animation: 'rotate',
+                closeAnimation: 'rotate',
+                content: 'Vous etes sur de vouloir continuer la suppression ?',
+                buttons: {
+                    Confirmer: function () {
+                        $.ajax({
+                            url:"listecouteerase.php",
+                            method:"POST",
+                            data:{id:id},
+                            success:function(data){
+                                $.alert({
+                                    title: 'Notification!',
+                                    icon: 'fa fa-warning',
+                                    type: 'orange',
+                                    animation: 'rotate',
+                                    content: 'fiche supprimee!',
+                                    buttons: {
+                                        Fermer: function () {
+                                            this.setCloseAnimation('rotate');
+                                        }
+                                    }
+                                });
+                                $('#datatableid').DataTable().destroy();
+                                fetch_data();
                             }
                         });
-                        $('#datatableid').DataTable().destroy();
-                        fetch_data();
+                        setInterval(function(){
+                            $('#alert_message').html('');
+                        }, 5000);
+                    },
+                    Annuler: function () {
                     }
-                });
-                setInterval(function(){
-                    $('#alert_message').html('');
-                }, 5000);
-            }
+                }
+            });
         });
     });
 

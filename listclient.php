@@ -244,7 +244,7 @@ $today = $year . '-' . $month . '-' . $day;
                     data:{id:id},
                     success:function(data){
                         $.alert({
-                            title: 'OK!',
+                            title: 'Notification!',
                             icon: 'fa fa-warning',
                             type: 'orange',
                             animation: 'rotate',

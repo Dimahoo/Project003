@@ -32,6 +32,7 @@ $sql = $mysqli->query("SELECT * FROM users") or die($mysqli->error);
     <link href="delete.css" rel="stylesheet" type="text/css">
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <link href="css/jquery-confirm.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -40,6 +41,8 @@ $sql = $mysqli->query("SELECT * FROM users") or die($mysqli->error);
     <script src="js/dataTables.checkboxes.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
+    <script src="js/jquery-confirm.min.js"></script>
+
 </head>
 <body class="loggedin">
 <nav class="navtop">
@@ -110,22 +113,45 @@ $sql = $mysqli->query("SELECT * FROM users") or die($mysqli->error);
 
         $(document).on('click', '.delete', function(){
             var id = $(this).attr("id");
-            if(confirm("Are you sure you want to remove this?"))
-            {
-                $.ajax({
-                    url:"erase.php",
-                    method:"POST",
-                    data:{id:id},
-                    success:function(data){
-                        alert("Profile deleted successfully!");
-                        $('#user_data').DataTable().destroy();
-                        fetch_data();
+            $.confirm({
+                title: 'Notification!',
+                icon: 'fa fa-warning',
+                type: 'orange',
+                animation: 'rotate',
+                closeAnimation: 'rotate',
+                content: 'Vous etes sur de vouloir continuer la suppression ?',
+                buttons: {
+                    Confirmer: function () {
+
+                        $.ajax({
+                            url:"erase.php",
+                            method:"POST",
+                            data:{id:id},
+                            success:function(data){
+                                $.alert({
+                                    title: 'Notification!',
+                                    icon: 'fa fa-warning',
+                                    type: 'orange',
+                                    animation: 'rotate',
+                                    content: 'Profile supprime!',
+                                    buttons: {
+                                        Fermer: function () {
+                                            this.setCloseAnimation('rotate');
+                                        }
+                                    }
+                                });
+                                $('#user_data').DataTable().destroy();
+                                fetch_data();
+                            }
+                        });
+                        setInterval(function(){
+                            $('#alert_message').html('');
+                        }, 5000);
+                    },
+                    Annuler: function () {
                     }
-                });
-                setInterval(function(){
-                    $('#alert_message').html('');
-                }, 5000);
-            }
+                }
+            });
         });
     });
 </script>

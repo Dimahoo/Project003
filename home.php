@@ -123,23 +123,70 @@ $connection->close();
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/dataTables.bootstrap.min.css" rel="stylesheet" />
     <link href="css/morris.css" rel="stylesheet" />
+    <link href="css/jquery-confirm.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-confirm.min.js"></script>
 </head>
 <script>
     if ('<?php echo $_SESSION['addprof']?>' == 1) {
-        alert("Nouvel utilisateur cree!");
+        $.alert({
+            title: 'Notification!',
+            icon: 'fa fa-warning',
+            type: 'orange',
+            animation: 'rotate',
+            content: 'Nouvel utilisateur cree!',
+            buttons: {
+                Fermer: function () {
+                    this.setCloseAnimation('rotate');
+                }
+            }
+        });
         <?php $_SESSION['addprof'] = 0 ?>
     }
     if ('<?php echo $_SESSION['addecoute']?>' == 1) {
-        alert("nouvelle fiche ecoute cree!");
+        $.alert({
+            title: 'Notification!',
+            icon: 'fa fa-warning',
+            type: 'orange',
+            animation: 'rotate',
+            content: 'Nouvelle fiche ecoute & suivi cree!',
+            buttons: {
+                Fermer: function () {
+                    this.setCloseAnimation('rotate');
+                }
+            }
+        });
         <?php $_SESSION['addecoute'] = 0 ?>
     }
     if ('<?php echo $_SESSION['addstatis']?>' == 1) {
-        alert("nouvelle fiche statistique cree!");
+        $.alert({
+            title: 'Notification!',
+            icon: 'fa fa-warning',
+            type: 'orange',
+            animation: 'rotate',
+            content: 'Nouvelle fiche statistique cree!',
+            buttons: {
+                Fermer: function () {
+                    this.setCloseAnimation('rotate');
+                }
+            }
+        });
         <?php $_SESSION['addstatis'] = 0 ?>
     }
     if ('<?php echo $_SESSION['addbene']?>' == 1) {
-        alert("nouvelle fiche benevole cree!");
+        $.alert({
+            title: 'Notification!',
+            icon: 'fa fa-warning',
+            type: 'orange',
+            animation: 'rotate',
+            content: 'Nouvelle fiche benevole cree!',
+            buttons: {
+                Fermer: function () {
+                    this.setCloseAnimation('rotate');
+                }
+            }
+        });
         <?php $_SESSION['addbene'] = 0 ?>
     }
 </script>
