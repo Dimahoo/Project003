@@ -86,6 +86,7 @@ $today = $year . '-' . $month . '-' . $day;
                                     <option>Cafe francais</option>
                                     <option>Magasin</option>
                                     <option>Assermentation</option>
+                                    <option>Autre</option>
                                 </select>
                             </td>
                         </tr>

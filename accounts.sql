@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 18, 2019 at 10:14 PM
+-- Generation Time: Oct 20, 2019 at 06:40 AM
 -- Server version: 10.1.40-MariaDB
 -- PHP Version: 7.1.29
 
@@ -44,11 +44,11 @@ CREATE TABLE `benevole` (
 --
 
 INSERT INTO `benevole` (`id`, `date_entree`, `role`, `nom`, `prenom`, `sexe`, `tache`, `date_sortie`) VALUES
-  (1, '2019-10-02', 'Stagiaire', 'test', 'test1', 'Homme', 'Tache1', NULL),
-  (2, '2019-10-02', 'Benevole', 'test1', 'dfghg', 'Homme', 'Tache2', '2019-10-24'),
-  (3, '2019-10-06', 'Benevole', 'nfyjh', 'mgyuj', 'Homme', 'Tache4', NULL),
-  (4, '2019-10-06', 'Benevole', 'efdwef', 'iuliul', 'Homme', 'Tache5', NULL),
-  (5, '2019-10-06', 'Stagiaire', 'dbdt', 'awedcaef', 'Femme', 'Tache2', NULL);
+  (1, '2019-10-18', 'Benevole', 'bene1', 'bene1', 'Homme', 'Tache1', NULL),
+  (2, '2019-10-18', 'Benevole', 'bene2', 'bene2', 'Homme', 'Tache2', NULL),
+  (3, '2019-10-18', 'Benevole', 'bene3', 'bene3', 'Femme', 'Tache3', NULL),
+  (4, '2019-10-18', 'Benevole', 'bene4', 'bene4', 'Homme', 'Tache5', NULL),
+  (5, '2019-10-18', 'Stagiaire', 'stag1', 'stag1', 'Homme', 'Tache4', NULL);
 
 -- --------------------------------------------------------
 
@@ -87,34 +87,10 @@ CREATE TABLE `client` (
 -- Dumping data for table `client`
 --
 
-INSERT INTO `client` (`id`, `id_interv`, `interv`, `date_creation`, `date_cloture`) VALUES
-  (1, 1, 'test', '2019-10-08', NULL),
-  (2, 1, 'test', '2019-10-08', NULL),
-  (3, 1, 'test', '2019-10-08', NULL),
-  (4, 15, 'test7', '2019-10-08', NULL),
-  (5, 12, 'test4', '2019-10-08', NULL),
-  (6, 12, 'test4', '2019-10-08', NULL),
-  (7, 12, 'test4', '2019-10-08', NULL),
-  (8, 1, 'test', '2019-10-08', NULL),
-  (9, 1, 'test', '2019-10-09', NULL),
-  (10, 12, 'test4', '2019-10-09', NULL),
-  (11, 12, 'test4', '2019-10-09', NULL),
-  (12, 12, 'test4', '2019-10-09', NULL),
-  (13, 15, 'test7', '2019-10-11', NULL),
-  (14, 1, 'test', '2019-10-12', NULL);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `comments`
---
-
-CREATE TABLE `comments` (
-  `comment_id` int(11) NOT NULL,
-  `comment_subject` varchar(250) NOT NULL,
-  `comment_text` text NOT NULL,
-  `comment_status` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+INSERT INTO `client` (`id`, `id_interv`, `interv`, `date_creation`, `date_cloture`, `description`, `type_appelant`, `mode_interv`, `type_interv`, `langue`, `duree`, `ref_par`, `date_arrivee`, `sexe`, `age`, `situ_finance`, `origine`, `status_canada`, `prob_mentale`, `etat_civil`, `nbr_enfant`, `psy_apres_interv`, `psy_avant_interv`, `motif_consult`) VALUES
+  (1, 1, 'admin', '2019-10-19', NULL, 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', '0000-00-00', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 0, 'Joyeuse', 'Joyeuse', 'Dependance'),
+  (2, 1, 'admin', '2019-10-20', NULL, 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', '0000-00-00', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 0, 'Joyeuse', 'Joyeuse', 'Dependance'),
+  (3, 1, 'admin', '2019-10-14', NULL, 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', '0000-00-00', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 0, 'Joyeuse', 'Joyeuse', 'Dependance');
 
 -- --------------------------------------------------------
 
@@ -125,31 +101,21 @@ CREATE TABLE `comments` (
 CREATE TABLE `rdv` (
   `id` int(11) NOT NULL,
   `id_interv` int(11) DEFAULT NULL,
-  `name_interv` varchar(50) DEFAULT NULL,
+  `interv` varchar(50) DEFAULT NULL,
   `id_cli` int(11) DEFAULT NULL,
-  `date_inscription` date DEFAULT NULL
+  `date_rdv` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `rdv`
 --
 
-INSERT INTO `rdv` (`id`, `id_interv`, interv, `id_cli`, date_rdv, `description`, `type_appelant`, `mode_interv`, `type_interv`, `langue`, `duree`, `ref_par`, `date_arrivee`, `sexe`, `age`, `situ_finance`, `origine`, `status_canada`, `prob_mentale`, `etat_civil`, `nbr_enfant`, `psy_apres_interv`, `psy_avant_interv`, `motif_consult`) VALUES
-  (1, 1, 'test', 1, '2019-10-08', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', '0000-00-00', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 0, 'Joyeuse', 'Joyeuse', 'Dependance'),
-  (2, 23, 'test13', 2, '2019-10-08', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', '0000-00-00', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 0, 'Joyeuse', 'Joyeuse', 'Dependance'),
-  (3, 23, 'test13', 3, '2019-10-08', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', '0000-00-00', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 0, 'Joyeuse', 'Joyeuse', 'Dependance'),
-  (4, 12, 'test4', 4, '2019-10-08', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', '0000-00-00', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 0, 'Joyeuse', 'Joyeuse', 'Dependance'),
-  (5, 12, 'test4', 5, '2019-10-08', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', '0000-00-00', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 0, 'Joyeuse', 'Joyeuse', 'Dependance'),
-  (6, 12, 'test4', 6, '2019-10-08', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', '0000-00-00', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 0, 'Joyeuse', 'Joyeuse', 'Dependance'),
-  (7, 12, 'test4', 7, '2019-10-08', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', '0000-00-00', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 0, 'Joyeuse', 'Joyeuse', 'Dependance'),
-  (8, 12, 'test4', 8, '2019-10-08', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', '0000-00-00', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 0, 'Joyeuse', 'Joyeuse', 'Dependance'),
-  (9, 12, 'test4', 9, '2019-10-09', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', '0000-00-00', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 0, 'Joyeuse', 'Joyeuse', 'Dependance'),
-  (10, 12, 'test4', 10, '2019-10-09', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', '0000-00-00', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 0, 'Joyeuse', 'Joyeuse', 'Dependance'),
-  (11, 12, 'test4', 11, '2019-10-09', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', '0000-00-00', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 0, 'Joyeuse', 'Joyeuse', 'Dependance'),
-  (12, 12, 'test4', 12, '2019-10-09', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', '0000-00-00', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 0, 'Joyeuse', 'Joyeuse', 'Dependance'),
-  (13, 12, 'test4', 7, '2019-10-11', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', '0000-00-00', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 0, 'Joyeuse', 'Joyeuse', 'Dependance'),
-  (14, 15, 'test7', 4, '2019-10-11', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', '0000-00-00', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 0, 'Joyeuse', 'Joyeuse', 'Dependance'),
-  (15, 15, 'test7', 13, '2019-10-11', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', '0000-00-00', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 0, 'Joyeuse', 'Joyeuse', 'Dependance');
+INSERT INTO `rdv` (`id`, `id_interv`, `interv`, `id_cli`, `date_rdv`) VALUES
+  (1, 1, 'admin', 1, '2019-10-19'),
+  (2, 1, 'admin', 1, '2019-10-20'),
+  (3, 1, 'admin', 2, '2019-10-20'),
+  (4, 1, 'admin', 3, '2019-10-20'),
+  (5, 1, 'admin', 1, '2019-10-19');
 
 -- --------------------------------------------------------
 
@@ -172,10 +138,13 @@ CREATE TABLE `statis` (
 --
 
 INSERT INTO `statis` (`id`, `date_ajout`, `description`, `sexe`, `origine`, `langue`, `mode_interv`) VALUES
-  (4, '2019-09-30', 'Ecoute', 'Femme', 'origine', 'Espagnol', 'Telephone'),
-  (5, '2019-10-11', 'Formation', 'Homme', 'Argentine', 'Anglais', 'Face a face'),
-  (9, '2019-10-12', 'Impot', 'Homme', 'Australie', 'Francais', 'Face a face'),
-  (10, '2019-10-12', 'Formation', 'Homme', 'Armenie', 'Espagnol', 'Face a face');
+  (1, '2019-10-18', 'Information', 'Homme', 'Allemagne', 'Anglais', 'Telephone'),
+  (2, '2019-10-18', 'Ecoute', 'Femme', 'Argentine', 'Espagnol', 'Face a face'),
+  (3, '2019-10-18', 'Ecoute', 'Homme', 'Maroc', 'Francais', 'Face a face'),
+  (4, '2019-10-18', 'Impot', 'Femme', 'Australie', 'Anglais', 'Telephone'),
+  (5, '2019-10-18', 'Formation', 'Femme', 'Iran', 'Persan', 'Face a face'),
+  (6, '2019-10-18', 'Impot', 'Homme', 'Iran', 'Persan', 'Telephone'),
+  (7, '2019-10-18', 'Ecoute', 'Homme', 'Andorre', 'Anglais', 'Face a face');
 
 -- --------------------------------------------------------
 
@@ -197,14 +166,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `avatar`, `admin`) VALUES
-  (1, 'test', 'test@test.com', '098f6bcd4621d373cade4e832627b4f6', 'images/tissot_t_touch_1_stainless_steel_z_253353_1514226060_acdba1b1.jpg', 1),
-  (12, 'test4', 'test4@test4.com', '827ccb0eea8a706c4c34a16891f84e7b', '', 0),
-  (15, 'test7', 'test7@test7.com', '827ccb0eea8a706c4c34a16891f84e7b', '', 0),
-  (16, 'test8', 'test8@test8.com', '827ccb0eea8a706c4c34a16891f84e7b', '', 0),
-  (21, 'test9', 'test9@test9.com', '827ccb0eea8a706c4c34a16891f84e7b', '', 1),
-  (22, 'test16', 'test10@test10.com', '827ccb0eea8a706c4c34a16891f84e7b', '', 1),
-  (24, 'test14', 'test14@test14.com', '827ccb0eea8a706c4c34a16891f84e7b', '', 0),
-  (27, 'test15', 'test15@test15.com', '827ccb0eea8a706c4c34a16891f84e7b', '', 0);
+  (1, 'admin', 'admin@multi-ecoute.com', '827ccb0eea8a706c4c34a16891f84e7b', '', 1),
+  (2, 'interv1', 'interv1@multi-ecoute.com', '827ccb0eea8a706c4c34a16891f84e7b', '', 0),
+  (3, 'interv2', 'interv2@multi-ecoute.com', '827ccb0eea8a706c4c34a16891f84e7b', '', 0),
+  (4, 'adjoint', 'adjoint@multi-ecoute.com', '827ccb0eea8a706c4c34a16891f84e7b', '', 2);
 
 --
 -- Indexes for dumped tables
@@ -221,12 +186,6 @@ ALTER TABLE `benevole`
 --
 ALTER TABLE `client`
   ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `comments`
---
-ALTER TABLE `comments`
-  ADD PRIMARY KEY (`comment_id`);
 
 --
 -- Indexes for table `rdv`
@@ -260,31 +219,25 @@ ALTER TABLE `benevole`
 -- AUTO_INCREMENT for table `client`
 --
 ALTER TABLE `client`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
-
---
--- AUTO_INCREMENT for table `comments`
---
-ALTER TABLE `comments`
-  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `rdv`
 --
 ALTER TABLE `rdv`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `statis`
 --
 ALTER TABLE `statis`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
