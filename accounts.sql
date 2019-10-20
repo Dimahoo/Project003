@@ -61,7 +61,26 @@ CREATE TABLE `client` (
   `id_interv` int(11) DEFAULT NULL,
   `interv` varchar(20) DEFAULT NULL,
   `date_creation` date DEFAULT NULL,
-  `date_cloture` date DEFAULT NULL
+  `date_cloture` date DEFAULT NULL,
+  `description` varchar(50) DEFAULT NULL,
+  `type_appelant` varchar(50) DEFAULT NULL,
+  `mode_interv` varchar(50) DEFAULT NULL,
+  `type_interv` varchar(50) DEFAULT NULL,
+  `langue` varchar(50) DEFAULT NULL,
+  `duree` varchar(50) DEFAULT NULL,
+  `ref_par` varchar(50) DEFAULT NULL,
+  `date_arrivee` date DEFAULT NULL,
+  `sexe` varchar(50) DEFAULT NULL,
+  `age` varchar(50) DEFAULT NULL,
+  `situ_finance` varchar(50) DEFAULT NULL,
+  `origine` varchar(50) DEFAULT NULL,
+  `status_canada` varchar(50) DEFAULT NULL,
+  `prob_mentale` varchar(50) DEFAULT NULL,
+  `etat_civil` varchar(50) DEFAULT NULL,
+  `nbr_enfant` int(11) DEFAULT NULL,
+  `psy_apres_interv` varchar(50) DEFAULT NULL,
+  `psy_avant_interv` varchar(50) DEFAULT NULL,
+  `motif_consult` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -108,33 +127,14 @@ CREATE TABLE `rdv` (
   `id_interv` int(11) DEFAULT NULL,
   `name_interv` varchar(50) DEFAULT NULL,
   `id_cli` int(11) DEFAULT NULL,
-  `date_inscription` date DEFAULT NULL,
-  `description` varchar(50) DEFAULT NULL,
-  `type_appelant` varchar(50) DEFAULT NULL,
-  `mode_interv` varchar(50) DEFAULT NULL,
-  `type_interv` varchar(50) DEFAULT NULL,
-  `langue` varchar(50) DEFAULT NULL,
-  `duree` varchar(50) DEFAULT NULL,
-  `ref_par` varchar(50) DEFAULT NULL,
-  `date_arrivee` date DEFAULT NULL,
-  `sexe` varchar(50) DEFAULT NULL,
-  `age` varchar(50) DEFAULT NULL,
-  `situ_finance` varchar(50) DEFAULT NULL,
-  `origine` varchar(50) DEFAULT NULL,
-  `status_canada` varchar(50) DEFAULT NULL,
-  `prob_mentale` varchar(50) DEFAULT NULL,
-  `etat_civil` varchar(50) DEFAULT NULL,
-  `nbr_enfant` int(11) DEFAULT NULL,
-  `psy_apres_interv` varchar(50) DEFAULT NULL,
-  `psy_avant_interv` varchar(50) DEFAULT NULL,
-  `motif_consult` varchar(50) DEFAULT NULL
+  `date_inscription` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `rdv`
 --
 
-INSERT INTO `rdv` (`id`, `id_interv`, `name_interv`, `id_cli`, `date_inscription`, `description`, `type_appelant`, `mode_interv`, `type_interv`, `langue`, `duree`, `ref_par`, `date_arrivee`, `sexe`, `age`, `situ_finance`, `origine`, `status_canada`, `prob_mentale`, `etat_civil`, `nbr_enfant`, `psy_apres_interv`, `psy_avant_interv`, `motif_consult`) VALUES
+INSERT INTO `rdv` (`id`, `id_interv`, interv, `id_cli`, date_rdv, `description`, `type_appelant`, `mode_interv`, `type_interv`, `langue`, `duree`, `ref_par`, `date_arrivee`, `sexe`, `age`, `situ_finance`, `origine`, `status_canada`, `prob_mentale`, `etat_civil`, `nbr_enfant`, `psy_apres_interv`, `psy_avant_interv`, `motif_consult`) VALUES
   (1, 1, 'test', 1, '2019-10-08', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', '0000-00-00', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 0, 'Joyeuse', 'Joyeuse', 'Dependance'),
   (2, 23, 'test13', 2, '2019-10-08', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', '0000-00-00', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 0, 'Joyeuse', 'Joyeuse', 'Dependance'),
   (3, 23, 'test13', 3, '2019-10-08', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', '0000-00-00', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 0, 'Joyeuse', 'Joyeuse', 'Dependance'),

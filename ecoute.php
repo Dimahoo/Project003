@@ -89,11 +89,12 @@ $today = $year . '-' . $month . '-' . $day;
                             <td style="text-align:center;"><input type="checkbox" name="new_client" id="new_client" value="no" ></td>
                             <td><label name="label_id_client" id="label_id_client">ID Client:</label></td>
                             <td><input type="number" name="id_client" id="id_client" disabled required></td>
+                            <td><button type="button" name="load" class="btn btn-primary load">Afficher client</button></td>
                         </tr>
                         <!-- Row 2 -->
                         <tr>
-                            <td><label>Date inscription:</label></td>
-                            <td><input id="date_inscription" name="date_inscription" type="date" value="<?php echo $today; ?>"></td>
+                            <td><label>Date rendez-vous:</label></td>
+                            <td><input id="date_rdv" name="date_rdv" type="date" value="<?php echo $today; ?>"></td>
                             <td><label>Description:</label></td>
                             <td>
                                 <select name="description" id="description">
@@ -288,6 +289,72 @@ $(document).ready(function () {
                 $('#id_client').attr('disabled',true);
             }
         });
+
+    $(document).on('click', '.load', function() {
+
+        if ($('#new_client').is(":checked")) {
+
+            var id_client = $('#id_client').val();
+
+            $.ajax({
+                url: "fetchoneclient.php",
+                method: "POST",
+                data: {id_client: id_client},
+                dataType: "json",
+                success: function (data) {
+                    if (data != null) {
+
+                        $('#description').val(data.description);
+                        $('#type_appelant').val(data.type_appelant);
+                        $('#mode_interv').val(data.mode_interv);
+                        $('#type_interv').val(data.type_interv);
+                        $('#langue').val(data.langue);
+                        $('#duree').val(data.duree);
+                        $('#ref_par').val(data.ref_par);
+                        $('#sexe').val(data.sexe);
+                        $('#age').val(data.age);
+                        $('#situ_finance').val(data.situ_finance);
+                        $('#origine').val(data.origine);
+                        $('#status_canada').val(data.status_canada);
+                        $('#prob_mentale').val(data.prob_mentale);
+                        $('#etat_civil').val(data.etat_civil);
+                        $('#nbr_enfant').val(data.nbr_enfant);
+                        $('#psy_apres_interv').val(data.psy_apres_interv);
+                        $('#psy_avant_interv').val(data.psy_avant_interv);
+                        $('#motif_consult').val(data.motif_consult);
+                    } else {
+
+                        $.alert({
+                            title: 'Alerte!',
+                            icon: 'fa fa-warning',
+                            type: 'orange',
+                            animation: 'rotate',
+                            content: 'Identifiant client inexistant !!!',
+                            buttons: {
+                                Fermer: function () {
+                                    this.setCloseAnimation('rotate');
+                                }
+                            }
+                        });
+                    }
+                }
+            });
+        } else {
+
+            $.alert({
+                title: 'Alerte!',
+                icon: 'fa fa-warning',
+                type: 'orange',
+                animation: 'rotate',
+                content: 'Identifiant du client doit etre saisi !!!',
+                buttons: {
+                    Fermer: function () {
+                        this.setCloseAnimation('rotate');
+                    }
+                }
+            });
+        }
+    });
 });
 
 </script>

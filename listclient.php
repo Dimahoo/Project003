@@ -115,6 +115,25 @@ $today = $year . '-' . $month . '-' . $day;
                         <th>Intervenant</th>
                         <th>Date creation</th>
                         <th>Date cloture</th>
+                        <th>Description</th>
+                        <th>Type d'appelant</th>
+                        <th>Mode d'intervention</th>
+                        <th>Type d'intervention</th>
+                        <th>Langue</th>
+                        <th>Duree</th>
+                        <th>Date arrivee au Canada</th>
+                        <th>Referee par</th>
+                        <th>Sexe</th>
+                        <th>Age</th>
+                        <th>Situation financiere</th>
+                        <th>Origine</th>
+                        <th>Status au Canada</th>
+                        <th>Probleme mentale</th>
+                        <th>Etat civil</th>
+                        <th>Nombre d'enfant</th>
+                        <th>Etat psychologique avant intervention</th>
+                        <th>Etat psychologique apres intervention</th>
+                        <th>Motif consultation</th>
                         <th style="width: 110px;">Action</th>
                     </tr>
                     </thead>
@@ -126,7 +145,7 @@ $today = $year . '-' . $month . '-' . $day;
 
 <!-- Modal -->
 <div class="modal fade bd-example-modal-xl" id="editclientmodal" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog" style="width:700px; height:700px;">
+    <div class="modal-dialog" style="width:1300px; height:700px;">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" id="exampleModalLabel">Modifier fiche</h4>
@@ -141,23 +160,169 @@ $today = $year . '-' . $month . '-' . $day;
                         <tr>
                             <td><label>Identifiant Client:</label></td>
                             <td><input type="text" name="client_id" id="client_id" readonly></td>
-                        </tr>
-                        <!-- Row 2 -->
-                        <tr>
-                            <td><label>Identifiant Intervenant:</label></td>
-                            <td><input type="text" name="id_interv" id="id_interv" readonly></td>
-                        </tr>
-                        <!-- Row 3 -->
-                        <tr>
                             <td><label>Date creation:</label></td>
                             <td><input id="date_creation" name="date_creation" type="date"></td>
-                        </tr>
-                        <!-- Row 4 -->
-                        <tr>
                             <td><label>Date cloture:</label></td>
                             <td><input id="date_cloture" name="date_cloture" type="date"></td>
                         </tr>
-
+                        <!-- Row2 -->
+                        <tr>
+                            <td><label>Description:</label></td>
+                            <td>
+                                <select name="description" id="description">
+                                    <option>test1</option>
+                                    <option>test2</option>
+                                </select>
+                            </td>
+                            <td><label>Type d'appelant:</label></td>
+                            <td>
+                                <select name="type_appelant" id="type_appelant">
+                                    <option>test1</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <!-- Row3 -->
+                        <tr>
+                            <td><label>Mode d'intervention:</label></td>
+                            <td>
+                                <select name="mode_interv" id="mode_interv">
+                                    <option>test1</option>
+                                </select>
+                            </td>
+                            <td><label>Type d'intervention:</label></td>
+                            <td>
+                                <select name="type_interv" id="type_interv">
+                                    <option>test1</option>
+                                </select>
+                            </td>
+                            <td><label>Langue utilisee:</label></td>
+                            <td>
+                                <select name="langue" id="langue">
+                                    <option>test1</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <!-- Row3 -->
+                        <tr>
+                            <td><label>Duree:</label></td>
+                            <td>
+                                <select name="duree" id="duree">
+                                    <option>test1</option>
+                                </select>
+                            </td>
+                            <td><label>Referee Par:</label></td>
+                            <td>
+                                <select name="ref_par" id="ref_par">
+                                    <option>test1</option>
+                                </select>
+                            </td>
+                            <td><label >Date arrivee au canada:</label></td>
+                            <td><input id="date_arrivee" name="date_arrivee" type="date"></td>
+                        </tr>
+                        <!-- Row4 -->
+                        <tr>
+                            <td><label>Sexe:</label></td>
+                            <td>
+                                <select name="sexe" id="sexe">
+                                    <option>test1</option>
+                                </select>
+                            </td>
+                            <td><label>Age:</label></td>
+                            <td>
+                                <select name="age" id="age">
+                                    <option>test1</option>
+                                </select>
+                            </td>
+                            <td><label>Situation Financiere:</label></td>
+                            <td>
+                                <select name="situ_finance" id="situ_finance">
+                                    <option>test1</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <!-- Row5 -->
+                        <tr>
+                            <td><label>Origine:</label></td>
+                            <td>
+                                <select name="origine" id="origine">
+                                    <option>test1</option>
+                                </select>
+                            </td>
+                            <td><label>Status au Canada:</label></td>
+                            <td>
+                                <select name="status_canada" id="status_canada">
+                                    <option>test1</option>
+                                </select>
+                            </td>
+                            <td><label>Probleme au sante mentale:</label></td>
+                            <td>
+                                <select name="prob_mentale" id="prob_mentale">
+                                    <option>test1</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <!-- Row6 -->
+                        <tr>
+                            <td><label>Etat civil:</label></td>
+                            <td>
+                                <select name="etat_civil" id="etat_civil">
+                                    <option>test1</option>
+                                </select>
+                            </td>
+                            <td><label>Nombre enfants:</label></td>
+                            <td>
+                                <input id="nbr_enfant" name="nbr_enfant" type="number">
+                            </td>
+                            <td><label class="long">Etat psychologique apres l'intervention:</label></td>
+                            <td>
+                                <select name="psy_apres_interv" id="psy_apres_interv">
+                                    <option>Joyeuse</option>
+                                    <option>Colerique</option>
+                                    <option>Deprimee</option>
+                                    <option>Mal dans sa peau</option>
+                                    <option>Angoissee</option>
+                                    <option>Agressive</option>
+                                    <option>Confuse</option>
+                                    <option>Incoherante</option>
+                                    <option>Triste</option>
+                                    <option>Autre</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <!-- Row7 -->
+                        <tr>
+                            <td ><label class="long" >Etat psychologique au debut de l'intervention:</label></td>
+                            <td>
+                                <select name="psy_avant_interv" id="psy_avant_interv">
+                                    <option>Joyeuse</option>
+                                    <option>Colerique</option>
+                                    <option>Deprimee</option>
+                                    <option>Mal dans sa peau</option>
+                                    <option>Angoissee</option>
+                                    <option>Agressive</option>
+                                    <option>Confuse</option>
+                                    <option>Incoherante</option>
+                                    <option>Triste</option>
+                                    <option>Autre</option>
+                                </select>
+                            </td>
+                            <td><label>Motif consultation:</label></td>
+                            <td>
+                                <select name="motif_consult" id="motif_consult">
+                                    <option>Dependance</option>
+                                    <option>Diff d'attaptation</option>
+                                    <option>Problemes d'immigration</option>
+                                    <option>Probleme materiel</option>
+                                    <option>Probleme psychologique</option>
+                                    <option>Probleme de sante</option>
+                                    <option>Sexualite</option>
+                                    <option>Solitude</option>
+                                    <option>Suicide</option>
+                                    <option>Violance</option>
+                                    <option>Autre</option>
+                                </select>
+                            </td>
+                        </tr>
                     </table>
                 </div>
                 <!-- Row8 buttons -->
@@ -189,9 +354,10 @@ $today = $year . '-' . $month . '-' . $day;
             var dataTable = $('#datatableid').DataTable({
                 "processing": true,
                 "serverSide": true,
+                "scrollX": true,
                 "order": [],
                 "columnDefs": [
-                    { "orderable": false, "targets": 4 }
+                    { "orderable": false, "targets": 24 }
                 ],
                 "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
                 "fixedColumns": {
@@ -227,9 +393,26 @@ $today = $year . '-' . $month . '-' . $day;
                 dataType:"json",
                 success:function(data){
                     $('#client_id').val(data.id);
-                    $('#id_interv').val(data.id_interv);
                     $('#date_creation').val(data.date_creation);
                     $('#date_cloture').val(data.date_cloture);
+                    $('#description').val(data.description);
+                    $('#type_appelant').val(data.type_appelant);
+                    $('#mode_interv').val(data.mode_interv);
+                    $('#type_interv').val(data.type_interv);
+                    $('#langue').val(data.langue);
+                    $('#duree').val(data.duree);
+                    $('#ref_par').val(data.ref_par);
+                    $('#sexe').val(data.sexe);
+                    $('#age').val(data.age);
+                    $('#situ_finance').val(data.situ_finance);
+                    $('#origine').val(data.origine);
+                    $('#status_canada').val(data.status_canada);
+                    $('#prob_mentale').val(data.prob_mentale);
+                    $('#etat_civil').val(data.etat_civil);
+                    $('#nbr_enfant').val(data.nbr_enfant);
+                    $('#psy_apres_interv').val(data.psy_apres_interv);
+                    $('#psy_avant_interv').val(data.psy_avant_interv);
+                    $('#motif_consult').val(data.motif_consult);
                 }
             });
         });

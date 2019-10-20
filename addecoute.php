@@ -63,20 +63,6 @@ if(isset($_POST['validate'])) {
         }
     } else {
 
-        $query = "insert into client (date_creation, id_interv, interv) value ('$today','$id_interv','$name_interv')";
-        $query_run = mysqli_query($mysqli, $query);
-        $id_client = mysqli_insert_id($mysqli);
-    }
-
-
-    if ($_SESSION['cli_exist'] != 1) {
-
-        $query = "SELECT username FROM users WHERE id='$_SESSION[id]'";
-        $result = mysqli_query($mysqli, $query);
-        $row = $result->fetch_assoc();
-
-        $id_cli = $id_client;
-        $date_inscription = $mysqli->real_escape_string($_POST['date_inscription']);
         $description = $mysqli->real_escape_string($_POST['description']);
         $type_appelant = $mysqli->real_escape_string($_POST['type_appelant']);
         $mode_interv = $mysqli->real_escape_string($_POST['mode_interv']);
@@ -97,52 +83,73 @@ if(isset($_POST['validate'])) {
         $psy_avant_interv = $mysqli->real_escape_string($_POST['psy_avant_interv']);
         $motif_consult = $mysqli->real_escape_string($_POST['motif_consult']);
 
+        $query = "INSERT INTO client (date_creation, 
+                                      id_interv, 
+                                      interv,
+                                      description,
+                                      type_appelant,
+                                      mode_interv,
+                                      type_interv,
+                                      langue,
+                                      duree,
+                                      ref_par,
+                                      date_arrivee,
+                                      sexe,
+                                      age,
+                                      situ_finance,
+                                      origine,
+                                      status_canada,
+                                      prob_mentale,
+                                      etat_civil,
+                                      nbr_enfant,
+                                      psy_apres_interv,
+                                      psy_avant_interv,
+                                      motif_consult) 
+                              VALUES ('$today',
+                                      '$id_interv',
+                                      '$name_interv',
+                                      '$description',
+                                      '$type_appelant',
+                                      '$mode_interv',
+                                      '$type_interv',
+                                      '$langue',
+                                      '$duree',
+                                      '$ref_par',
+                                      '$date_arrivee',
+                                      '$sexe',
+                                      '$age',
+                                      '$situ_finance',
+                                      '$origine',
+                                      '$status_canada',
+                                      '$prob_mentale',
+                                      '$etat_civil',
+                                      '$nbr_enfant',
+                                      '$psy_apres_interv',
+                                      '$psy_avant_interv',
+                                      '$motif_consult')";
+        $query_run = mysqli_query($mysqli, $query);
+        $id_client = mysqli_insert_id($mysqli);
+    }
+
+
+    if ($_SESSION['cli_exist'] != 1) {
+
+        $query = "SELECT username FROM users WHERE id='$_SESSION[id]'";
+        $result = mysqli_query($mysqli, $query);
+        $row = $result->fetch_assoc();
+
+        $id_cli = $id_client;
+        $date_rdv = $mysqli->real_escape_string($_POST['date_rdv']);
+
+
         $query = "INSERT INTO rdv (id_interv,
-                                   name_interv,
+                                   interv,
                                    id_cli,
-                                   date_inscription,
-                                   description,
-                                   type_appelant,
-                                   mode_interv,
-                                   type_interv,
-                                   langue,
-                                   duree,
-                                   ref_par,
-                                   date_arrivee,
-                                   sexe,
-                                   age,
-                                   situ_finance,
-                                   origine,
-                                   status_canada,
-                                   prob_mentale,
-                                   etat_civil,
-                                   nbr_enfant,
-                                   psy_apres_interv,
-                                   psy_avant_interv,
-                                   motif_consult)
+                                   date_rdv)
                            VALUES ('$id_interv',
                                    '$name_interv', 
                                    '$id_cli',
-                                   '$date_inscription',
-                                   '$description',
-                                   '$type_appelant',
-                                   '$mode_interv',
-                                   '$type_interv',
-                                   '$langue',
-                                   '$duree',
-                                   '$ref_par',
-                                   '$date_arrivee',
-                                   '$sexe',
-                                   '$age',
-                                   '$situ_finance',
-                                   '$origine',
-                                   '$status_canada',
-                                   '$prob_mentale',
-                                   '$etat_civil',
-                                   '$nbr_enfant',
-                                   '$psy_apres_interv',
-                                   '$psy_avant_interv',
-                                   '$motif_consult')";
+                                   '$date_rdv')";
 
         $query_run = mysqli_query($mysqli, $query);
 

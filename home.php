@@ -242,15 +242,20 @@ $connection->close();
                 </tr>
                 <tr>
                     <?php if($_SESSION['admin'] == 0 OR $_SESSION['admin'] == 1) {?>
-                        <td><button onclick="window.location.href = 'serverecoute.php';" name="exportecoute" class="btn btn-success">Exporter sous Excel</button></td>
+                        <td><button onclick="window.location.href = 'serverecoute.php';" name="exportecoute" class="btn btn-success">Exporter fiches ecoute</button></td>
                     <?php }?>
                     <?php if($_SESSION['admin'] == 2 OR $_SESSION['admin'] == 1) {?>
-                        <td><button onclick="window.location.href = 'serverstatis.php';" name="exportecoute" class="btn btn-success">Exporter sous Excel</button></td>
+                        <td><button onclick="window.location.href = 'serverstatis.php';" name="exportecoute" class="btn btn-success">Exporter statistiques</button></td>
                     <?php }?>
                 </tr>
                 <tr>
                     <?php if($_SESSION['admin'] == 0 OR $_SESSION['admin'] == 1) {?>
                         <td><button onclick="window.location.href = 'Listclient.php';" name="listeclient" class="btn btn-primary">Liste des Clients</button></td>
+                    <?php }?>
+                </tr>
+                <tr>
+                    <?php if($_SESSION['admin'] == 0 OR $_SESSION['admin'] == 1) {?>
+                        <td><button onclick="window.location.href = 'serverclient.php';" name="exportclient" class="btn btn-success">Exporter clients</button></td>
                     <?php }?>
                 </tr>
                 <tr>
