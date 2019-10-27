@@ -112,6 +112,10 @@ if($_SESSION['admin'] == 1 or $_SESSION['admin'] == 2) {
 
 //close connection
 $connection->close();
+
+echo $data3;
+
+
 ?>
 
 <!DOCTYPE html>
@@ -289,6 +293,9 @@ $connection->close();
                     <tr>
                         <?php if($_SESSION['admin'] == 1) {?>
                             <td><button onclick="window.location.href = 'benevole.php';" name="benevole" class="btn btn-primary">Fiche des Benevoles</button></td>
+                        <?php }?>
+                        <?php if($_SESSION['admin'] == 1) {?>
+                            <td><button onclick="window.location.href = 'evalinterv.php';" name="benevole" class="btn btn-primary">Eval. intervenants</button></td>
                         <?php }?>
                     </tr>
                     <tr>

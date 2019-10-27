@@ -70,11 +70,34 @@ body.loggedin {
     width: 163px;
     margin: 10px;
 }
-canvas{
+.statisbarchart {
+    width:700px !important;
+    height:200px !important;
+}
+.myChart {
+    width: 100%;
+    height: 40vh;
+    border: 1px;
+    margin-top: 10px;
+}
+.dashbord label {
+    width: 700px;
+    font-weight: bold;
+    text-align: center;
+}
 
-    width:500px !important;
-    height:500px !important;
-
+.choice label {
+    width: 300px;
+    font-weight: bold;
+    margin: 05px;
+}
+.choice select {
+    width: 200px;
+    margin: 05px;
+}
+.choice button {
+    width: 200px;
+    margin: 05px;
 }
 .alert {
     -moz-box-sizing: border-box;
