@@ -14,17 +14,17 @@
 </br>
 </br>
 <div class="login">
-    <h1>Login</h1>
+    <h1>Identification</h1>
     <form action="authenticate.php" method="post">
-        <input type="text" name="username" placeholder="Username" id="username" required>
+        <input type="text" name="username" placeholder="Nom utilisateur" id="username" required>
         <label for="username">
             <i class="fas fa-user"></i>
         </label>
-        <input type="password" name="password" placeholder="Password" id="password" required>
+        <input type="password" name="password" placeholder="mot de passe" id="password" required>
         <label for="password">
             <i class="fas fa-lock"></i>
         </label>
-        <input type="submit" value="Login">
+        <input type="submit" value="s'identifier">
     </form>
 </div>
 </body>

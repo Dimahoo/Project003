@@ -79,7 +79,7 @@ body.loggedin {
     margin: 10px;
 }
 .numBeneStagchart {
-    width:1000px !important;
+    width:500px !important;
     height:200px !important;
 }
 .clientNumberchart {
@@ -91,20 +91,21 @@ body.loggedin {
     height:200px !important;
     margin-left: 100px;
 }
-.label1{
+.label1 {
     width: 500px;
     font-weight: bold;
     text-align: center;
     margin-top: 5px;
 }
-.label2{
-    width: 700px;
+.label2 {
+    width: 800px;
     font-weight: bold;
     text-align: center;
     margin-left: 100px;
 }
-.dashbord2 label {
-    width: 1300px;
+.label3 {
+    width: 300px;
     font-weight: bold;
     text-align: center;
+    margin-left: 100px;
 }

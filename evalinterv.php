@@ -41,31 +41,31 @@ $interv = mysqli_query($connection, $query) or die(mysqli_error());
 <nav class="navtop">
     <p>Website Title</p>
     <ul>
-        <li><a href="home.php"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="home.php"><i class="fas fa-home"></i> Page d'acceuil</a></li>
         <li></li>
         <li></li>
         <?php if($_SESSION['admin'] == 1) {?>
-            <li><a href="#"><i class="fa fa-arrow-down"></i> Manage profile</a>
+            <li><a href="#"><i class="fa fa-arrow-down"></i> Manager les profils</a>
                 <ul>
-                    <li><a href="create.php">Create</a></li>
-                    <li><a href="modify.php">Modify</a></li>
-                    <li><a href="delete.php">Delete</a></li>
+                    <li><a href="create.php">Creation</a></li>
+                    <li><a href="modify.php">Modification</a></li>
+                    <li><a href="delete.php">Suppression</a></li>
                 </ul>
             </li>
         <?php }?>
         <li>
-            <a href="profile.php"><i class="fas fa-user-circle"></i> <?=$_SESSION['name']?>  Profile</a>
+            <a href="profile.php"><i class="fas fa-user-circle"></i> <?=$_SESSION['name']?>  Profil</a>
         </li>
         <li>
-            <a href="logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
+            <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Deconnexion</a>
         </li>
     </ul>
 </nav>
 <div class="content">
-    <h2>Evaluation des intervenants</h2>
+    <h2>Évaluation des intervenants</h2>
     <div class="container">
         <br/>
-        <div>
+        <div class="floatLeft">
             <table class="choice">
                 <tr>
                     <td>
@@ -92,15 +92,19 @@ $interv = mysqli_query($connection, $query) or die(mysqli_error());
                         </select>
                     </td>
                 </tr>
+            </table>
+            <table align="center">
+                <tr><td>&nbsp;</td></tr>
+                <tr><td>&nbsp;</td></tr>
+                <tr><td>&nbsp;</td></tr>
                 <tr>
                     <td>
-                        <button type="button" name="validate" class="btn btn-primary validate">Valider selection</button>
+                        <button type="button" name="validate" class="btn btn-primary validate">Valider la sélection</button>
                     </td>
                 </tr>
             </table>
         </div>
-        <hr width="50%">
-        <div>
+        <div class="floatRight">
             <table>
                 <tr>
                     <td>
@@ -183,7 +187,7 @@ $interv = mysqli_query($connection, $query) or die(mysqli_error());
                                             maxBarThickness: 8,
                                             minBarLength: 2,
                                             label: "Statistiques intervenant pour 2019/2020",
-                                            backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f"],
+                                            backgroundColor: ["#2868c7", "#8e5ea2", "#3cba9f"],
                                             data: values
                                         }
                                     ]
@@ -211,7 +215,7 @@ $interv = mysqli_query($connection, $query) or die(mysqli_error());
                     icon: 'fa fa-warning',
                     type: 'orange',
                     animation: 'rotate',
-                    content: 'Veuillez choisir Intervenant et le Trimestre!',
+                    content: 'Veuillez choisir l`intervenant et le trimestre.',
                     buttons: {
                         Fermer: function () {
                             this.setCloseAnimation('rotate');
@@ -219,8 +223,6 @@ $interv = mysqli_query($connection, $query) or die(mysqli_error());
                     }
                 });
             }
-
-
         });
     });
 

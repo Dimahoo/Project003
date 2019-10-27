@@ -59,7 +59,7 @@ if(isset($_POST["interv"]))
     $row2 = mysqli_fetch_array($result);
 
 //query to get data of closed clients under contributor portfolio in the selected quarter
-    $query = "SELECT count(*) AS trim_closed_client FROM client WHERE id_interv='$interv' AND date_cloture IS NOT NULL AND date_creation BETWEEN '$date1' AND '$date2'";
+    $query = "SELECT count(*) AS trim_closed_client FROM client WHERE id_interv='$interv' AND date_cloture IS NOT NULL AND date_cloture BETWEEN '$date1' AND '$date2'";
 
 //execute query
     $result = mysqli_query($connect, $query) or die(mysqli_error());
@@ -73,15 +73,15 @@ if(isset($_POST["interv"]))
 
     $chart_data = [
         [
-            "label" => "Actifs",
+            "label" => "Actifs annuel",
             "value" => $row1["year_actif_client"]
         ],
         [
-            "label" => "Nouveaux",
+            "label" => "Créations trimestriels",
             "value" => $row2["trim_actif_client"]
         ],
         [
-            "label" => "Clotures",
+            "label" => "Clotûres trimestriels",
             "value" => $row3["trim_closed_client"]
         ]
     ];

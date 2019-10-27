@@ -78,23 +78,23 @@ $today = $year . '-' . $month . '-' . $day;
 <nav class="navtop">
     <p>Website Title</p>
     <ul>
-        <li><a href="home.php"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="home.php"><i class="fas fa-home"></i> Page d'acceuil</a></li>
         <li></li>
         <li></li>
         <?php if($_SESSION['admin'] == 1) {?>
-            <li><a href="#"><i class="fa fa-arrow-down"></i> Manage profile</a>
+            <li><a href="#"><i class="fa fa-arrow-down"></i> Manager les profiles</a>
                 <ul>
-                    <li><a href="create.php">Create</a></li>
-                    <li><a href="modify.php">Modify</a></li>
-                    <li><a href="delete.php">Delete</a></li>
+                    <li><a href="create.php">Creation</a></li>
+                    <li><a href="modify.php">Modification</a></li>
+                    <li><a href="delete.php">Suppression</a></li>
                 </ul>
             </li>
         <?php }?>
         <li>
-            <a href="profile.php"><i class="fas fa-user-circle"></i> <?=$_SESSION['name']?>  Profile</a>
+            <a href="profile.php"><i class="fas fa-user-circle"></i> <?=$_SESSION['name']?>  Profil</a>
         </li>
         <li>
-            <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Deconnexion</a>
         </li>
     </ul>
 </nav>
@@ -113,26 +113,26 @@ $today = $year . '-' . $month . '-' . $day;
                         <th>ID Client</th>
                         <th>ID intervenant</th>
                         <th>Intervenant</th>
-                        <th>Date creation</th>
-                        <th>Date cloture</th>
+                        <th>Date création</th>
+                        <th>Date clôture</th>
                         <th>Description</th>
                         <th>Type d'appelant</th>
                         <th>Mode d'intervention</th>
                         <th>Type d'intervention</th>
                         <th>Langue</th>
-                        <th>Duree</th>
-                        <th>Date arrivee au Canada</th>
-                        <th>Referee par</th>
+                        <th>Durée</th>
+                        <th>Date arrivée au Canada</th>
+                        <th>Réferée par</th>
                         <th>Sexe</th>
-                        <th>Age</th>
-                        <th>Situation financiere</th>
+                        <th>Âge</th>
+                        <th>Situation financière</th>
                         <th>Origine</th>
                         <th>Status au Canada</th>
-                        <th>Probleme mentale</th>
-                        <th>Etat civil</th>
+                        <th>Problème mentale</th>
+                        <th>État civil</th>
                         <th>Nombre d'enfant</th>
-                        <th>Etat psychologique avant intervention</th>
-                        <th>Etat psychologique apres intervention</th>
+                        <th>État psychologique avant intervention</th>
+                        <th>État psychologique apres intervention</th>
                         <th>Motif consultation</th>
                         <th style="width: 110px;">Action</th>
                     </tr>
@@ -195,7 +195,7 @@ $today = $year . '-' . $month . '-' . $day;
                                     <option>test1</option>
                                 </select>
                             </td>
-                            <td><label>Langue utilisee:</label></td>
+                            <td><label>Langue utilisée:</label></td>
                             <td>
                                 <select name="langue" id="langue">
                                     <option>test1</option>
@@ -204,19 +204,19 @@ $today = $year . '-' . $month . '-' . $day;
                         </tr>
                         <!-- Row3 -->
                         <tr>
-                            <td><label>Duree:</label></td>
+                            <td><label>Durée:</label></td>
                             <td>
                                 <select name="duree" id="duree">
                                     <option>test1</option>
                                 </select>
                             </td>
-                            <td><label>Referee Par:</label></td>
+                            <td><label>Réferée Par:</label></td>
                             <td>
                                 <select name="ref_par" id="ref_par">
                                     <option>test1</option>
                                 </select>
                             </td>
-                            <td><label >Date arrivee au canada:</label></td>
+                            <td><label >Date arrivée au canada:</label></td>
                             <td><input id="date_arrivee" name="date_arrivee" type="date"></td>
                         </tr>
                         <!-- Row4 -->
@@ -227,13 +227,13 @@ $today = $year . '-' . $month . '-' . $day;
                                     <option>test1</option>
                                 </select>
                             </td>
-                            <td><label>Age:</label></td>
+                            <td><label>Âge:</label></td>
                             <td>
                                 <select name="age" id="age">
                                     <option>test1</option>
                                 </select>
                             </td>
-                            <td><label>Situation Financiere:</label></td>
+                            <td><label>Situation Financière:</label></td>
                             <td>
                                 <select name="situ_finance" id="situ_finance">
                                     <option>test1</option>
@@ -254,7 +254,7 @@ $today = $year . '-' . $month . '-' . $day;
                                     <option>test1</option>
                                 </select>
                             </td>
-                            <td><label>Probleme au sante mentale:</label></td>
+                            <td><label>Problème au sante mentale:</label></td>
                             <td>
                                 <select name="prob_mentale" id="prob_mentale">
                                     <option>test1</option>
@@ -263,7 +263,7 @@ $today = $year . '-' . $month . '-' . $day;
                         </tr>
                         <!-- Row6 -->
                         <tr>
-                            <td><label>Etat civil:</label></td>
+                            <td><label>État civil:</label></td>
                             <td>
                                 <select name="etat_civil" id="etat_civil">
                                     <option>test1</option>
@@ -273,7 +273,7 @@ $today = $year . '-' . $month . '-' . $day;
                             <td>
                                 <input id="nbr_enfant" name="nbr_enfant" type="number">
                             </td>
-                            <td><label class="long">Etat psychologique apres l'intervention:</label></td>
+                            <td><label class="long">État psychologique après l'intervention:</label></td>
                             <td>
                                 <select name="psy_apres_interv" id="psy_apres_interv">
                                     <option>Joyeuse</option>
@@ -291,7 +291,7 @@ $today = $year . '-' . $month . '-' . $day;
                         </tr>
                         <!-- Row7 -->
                         <tr>
-                            <td ><label class="long" >Etat psychologique au debut de l'intervention:</label></td>
+                            <td ><label class="long" >État psychologique au debut de l'intervention:</label></td>
                             <td>
                                 <select name="psy_avant_interv" id="psy_avant_interv">
                                     <option>Joyeuse</option>
@@ -378,6 +378,9 @@ $today = $year . '-' . $month . '-' . $day;
                 "ajax": {
                     "url": 'fetchclient.php',
                     "type": 'POST'
+                },
+                "language": {
+                    "url":'lang/French.json'
                 }
             });
         }

@@ -113,9 +113,6 @@ if($_SESSION['admin'] == 1 or $_SESSION['admin'] == 2) {
 //close connection
 $connection->close();
 
-echo $data3;
-
-
 ?>
 
 <!DOCTYPE html>
@@ -198,28 +195,28 @@ echo $data3;
 <nav class="navtop">
     <p>Website Title</p>
     <ul>
-        <li><a href="home.php"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="home.php"><i class="fas fa-home"></i> Page d'acceuil</a></li>
         <li></li>
         <li></li>
         <?php if($_SESSION['admin'] == 1) {?>
-        <li><a href="#"><i class="fa fa-arrow-down"></i> Manage profile</a>
+        <li><a href="#"><i class="fa fa-arrow-down"></i> Manager les profils</a>
             <ul>
-                <li><a href="create.php">Create</a></li>
-                <li><a href="modify.php">Modify</a></li>
-                <li><a href="delete.php">Delete</a></li>
+                <li><a href="create.php">Creation</a></li>
+                <li><a href="modify.php">Modification</a></li>
+                <li><a href="delete.php">suppression</a></li>
             </ul>
         </li>
         <?php }?>
         <li>
-            <a href="profile.php"><i class="fas fa-user-circle"></i> <?=$_SESSION['name']?>  Profile</a>
+            <a href="profile.php"><i class="fas fa-user-circle"></i> <?=$_SESSION['name']?>  Profil</a>
         </li>
         <li>
-            <a href="logout.php"><i class="fas fa-sign-out-alt"></i>  Logout</a>
+            <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
         </li>
     </ul>
 </nav>
 <div class="content">
-    <h2>Home Page</h2>
+    <h2>Page d'acceuil</h2>
 </div>
 <div class="container">
     <br/>
@@ -230,7 +227,7 @@ echo $data3;
             <table class="menu1">
                 <tr>
                     <?php if($_SESSION['admin'] == 0 OR $_SESSION['admin'] == 1) {?>
-                        <td><button onclick="window.location.href = 'ecoute.php';" name="ecoute" class="btn btn-primary">Fiche d'Ecoute & Suivi</button></td>
+                        <td><button onclick="window.location.href = 'ecoute.php';" name="ecoute" class="btn btn-primary">Fiche d'Écoute & Suivi</button></td>
                     <?php }?>
                     <?php if($_SESSION['admin'] == 2 OR $_SESSION['admin'] == 1) {?>
                         <td><button onclick="window.location.href = 'statistic.php';" name="statistic" class="btn btn-primary">Fiche des Statistiques</button></td>
@@ -238,7 +235,7 @@ echo $data3;
                 </tr>
                 <tr>
                     <?php if($_SESSION['admin'] == 0 OR $_SESSION['admin'] == 1) {?>
-                        <td><button onclick="window.location.href = 'listecoute.php';" name="listecoute" class="btn btn-primary">Liste d'Ecoute & Suivi</button></td>
+                        <td><button onclick="window.location.href = 'listecoute.php';" name="listecoute" class="btn btn-primary">Liste d'Écoute & Suivi</button></td>
                     <?php }?>
                     <?php if($_SESSION['admin'] == 2 OR $_SESSION['admin'] == 1) {?>
                         <td><button onclick="window.location.href = 'liststatis.php';" name="liststatis" class="btn btn-primary">Liste des statistiques</button></td>
@@ -246,7 +243,7 @@ echo $data3;
                 </tr>
                 <tr>
                     <?php if($_SESSION['admin'] == 0 OR $_SESSION['admin'] == 1) {?>
-                        <td><button onclick="window.location.href = 'serverecoute.php';" name="exportecoute" class="btn btn-success">Exporter fiches ecoute</button></td>
+                        <td><button onclick="window.location.href = 'serverecoute.php';" name="exportecoute" class="btn btn-success">Exporter fiches écoute</button></td>
                     <?php }?>
                     <?php if($_SESSION['admin'] == 2 OR $_SESSION['admin'] == 1) {?>
                         <td><button onclick="window.location.href = 'serverstatis.php';" name="exportecoute" class="btn btn-success">Exporter statistiques</button></td>
@@ -292,7 +289,7 @@ echo $data3;
                 <table class="menu2">
                     <tr>
                         <?php if($_SESSION['admin'] == 1) {?>
-                            <td><button onclick="window.location.href = 'benevole.php';" name="benevole" class="btn btn-primary">Fiche des Benevoles</button></td>
+                            <td><button onclick="window.location.href = 'benevole.php';" name="benevole" class="btn btn-primary">Fiche des Bénevoles</button></td>
                         <?php }?>
                         <?php if($_SESSION['admin'] == 1) {?>
                             <td><button onclick="window.location.href = 'evalinterv.php';" name="benevole" class="btn btn-primary">Eval. intervenants</button></td>
@@ -300,7 +297,7 @@ echo $data3;
                     </tr>
                     <tr>
                         <?php if($_SESSION['admin'] == 1) {?>
-                            <td><button onclick="window.location.href = 'listbenevole.php';" name="listebenevole" class="btn btn-primary">Liste des Benevoles</button></td>
+                            <td><button onclick="window.location.href = 'listbenevole.php';" name="listebenevole" class="btn btn-primary">Liste des Bénevoles</button></td>
                         <?php }?>
                     </tr>
                     <tr>
@@ -311,10 +308,9 @@ echo $data3;
                 </table>
             </td>
             <td>
-
                 <table class="dashbord2">
                     <tr>
-                        <td id="benelabel"><label>Nombre de benevoles et stagiaires</label></td>
+                        <td id="benelabel"><label class="label3">Nombre de bénevoles et stagiaires</label></td>
                     </tr>
                     <tr>
                         <td id="benechart"><div id="numBeneStagchart" class="numBeneStagchart"></div></td>

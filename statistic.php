@@ -35,23 +35,23 @@ $today = $year . '-' . $month . '-' . $day;
 <nav class="navtop">
     <p>Website Title</p>
     <ul>
-        <li><a href="home.php"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="home.php"><i class="fas fa-home"></i> Page d'acceuil</a></li>
         <li></li>
         <li></li>
         <?php if($_SESSION['admin'] == 1) {?>
-            <li><a href="#"><i class="fa fa-arrow-down"></i> Manage profile</a>
+            <li><a href="#"><i class="fa fa-arrow-down"></i> Manager les profils</a>
                 <ul>
-                    <li><a href="create.php">Create</a></li>
-                    <li><a href="modify.php">Modify</a></li>
-                    <li><a href="delete.php">Delete</a></li>
+                    <li><a href="create.php">Creation</a></li>
+                    <li><a href="modify.php">Modification</a></li>
+                    <li><a href="delete.php">Suppression</a></li>
                 </ul>
             </li>
         <?php }?>
         <li>
-            <a href="profile.php"><i class="fas fa-user-circle"></i> <?=$_SESSION['name']?>  Profile</a>
+            <a href="profile.php"><i class="fas fa-user-circle"></i> <?=$_SESSION['name']?>  Profil</a>
         </li>
         <li>
-            <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Deconnexion</a>
         </li>
     </ul>
 </nav>
@@ -365,7 +365,7 @@ $today = $year . '-' . $month . '-' . $day;
                         </tr>
                         <!-- Row5 -->
                         <tr>
-                            <td><label>Langue utilisee:</label></td>
+                            <td><label>Langue utilisée:</label></td>
                             <td>
                                 <select name="langue" id="langue" required>
                                     <option value="">Choisissez ...</option>

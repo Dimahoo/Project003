@@ -54,28 +54,28 @@ $today = $year . '-' . $month . '-' . $day;
 <nav class="navtop">
     <p>Website Title</p>
     <ul>
-        <li><a href="home.php"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="home.php"><i class="fas fa-home"></i> Page d'acceuil</a></li>
         <li></li>
         <li></li>
         <?php if($_SESSION['admin'] == 1) {?>
-            <li><a href="#"><i class="fa fa-arrow-down"></i> Manage profile</a>
+            <li><a href="#"><i class="fa fa-arrow-down"></i> Manager les profils</a>
                 <ul>
-                    <li><a href="create.php">Create</a></li>
-                    <li><a href="modify.php">Modify</a></li>
-                    <li><a href="delete.php">Delete</a></li>
+                    <li><a href="create.php">Creation</a></li>
+                    <li><a href="modify.php">Modification</a></li>
+                    <li><a href="delete.php">Suppression</a></li>
                 </ul>
             </li>
         <?php }?>
         <li>
-            <a href="profile.php"><i class="fas fa-user-circle"></i> <?=$_SESSION['name']?>  Profile</a>
+            <a href="profile.php"><i class="fas fa-user-circle"></i> <?=$_SESSION['name']?>  Profil</a>
         </li>
         <li>
-            <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
         </li>
     </ul>
 </nav>
 <div class="content">
-    <h2>Fiche d'Ecoute et Suivi</h2>
+    <h2>Fiche d'Écoute et Suivi</h2>
 </div>
 <div class="container box">
     <table id="" class="table table-striped table-bordered">
@@ -85,7 +85,7 @@ $today = $year . '-' . $month . '-' . $day;
                     <table id="example" class="ecoute" style="width:100%">
                         <!-- Row 1 -->
                         <tr>
-                            <td><label>Cocher si client deja existant:</label></td>
+                            <td><label>Cocher si le client est déjà existant:</label></td>
                             <td style="text-align:center;"><input type="checkbox" name="new_client" id="new_client" value="no" ></td>
                             <td><label name="label_id_client" id="label_id_client">ID Client:</label></td>
                             <td><input type="number" name="id_client" id="id_client" disabled required></td>
@@ -123,7 +123,7 @@ $today = $year . '-' . $month . '-' . $day;
                                     <option>test1</option>
                                 </select>
                             </td>
-                            <td><label>Langue utilisee:</label></td>
+                            <td><label>Langue utilisée:</label></td>
                             <td>
                                 <select name="langue" id="langue">
                                     <option>test1</option>
@@ -132,19 +132,19 @@ $today = $year . '-' . $month . '-' . $day;
                         </tr>
                         <!-- Row4 -->
                         <tr>
-                            <td><label>Duree:</label></td>
+                            <td><label>Durée:</label></td>
                             <td>
                                 <select name="duree" id="duree">
                                     <option>test1</option>
                                 </select>
                             </td>
-                            <td><label>Referee Par:</label></td>
+                            <td><label>Réferée Par:</label></td>
                             <td>
                                 <select name="ref_par" id="ref_par">
                                     <option>test1</option>
                                 </select>
                             </td>
-                            <td><label >Date arrivee au canada:</label></td>
+                            <td><label >Date arrivée au canada:</label></td>
                             <td><input id="date_arrivee" name="date_arrivee" type="date"></td>
                         </tr>
                         <!-- Row5 -->
@@ -161,7 +161,7 @@ $today = $year . '-' . $month . '-' . $day;
                                     <option>test1</option>
                                 </select>
                             </td>
-                            <td><label>Situation Financiere:</label></td>
+                            <td><label>Situation Financière:</label></td>
                             <td>
                                 <select name="situ_finance" id="situ_finance">
                                     <option>test1</option>
@@ -182,7 +182,7 @@ $today = $year . '-' . $month . '-' . $day;
                                     <option>test1</option>
                                 </select>
                             </td>
-                            <td><label>Probleme au sante mentale:</label></td>
+                            <td><label>Problème au sante mentale:</label></td>
                             <td>
                                 <select name="prob_mentale" id="prob_mentale">
                                     <option>test1</option>
@@ -191,7 +191,7 @@ $today = $year . '-' . $month . '-' . $day;
                         </tr>
                         <!-- Row7 -->
                         <tr>
-                            <td><label>Etat civil:</label></td>
+                            <td><label>État civil:</label></td>
                             <td>
                                 <select name="etat_civil" id="etat_civil">
                                     <option>test1</option>
@@ -201,7 +201,7 @@ $today = $year . '-' . $month . '-' . $day;
                             <td>
                                 <input id="nbr_enfant" name="nbr_enfant" type="number">
                             </td>
-                            <td><label>Etat psychologique apres l'intervention:</label></td>
+                            <td><label>État psychologique après l'intervention:</label></td>
                             <td>
                                 <select name="psy_apres_interv" id="psy_apres_interv">
                                     <option>Joyeuse</option>
@@ -219,7 +219,7 @@ $today = $year . '-' . $month . '-' . $day;
                         </tr>
                         <!-- Row8 -->
                         <tr>
-                            <td><label>Etat psychologique au debut de l'intervention:</label></td>
+                            <td><label>État psychologique au debut de l'intervention:</label></td>
                             <td>
                                 <select name="psy_avant_interv" id="psy_avant_interv">
                                     <option>Joyeuse</option>

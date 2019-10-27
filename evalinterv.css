@@ -90,6 +90,7 @@ body.loggedin {
     width: 300px;
     font-weight: bold;
     margin: 05px;
+    float: left;
 }
 .choice select {
     width: 200px;
@@ -98,6 +99,18 @@ body.loggedin {
 .choice button {
     width: 200px;
     margin: 05px;
+}
+.floatLeft {
+    width: 50%;
+    float: left;
+}
+.floatRight {
+    width: 50%;
+    float: right;
+}
+.button button {
+    width: 163px;
+    margin: 10px;
 }
 .alert {
     -moz-box-sizing: border-box;
