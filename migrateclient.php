@@ -58,7 +58,7 @@ $today = $year . '-' . $month . '-' . $day;
             icon: 'fa fa-warning',
             type: 'orange',
             animation: 'rotate',
-            content: 'Modification effectuee!',
+            content: 'Modification effectuée!',
             buttons: {
                 Fermer: function () {
                     this.setCloseAnimation('rotate');
@@ -189,7 +189,7 @@ $today = $year . '-' . $month . '-' . $day;
                                     icon: 'fa fa-warning',
                                     type: 'orange',
                                     animation: 'rotate',
-                                    content: 'Migration effectuee!',
+                                    content: 'Migration effectuée!',
                                     buttons: {
                                         Fermer: function () {
                                             this.setCloseAnimation('rotate');

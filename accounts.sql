@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 20, 2019 at 06:40 AM
+-- Generation Time: Oct 28, 2019 at 01:49 AM
 -- Server version: 10.1.40-MariaDB
 -- PHP Version: 7.1.29
 
@@ -44,11 +44,11 @@ CREATE TABLE `benevole` (
 --
 
 INSERT INTO `benevole` (`id`, `date_entree`, `role`, `nom`, `prenom`, `sexe`, `tache`, `date_sortie`) VALUES
-  (1, '2019-10-18', 'Benevole', 'bene1', 'bene1', 'Homme', 'Tache1', NULL),
-  (2, '2019-10-18', 'Benevole', 'bene2', 'bene2', 'Homme', 'Tache2', NULL),
-  (3, '2019-10-18', 'Benevole', 'bene3', 'bene3', 'Femme', 'Tache3', NULL),
-  (4, '2019-10-18', 'Benevole', 'bene4', 'bene4', 'Homme', 'Tache5', NULL),
-  (5, '2019-10-18', 'Stagiaire', 'stag1', 'stag1', 'Homme', 'Tache4', NULL);
+  (1, '2019-10-02', 'Stagiaire', 'test', 'test1', 'Homme', 'Tache1', NULL),
+  (2, '2019-10-02', 'Benevole', 'test1', 'dfghg', 'Homme', 'Tache2', '2019-10-24'),
+  (3, '2019-10-06', 'Benevole', 'nfyjh', 'mgyuj', 'Homme', 'Tache4', NULL),
+  (4, '2019-10-06', 'Benevole', 'efdwef', 'iuliul', 'Homme', 'Tache5', NULL),
+  (5, '2019-10-06', 'Stagiaire', 'dbdt', 'awedcaef', 'Femme', 'Tache2', NULL);
 
 -- --------------------------------------------------------
 
@@ -88,9 +88,27 @@ CREATE TABLE `client` (
 --
 
 INSERT INTO `client` (`id`, `id_interv`, `interv`, `date_creation`, `date_cloture`, `description`, `type_appelant`, `mode_interv`, `type_interv`, `langue`, `duree`, `ref_par`, `date_arrivee`, `sexe`, `age`, `situ_finance`, `origine`, `status_canada`, `prob_mentale`, `etat_civil`, `nbr_enfant`, `psy_apres_interv`, `psy_avant_interv`, `motif_consult`) VALUES
-  (1, 1, 'admin', '2019-10-19', NULL, 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', '0000-00-00', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 0, 'Joyeuse', 'Joyeuse', 'Dependance'),
-  (2, 1, 'admin', '2019-10-20', NULL, 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', '0000-00-00', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 0, 'Joyeuse', 'Joyeuse', 'Dependance'),
-  (3, 1, 'admin', '2019-10-14', NULL, 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', '0000-00-00', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 0, 'Joyeuse', 'Joyeuse', 'Dependance');
+  (1, 2, 'interv1', '2019-04-25', NULL, 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', '0000-00-00', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 0, 'Joyeuse', 'Joyeuse', 'Dependance'),
+  (2, 2, 'interv1', '2019-10-20', NULL, 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', '0000-00-00', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 0, 'Joyeuse', 'Joyeuse', 'Dependance'),
+  (3, 2, 'interv1', '2019-10-20', NULL, 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', '0000-00-00', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 0, 'Joyeuse', 'Joyeuse', 'Dependance'),
+  (4, 2, 'interv1', '2019-10-20', '2019-10-24', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', '0000-00-00', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 0, 'Joyeuse', 'Joyeuse', 'Dependance'),
+  (5, 3, 'interv2', '2019-10-20', NULL, 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', '0000-00-00', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 0, 'Joyeuse', 'Joyeuse', 'Dependance'),
+  (6, 3, 'interv2', '2019-10-20', NULL, 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', '0000-00-00', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 0, 'Joyeuse', 'Joyeuse', 'Dependance'),
+  (7, 3, 'interv2', '2019-10-20', NULL, 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', '0000-00-00', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 0, 'Joyeuse', 'Joyeuse', 'Dependance'),
+  (8, 3, 'interv2', '2019-10-20', NULL, 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', '0000-00-00', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 0, 'Joyeuse', 'Joyeuse', 'Dependance');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comments`
+--
+
+CREATE TABLE `comments` (
+  `comment_id` int(11) NOT NULL,
+  `comment_subject` varchar(250) NOT NULL,
+  `comment_text` text NOT NULL,
+  `comment_status` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -111,11 +129,15 @@ CREATE TABLE `rdv` (
 --
 
 INSERT INTO `rdv` (`id`, `id_interv`, `interv`, `id_cli`, `date_rdv`) VALUES
-  (1, 1, 'admin', 1, '2019-10-19'),
-  (2, 1, 'admin', 1, '2019-10-20'),
-  (3, 1, 'admin', 2, '2019-10-20'),
-  (4, 1, 'admin', 3, '2019-10-20'),
-  (5, 1, 'admin', 1, '2019-10-19');
+  (1, 2, 'interv1', 1, '2019-10-20'),
+  (2, 2, 'interv1', 2, '2019-10-20'),
+  (3, 2, 'interv1', 3, '2019-10-20'),
+  (4, 3, 'interv2', 4, '2019-10-20'),
+  (5, 3, 'interv2', 5, '2019-10-20'),
+  (6, 3, 'interv2', 6, '2019-10-20'),
+  (7, 3, 'interv2', 7, '2019-10-20'),
+  (8, 3, 'interv2', 8, '2019-10-20'),
+  (9, 3, 'interv2', 7, '2019-10-20');
 
 -- --------------------------------------------------------
 
@@ -188,6 +210,12 @@ ALTER TABLE `client`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `comments`
+--
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`comment_id`);
+
+--
 -- Indexes for table `rdv`
 --
 ALTER TABLE `rdv`
@@ -219,13 +247,19 @@ ALTER TABLE `benevole`
 -- AUTO_INCREMENT for table `client`
 --
 ALTER TABLE `client`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `comments`
+--
+ALTER TABLE `comments`
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `rdv`
 --
 ALTER TABLE `rdv`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `statis`

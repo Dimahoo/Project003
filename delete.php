@@ -136,7 +136,7 @@ $sql = $mysqli->query("SELECT * FROM users") or die($mysqli->error);
                                     icon: 'fa fa-warning',
                                     type: 'orange',
                                     animation: 'rotate',
-                                    content: 'Profile supprime!',
+                                    content: 'Profile supprimé!',
                                     buttons: {
                                         Fermer: function () {
                                             this.setCloseAnimation('rotate');

@@ -136,7 +136,7 @@ $connection->close();
             icon: 'fa fa-warning',
             type: 'orange',
             animation: 'rotate',
-            content: 'Nouvel utilisateur cree!',
+            content: 'Nouvel utilisateur crée!',
             buttons: {
                 Fermer: function () {
                     this.setCloseAnimation('rotate');
@@ -151,7 +151,7 @@ $connection->close();
             icon: 'fa fa-warning',
             type: 'orange',
             animation: 'rotate',
-            content: 'Nouvelle fiche ecoute & suivi cree!',
+            content: 'Nouvelle fiche écoute & suivi crée!',
             buttons: {
                 Fermer: function () {
                     this.setCloseAnimation('rotate');
@@ -166,7 +166,7 @@ $connection->close();
             icon: 'fa fa-warning',
             type: 'orange',
             animation: 'rotate',
-            content: 'Nouvelle fiche statistique cree!',
+            content: 'Nouvelle fiche statistique crée!',
             buttons: {
                 Fermer: function () {
                     this.setCloseAnimation('rotate');
@@ -181,7 +181,7 @@ $connection->close();
             icon: 'fa fa-warning',
             type: 'orange',
             animation: 'rotate',
-            content: 'Nouvelle fiche benevole cree!',
+            content: 'Nouvelle fiche bénevole crée!',
             buttons: {
                 Fermer: function () {
                     this.setCloseAnimation('rotate');

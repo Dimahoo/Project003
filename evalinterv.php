@@ -177,7 +177,7 @@ $interv = mysqli_query($connection, $query) or die(mysqli_error());
 
                             myChart = new Chart(ctx, {
 
-                                type: 'doughnut',
+                                type: 'bar',
                                 data: {
                                     labels: labels,
                                     datasets: [
@@ -186,7 +186,6 @@ $interv = mysqli_query($connection, $query) or die(mysqli_error());
                                             barThickness: 6,
                                             maxBarThickness: 8,
                                             minBarLength: 2,
-                                            label: "Statistiques intervenant pour 2019/2020",
                                             backgroundColor: ["#2868c7", "#8e5ea2", "#3cba9f"],
                                             data: values
                                         }
@@ -195,6 +194,16 @@ $interv = mysqli_query($connection, $query) or die(mysqli_error());
                                 options: {
                                     responsive: true,
                                     title: {
+                                        display: false
+                                    },
+                                    scales: {
+                                        yAxes: [{
+                                            ticks: {
+                                                beginAtZero: true
+                                            }
+                                        }]
+                                    },
+                                    legend: {
                                         display: false
                                     }
                                 }

@@ -40,7 +40,7 @@ $today = $year . '-' . $month . '-' . $day;
             icon: 'fa fa-warning',
             type: 'orange',
             animation: 'rotate',
-            content: 'Identifiant client non existant ou non appartenant a votre liste de clients!',
+            content: 'Identifiant client non existant ou non appartenant à votre liste de clients!',
             buttons: {
                 Fermer: function () {
                     this.setCloseAnimation('rotate');
@@ -346,7 +346,7 @@ $(document).ready(function () {
                 icon: 'fa fa-warning',
                 type: 'orange',
                 animation: 'rotate',
-                content: 'Identifiant du client doit etre saisi !!!',
+                content: 'Identifiant du client doit être saisi !!!',
                 buttons: {
                     Fermer: function () {
                         this.setCloseAnimation('rotate');

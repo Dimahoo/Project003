@@ -13,9 +13,9 @@ session_start();
 </head>
 <body>
 <div class="createfirstadmin">
-    <h1>New profile</h1>
+    <h1>Nouveau profil administrateur</h1>
     <form action="logincreateadmincheck.php" method="post">
-        <input type="text" name="username" placeholder="username" id="username" required>
+        <input type="text" name="username" placeholder="Nom utilisateur" id="username" required>
         <label for="username">
             <i class="fas fa-user"></i>
         </label>
@@ -23,15 +23,15 @@ session_start();
         <label for="email">
             <i class="fas fa-at"></i>
         </label>
-        <input type="password" name="password" placeholder="password" id="new-password1" required>
+        <input type="password" name="password" placeholder="Mot de passe" id="new-password1" required>
         <label for="new-password1">
             <i class="fas fa-lock"></i>
         </label>
-        <input type="password" name="confpassword" placeholder="confirm password" id="new-password2" required>
+        <input type="password" name="confpassword" placeholder="Confirmer le mot de passe" id="new-password2" required>
         <label for="new-password2">
             <i class="fas fa-lock"></i>
         </label>
-        <input type="submit" value="Create">
+        <input type="submit" value="Créer">
     </form>
 </div>
 </body>
