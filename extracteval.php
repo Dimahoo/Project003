@@ -6,9 +6,22 @@ if(isset($_POST["interv"]))
     $data = '{"description":" ", count:0}';
 
 //query to get data of clients under contributor portfolio in the current year
+    $today = $_POST["today"];
     $year = $_POST["year"];
-    $nextyear = $year + 1;
-    $date1 = $year . "-04-01";
+
+    $date1_comp = $year . "-01-01";
+    $date2_comp = $year . "-04-30";
+
+    if($today >= $date1_comp AND $today <= $date2_comp) {
+
+        $year_combo = $year - 1;
+    } else {
+
+        $year_combo = $year;
+    }
+
+    $nextyear = $year_combo + 1;
+    $date1 = $year_combo . "-04-01";
     $date2 = $nextyear . "-03-11";
     $interv = $_POST["interv"];
     $query = "SELECT count(*) AS year_actif_client FROM client WHERE id_interv='$interv' AND date_cloture IS NULL AND date_creation BETWEEN '$date1' AND '$date2'";
@@ -24,22 +37,22 @@ if(isset($_POST["interv"]))
 
     if($trim == 1) {
 
-        $date1 = $year . "-04-01";
-        $date2 = $year . "-06-30";
+        $date1 = $year_combo . "-04-01";
+        $date2 = $year_combo . "-06-30";
         $trim  = "Trim_1";
     }
 
     if($trim == 2) {
 
-        $date1 = $year . "-06-01";
-        $date2 = $year . "-09-30";
+        $date1 = $year_combo . "-07-01";
+        $date2 = $year_combo . "-09-30";
         $trim  = "Trim_2";
     }
 
     if($trim == 3) {
 
-        $date1 = $year . "-10-01";
-        $date2 = $year . "-12-31";
+        $date1 = $year_combo . "-10-01";
+        $date2 = $year_combo . "-12-31";
         $trim  = "Trim_3";
     }
 

@@ -13,7 +13,25 @@ $month = date('m');
 $day = date('d');
 $year = date('Y');
 
+$date1_comp = $year . "-01-01";
+$date2_comp = $year . "-04-30";
+
+
 $today = $year . '-' . $month . '-' . $day;
+
+if($today >= $date1_comp AND $today <= $date2_comp) {
+
+    $year_combo = $year - 1;
+} else {
+
+    $year_combo = $year;
+}
+
+$date1 = $year_combo . "-04-01";
+$date2 = $year_combo . "-07-01";
+$date3 = $year_combo . "-10-01";
+$date4 = $year_combo + 1 . "-01-01";
+
 
 $connection = mysqli_connect("localhost","root","");
 $db = mysqli_select_db($connection,'accounts');
@@ -85,10 +103,18 @@ $interv = mysqli_query($connection, $query) or die(mysqli_error());
                         <label>Choisissez le trimestre :</label>
                         <select name="trim" id="trim">
                             <option value="0">---</option>
-                            <option value="1">Avril <---> Juin <?=$year?></option>
-                            <option value="2">Juillet <---> Septembre <?=$year?></option>
-                            <option value="3">Octobre <---> Decembre <?=$year?></option>
-                            <option value="4">Janvier <---> Mars <?=$year + 1?></option>
+                            <?php if( $today >= $date1) {?>
+                                <option value="1">Avril <---> Juin <?=$year_combo?></option>
+                            <?php }?>
+                            <?php if( $today >= $date2) {?>
+                            <option value="2">Juillet <---> Septembre <?=$year_combo?></option>
+                            <?php }?>
+                            <?php if( $today >= $date3) {?>
+                            <option value="3">Octobre <---> Decembre <?=$year_combo?></option>
+                            <?php }?>
+                            <?php if( $today >= $date4) {?>
+                            <option value="4">Janvier <---> Mars <?=$year_combo + 1?></option>
+                            <?php }?>
                         </select>
                     </td>
                 </tr>
@@ -152,10 +178,12 @@ $interv = mysqli_query($connection, $query) or die(mysqli_error());
                     myChart.destroy();
                 }
 
+                var today = "<?php echo $today; ?>";
                 var year = "<?php echo $year; ?>";
                 var send = {
                     interv: interv.val(),
                     trim: trim.val(),
+                    today: today,
                     year: year,
                 };
                 $.ajax({
@@ -208,8 +236,6 @@ $interv = mysqli_query($connection, $query) or die(mysqli_error());
                                     }
                                 }
                             });
-
-
                         }
                     },
                     error: function () {

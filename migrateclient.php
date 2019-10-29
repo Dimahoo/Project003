@@ -176,7 +176,7 @@ $today = $year . '-' . $month . '-' . $day;
                 type: 'orange',
                 animation: 'rotate',
                 closeAnimation: 'rotate',
-                content: 'Vous etes sur de vouloir faire cette migration ?',
+                content: 'Vous êtes sur de vouloir faire cette migration ?',
                 buttons: {
                     Confirmer: function () {
                         $.ajax({
