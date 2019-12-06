@@ -16,6 +16,7 @@ $sheet->setCellValue('B1', 'ID intervenant');
 $sheet->setCellValue('C1', 'Intervenant');
 $sheet->setCellValue('D1', 'ID client');
 $sheet->setCellValue('E1', 'Date rdv');
+$sheet->setCellValue('F1', 'Type');
 
 if($_SESSION['admin'] == 1) {
 
@@ -35,6 +36,7 @@ if($result->num_rows > 0){
         $sheet->setCellValue('C'.$rowNum, $row['id_cli']);
         $sheet->setCellValue('D'.$rowNum, $row['interv']);
         $sheet->setCellValue('E'.$rowNum, $row['date_rdv']);
+        $sheet->setCellValue('F'.$rowNum, $row['type']);
 
 		$n++;
 	}

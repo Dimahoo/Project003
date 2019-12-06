@@ -2,10 +2,10 @@
 -- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Oct 28, 2019 at 01:49 AM
--- Server version: 10.1.40-MariaDB
--- PHP Version: 7.1.29
+-- Hôte : 127.0.0.1
+-- Généré le :  ven. 15 nov. 2019 à 20:58
+-- Version du serveur :  10.1.40-MariaDB
+-- Version de PHP :  7.1.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `accounts`
+-- Base de données :  `accounts`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `benevole`
+-- Structure de la table `benevole`
 --
 
 CREATE TABLE `benevole` (
@@ -40,7 +40,7 @@ CREATE TABLE `benevole` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `benevole`
+-- Déchargement des données de la table `benevole`
 --
 
 INSERT INTO `benevole` (`id`, `date_entree`, `role`, `nom`, `prenom`, `sexe`, `tache`, `date_sortie`) VALUES
@@ -53,7 +53,7 @@ INSERT INTO `benevole` (`id`, `date_entree`, `role`, `nom`, `prenom`, `sexe`, `t
 -- --------------------------------------------------------
 
 --
--- Table structure for table `client`
+-- Structure de la table `client`
 --
 
 CREATE TABLE `client` (
@@ -84,7 +84,7 @@ CREATE TABLE `client` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `client`
+-- Déchargement des données de la table `client`
 --
 
 INSERT INTO `client` (`id`, `id_interv`, `interv`, `date_creation`, `date_cloture`, `description`, `type_appelant`, `mode_interv`, `type_interv`, `langue`, `duree`, `ref_par`, `date_arrivee`, `sexe`, `age`, `situ_finance`, `origine`, `status_canada`, `prob_mentale`, `etat_civil`, `nbr_enfant`, `psy_apres_interv`, `psy_avant_interv`, `motif_consult`) VALUES
@@ -100,7 +100,7 @@ INSERT INTO `client` (`id`, `id_interv`, `interv`, `date_creation`, `date_clotur
 -- --------------------------------------------------------
 
 --
--- Table structure for table `comments`
+-- Structure de la table `comments`
 --
 
 CREATE TABLE `comments` (
@@ -113,7 +113,7 @@ CREATE TABLE `comments` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rdv`
+-- Structure de la table `rdv`
 --
 
 CREATE TABLE `rdv` (
@@ -125,7 +125,7 @@ CREATE TABLE `rdv` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `rdv`
+-- Déchargement des données de la table `rdv`
 --
 
 INSERT INTO `rdv` (`id`, `id_interv`, `interv`, `id_cli`, `date_rdv`) VALUES
@@ -142,7 +142,7 @@ INSERT INTO `rdv` (`id`, `id_interv`, `interv`, `id_cli`, `date_rdv`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `statis`
+-- Structure de la table `statis`
 --
 
 CREATE TABLE `statis` (
@@ -156,7 +156,7 @@ CREATE TABLE `statis` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `statis`
+-- Déchargement des données de la table `statis`
 --
 
 INSERT INTO `statis` (`id`, `date_ajout`, `description`, `sexe`, `origine`, `langue`, `mode_interv`) VALUES
@@ -171,7 +171,7 @@ INSERT INTO `statis` (`id`, `date_ajout`, `description`, `sexe`, `origine`, `lan
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Structure de la table `users`
 --
 
 CREATE TABLE `users` (
@@ -184,7 +184,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `users`
+-- Déchargement des données de la table `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `avatar`, `admin`) VALUES
@@ -194,81 +194,81 @@ INSERT INTO `users` (`id`, `username`, `email`, `password`, `avatar`, `admin`) V
   (4, 'adjoint', 'adjoint@multi-ecoute.com', '827ccb0eea8a706c4c34a16891f84e7b', '', 2);
 
 --
--- Indexes for dumped tables
+-- Index pour les tables déchargées
 --
 
 --
--- Indexes for table `benevole`
+-- Index pour la table `benevole`
 --
 ALTER TABLE `benevole`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `client`
+-- Index pour la table `client`
 --
 ALTER TABLE `client`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `comments`
+-- Index pour la table `comments`
 --
 ALTER TABLE `comments`
   ADD PRIMARY KEY (`comment_id`);
 
 --
--- Indexes for table `rdv`
+-- Index pour la table `rdv`
 --
 ALTER TABLE `rdv`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `statis`
+-- Index pour la table `statis`
 --
 ALTER TABLE `statis`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `users`
+-- Index pour la table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT pour les tables déchargées
 --
 
 --
--- AUTO_INCREMENT for table `benevole`
+-- AUTO_INCREMENT pour la table `benevole`
 --
 ALTER TABLE `benevole`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `client`
+-- AUTO_INCREMENT pour la table `client`
 --
 ALTER TABLE `client`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT for table `comments`
+-- AUTO_INCREMENT pour la table `comments`
 --
 ALTER TABLE `comments`
   MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `rdv`
+-- AUTO_INCREMENT pour la table `rdv`
 --
 ALTER TABLE `rdv`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT for table `statis`
+-- AUTO_INCREMENT pour la table `statis`
 --
 ALTER TABLE `statis`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;

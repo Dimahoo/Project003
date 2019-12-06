@@ -2,13 +2,14 @@
 session_start();
 $con=mysqli_connect("localhost", "root", "", "accounts")
 or die("connection failed".mysqli_errno());
-$columns = array('id','interv','id_cli','date_rdv');
+$columns = array('id','interv','id_cli','date_rdv','type');
 $request=$_REQUEST;
 $col =array(
     0   =>  'id',
     1   =>  'interv',
     2   =>  'id_cli',
-    3   =>  'date_rdv'
+    3   =>  'date_rdv',
+    4   =>  'type'
 );  //create column like table in database
 if($_SESSION['admin'] == 1) {
     $sql = "SELECT * FROM rdv";
@@ -30,7 +31,8 @@ if(isset($_POST["search"]["value"])){
     $sql.=" AND (id Like '".$_POST["search"]["value"]."%' ";
     $sql.=" OR interv Like '".$_POST["search"]["value"]."%' ";
     $sql.=" OR id_cli Like '".$_POST["search"]["value"]."%' ";
-    $sql.=" OR date_rdv Like '".$_POST["search"]["value"]."%' )";
+    $sql.=" OR date_rdv Like '".$_POST["search"]["value"]."%' ";
+    $sql.=" OR type Like '".$_POST["search"]["value"]."%' )";
 }
 $query=mysqli_query($con,$sql);
 $totalData=mysqli_num_rows($query);
@@ -61,6 +63,7 @@ while($row=mysqli_fetch_array($query)){
     $subdata[]=$row[2];  //interv
     $subdata[]=$row[3];  //id_cli
     $subdata[]=$row[4];  //date_rdv
+    $subdata[]=$row[5];  //type
     $subdata[]='<button type="button" name="edit" data-toggle="modal" data-target="#editecoutemodal" class="btn btn-primary editbtn" id="'.$row["id"].'">Edit</button>
                 <button type="button" name="delete" class="btn btn-danger delete" id="'.$row["id"].'">Delete</button>';//buttons
     $data[]=$subdata;

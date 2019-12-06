@@ -37,10 +37,14 @@ $connection = mysqli_connect("localhost","root","");
 $db = mysqli_select_db($connection,'accounts');
 
 //query to get data from the table
-$query = "SELECT id, username FROM users WHERE admin='0'";
+$query1 = "SELECT id, username FROM users WHERE admin='0'";
+
+//query to get data from the table
+$query2 = "SELECT id, username FROM users";
 
 //execute query
-$interv = mysqli_query($connection, $query) or die(mysqli_error());
+$interv1 = mysqli_query($connection, $query1) or die(mysqli_error());
+$interv2 = mysqli_query($connection, $query2) or die(mysqli_error());
 
 ?>
 
@@ -54,7 +58,26 @@ $interv = mysqli_query($connection, $query) or die(mysqli_error());
     <link href="css/dataTables.bootstrap.min.css" rel="stylesheet" />
     <link href="css/jquery-confirm.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-confirm.min.js"></script>
 </head>
+<script>
+    if ('<?php echo $_SESSION['addeval']?>' == 1) {
+        $.alert({
+            title: 'Notification!',
+            icon: 'fa fa-warning',
+            type: 'orange',
+            animation: 'rotate',
+            content: 'Évaluation Ajoutée!',
+            buttons: {
+                Fermer: function () {
+                    this.setCloseAnimation('rotate');
+                }
+            }
+        });
+        <?php $_SESSION['addeval'] = 0 ?>
+    }
+</script>
 <body class="loggedin">
 <nav class="navtop">
     <p>Website Title</p>
@@ -80,7 +103,7 @@ $interv = mysqli_query($connection, $query) or die(mysqli_error());
     </ul>
 </nav>
 <div class="content">
-    <h2>Évaluation des intervenants</h2>
+    <h2>Évaluation du personnel</h2>
     <div class="container">
         <br/>
         <div class="floatLeft">
@@ -90,7 +113,7 @@ $interv = mysqli_query($connection, $query) or die(mysqli_error());
                         <label>Choisissez un intervenant :</label>
                         <select name="interv" id="interv">
                             <option value="0">---</option>
-                            <?php while($row = mysqli_fetch_array($interv))
+                            <?php while($row = mysqli_fetch_array($interv1))
                             {
                                 echo "<option value=" .$row['id'] . ">" . $row['username'] . "</option>";
                             }
@@ -128,6 +151,11 @@ $interv = mysqli_query($connection, $query) or die(mysqli_error());
                         <button type="button" name="validate" class="btn btn-primary validate">Valider la sélection</button>
                     </td>
                 </tr>
+                <tr>
+                    <td>
+                        <button type="button" name="evaluate" data-toggle="modal" data-target="#addevalmodal" class="btn btn-primary evaluate">Ajouter une évaluation</button>
+                    </td>
+                </tr>
             </table>
         </div>
         <div class="floatRight">
@@ -150,20 +178,124 @@ $interv = mysqli_query($connection, $query) or die(mysqli_error());
     </div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade bd-example-modal-xl" id="addevalmodal" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width:700px; height:700px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLabel">Ajouter une Évaluation</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="addeval.php" method="post">
+                <div class="modal-body">
+                    <table id="eval" class="eval" style="width:50%" align="center">
+                        <!-- Row 1 -->
+                        <tr>
+                            <td><label>Intervenant:</label></td>
+                            <td><select name="interv" id="interv">
+                                    <option value="0">---</option>
+                                        <?php while($row = mysqli_fetch_array($interv2))
+                                        {
+                                            echo "<option value=" .$row['id'] . ">" . $row['username'] . "</option>";
+                                        }
+                                            echo "</select>"
+                                ?>
+                            </td>
+                        </tr>
+                        <!-- Row 2 -->
+                        <tr>
+                            <td><label>Trimestre courant:</label></td>
+                            <td>
+                                <select name="trim" id="trim" readonly="">
+                                    <?php if( $today >= $date1 AND $today <= $date2) {?>
+                                        <option value="1">Avril <---> Juin <?=$year_combo?></option>
+                                    <?php }?>
+                                    <?php if( $today >= $date2 AND $today <= $date3) {?>
+                                        <option value="2">Juillet <---> Septembre <?=$year_combo?></option>
+                                    <?php }?>
+                                    <?php if( $today >= $date3 AND $today <= $date4) {?>
+                                        <option value="3">Octobre <---> Decembre <?=$year_combo?></option>
+                                    <?php }?>
+                                    <?php if( $today >= $date4) {?>
+                                        <option value="4">Janvier <---> Mars <?=$year_combo + 1?></option>
+                                    <?php }?>
+                                </select>
+                            </td>
+                        </tr>
+                        <!-- Row 3 -->
+                        <tr>
+                            <td><label>Note:</label></td>
+                            <td><input type="number" id="note" name="note" min="0" max="100" ></td>
+                        </tr>
+                        <!-- Row 4 -->
+                        <tr>
+                            <td><label>Commmentaire:</label></td>
+                            <td><textarea rows = "3" cols = "50" id="comment" name = "comment"></textarea></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <!-- Row7 buttons -->
+                    <table id="button" class="evalbutton" style="width:15%" align="right">
+                        <tr>
+                            <td>
+                                <input type="submit" name="addeval" value="Ajouter" class="btn btn-primary" />
+                            </td>
+                            <td>
+                                <input type="button" name="cancel" value="Annuler" class="btn btn-secondary"  data-dismiss="modal" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/jquery.dataTables.min.js"></script>
 <script src="js/dataTables.bootstrap.min.js"></script>
 <script src="js/dataTables.checkboxes.min.js"></script>
 <script src="js/Chart.bundle.js"></script>
-<script src="js/jquery-confirm.min.js"></script>
 
 <script>
+
+    function isNumber(event) {
+
+        var keycode=event.keyCode;
+        if(keycode >= 0 && keycode <= 100) {
+
+            return true;
+        }
+        return false;
+    }
 
     $(document).ready(function () {
 
         var myChart=null;
         var ctx = document.getElementById('myChart').getContext("2d");
+
+        $(document).on('click', '.evaluate', function() {
+
+            var rdv_id = $(this).attr("id");
+
+            $.ajax({
+                url:"rdvfetchupdate.php",
+                method:"POST",
+                data:{rdv_id:rdv_id},
+                dataType:"json",
+                success:function(data){
+                    $('#id_rdv').val(data.id);
+                    $('#interv').val(data.interv);
+                    $('#id_cli').val(data.id_cli);
+                    $('#date_rdv').val(data.date_rdv);
+                    $('#type').val(data.type);
+                }
+            });
+        });
 
         $(document).on('click', '.validate', function() {
 

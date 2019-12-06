@@ -83,6 +83,8 @@ if(isset($_POST['validate'])) {
         $psy_avant_interv = $mysqli->real_escape_string($_POST['psy_avant_interv']);
         $motif_consult = $mysqli->real_escape_string($_POST['motif_consult']);
 
+
+
         $query = "INSERT INTO client (date_creation, 
                                       id_interv, 
                                       interv,
@@ -140,16 +142,25 @@ if(isset($_POST['validate'])) {
 
         $id_cli = $id_client;
         $date_rdv = $mysqli->real_escape_string($_POST['date_rdv']);
+        if ($_POST['ecoute'] == 'yes') {
+
+            $type = 'Ecoute';
+        } else {
+
+            $type = 'Suivi';
+        }
 
 
         $query = "INSERT INTO rdv (id_interv,
                                    interv,
                                    id_cli,
-                                   date_rdv)
+                                   date_rdv,
+                                   type)
                            VALUES ('$id_interv',
                                    '$name_interv', 
                                    '$id_cli',
-                                   '$date_rdv')";
+                                   '$date_rdv',
+                                   '$type')";
 
         $query_run = mysqli_query($mysqli, $query);
 

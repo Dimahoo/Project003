@@ -113,6 +113,7 @@ $today = $year . '-' . $month . '-' . $day;
                         <th>Intervenant</th>
                         <th>ID Client</th>
                         <th>Date rendez-vous</th>
+                        <th>Type</th>
                         <th style="width: 110px;">Action</th>
                     </tr>
                     </thead>
@@ -143,15 +144,25 @@ $today = $year . '-' . $month . '-' . $day;
                         </tr>
                         <!-- Row 2 -->
                         <tr>
+                            <td><label>Type de la fiche:</label></td>
+                            <td>
+                                <select name="type" id="type">
+                                    <option>Ecoute</option>
+                                    <option>Suivi</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <!-- Row 3 -->
+                        <tr>
                             <td><label>intervenant:</label></td>
                             <td><input type="text" id="interv" name="interv" readonly></td>
                         </tr>
-                        <!-- Row 3 -->
+                        <!-- Row 4 -->
                         <tr>
                             <td><label>ID client:</label></td>
                             <td><input type="text" id="id_cli" name="id_cli" readonly></td>
                         </tr>
-                        <!-- Row 4 -->
+                        <!-- Row 5 -->
                         <tr>
                             <td><label>Date rendez-vous:</label></td>
                             <td><input type="date" id="date_rdv" name="date_rdv"></td>
@@ -190,7 +201,7 @@ $today = $year . '-' . $month . '-' . $day;
                 "serverSide": true,
                 "order": [],
                 "columnDefs": [
-                    { "orderable": false, "targets": 4 }
+                    { "orderable": false, "targets": 5 }
                 ],
                 "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
                 "dom": 'lfrtip',
@@ -228,6 +239,7 @@ $today = $year . '-' . $month . '-' . $day;
                     $('#interv').val(data.interv);
                     $('#id_cli').val(data.id_cli);
                     $('#date_rdv').val(data.date_rdv);
+                    $('#type').val(data.type);
                 }
             });
         });

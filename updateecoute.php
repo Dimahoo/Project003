@@ -10,9 +10,10 @@ if(isset($_POST['updateecoute'])) {
     //$id_interv = $_POST['id_interv'];
     //$id_cli = $_POST['id_cli'];
     $date_rdv = $_POST['date_rdv'];
+    $type = $_POST['type'];
 
 
-    $query = "UPDATE rdv SET date_rdv='$date_rdv' WHERE id='$id'";
+    $query = "UPDATE rdv SET date_rdv='$date_rdv', type='$type' WHERE id='$id'";
     $query_run = mysqli_query($connection,$query);
 
     if ($query_run) {

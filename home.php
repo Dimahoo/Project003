@@ -130,7 +130,7 @@ $connection->close();
     <script src="js/jquery-confirm.min.js"></script>
 </head>
 <script>
-    if ('<?php echo $_SESSION['addprof']?>' == 1) {
+    if ('<?php echo $_SESSION['addeval']?>' == 1) {
         $.alert({
             title: 'Notification!',
             icon: 'fa fa-warning',
@@ -246,12 +246,12 @@ $connection->close();
                         <td><button onclick="window.location.href = 'serverecoute.php';" name="exportecoute" class="btn btn-success">Exporter fiches écoute</button></td>
                     <?php }?>
                     <?php if($_SESSION['admin'] == 2 OR $_SESSION['admin'] == 1) {?>
-                        <td><button onclick="window.location.href = 'serverstatis.php';" name="exportecoute" class="btn btn-success">Exporter statistiques</button></td>
+                        <td><button onclick="window.location.href = 'serverstatis.php';" name="exportstatis" class="btn btn-success">Exporter statistiques</button></td>
                     <?php }?>
                 </tr>
                 <tr>
                     <?php if($_SESSION['admin'] == 0 OR $_SESSION['admin'] == 1) {?>
-                        <td><button onclick="window.location.href = 'Listclient.php';" name="listeclient" class="btn btn-primary">Liste des Clients</button></td>
+                        <td><button onclick="window.location.href = 'listclient.php';" name="listeclient" class="btn btn-primary">Liste des Clients</button></td>
                     <?php }?>
                 </tr>
                 <tr>

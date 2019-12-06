@@ -108,7 +108,32 @@ body.loggedin {
     width: 50%;
     float: right;
 }
-.button button {
+.container button {
+    width: 163px;
+    margin: 10px;
+}
+.eval select {
+    width: 163px;
+    margin: 10px;
+}
+.eval input {
+    width: 163px;
+    margin: 10px;
+}
+.eval td label {
+    width: 163px;
+    font-weight: normal;
+    margin: 10px;
+    background-color:#EBF4FB;
+}
+.eval textarea {
+    width: 250px;
+    margin: 10px;
+}
+.evalbutton tr {
+    bottom: 50px;
+}
+.evalbutton input {
     width: 163px;
     margin: 10px;
 }

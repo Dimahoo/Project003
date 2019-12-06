@@ -93,6 +93,13 @@ $today = $year . '-' . $month . '-' . $day;
                         </tr>
                         <!-- Row 2 -->
                         <tr>
+                            <td><label>Écoute: </label></td>
+                            <td style="text-align:center;"><input type="checkbox" name="ecoute" id="ecoute" value="yes" ></td>
+                            <td><label>Suivi: </label></td>
+                            <td style="text-align:center;"><input type="checkbox" name="suivi" id="suivi" value="yes" ></td>
+                        </tr>
+                        <!-- Row 2 -->
+                        <tr>
                             <td><label>Date rendez-vous:</label></td>
                             <td><input id="date_rdv" name="date_rdv" type="date" value="<?php echo $today; ?>"></td>
                             <td><label>Description:</label></td>
@@ -278,17 +285,49 @@ $today = $year . '-' . $month . '-' . $day;
 
 $(document).ready(function () {
 
-        $('#new_client').click(function(){
+    $('#new_client').click(function(){
 
-            if ($(this).is(":checked")) {
+        if ($(this).is(":checked")) {
 
-                $('#id_client').attr('disabled',false);
-            }
-            else {
+            $('#id_client').attr('disabled',false);
+        }
+        else {
 
-                $('#id_client').attr('disabled',true);
-            }
-        });
+            $('#id_client').attr('disabled',true);
+        }
+    });
+
+    $("#ecoute").prop("checked", true);
+
+    $("#ecoute").click(function(){
+
+        var ischecked = $(this).is(":checked");
+
+        if (ischecked) {
+
+            $("#suivi").prop("checked", false);
+        }
+
+        if (!ischecked) {
+
+            $("#suivi").prop("checked", true);
+        }
+    });
+
+    $("#suivi").click(function(){
+
+        var ischecked = $(this).is(":checked");
+
+        if (ischecked) {
+
+            $("#ecoute").prop("checked", false);
+        }
+
+        if (!ischecked) {
+
+            $("#ecoute").prop("checked", true);
+        }
+    });
 
     $(document).on('click', '.load', function() {
 
