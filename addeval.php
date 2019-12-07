@@ -19,7 +19,7 @@ if(isset($_POST['addeval'])) {
 
     $query = "INSERT INTO eval (id_interv,
                                 interv,
-                                trim,
+                                trimestre,
                                 year,
                                 note,
                                 com)

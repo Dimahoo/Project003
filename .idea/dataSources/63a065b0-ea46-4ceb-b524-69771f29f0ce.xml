@@ -1192,7 +1192,7 @@
       <DataType>varchar(50)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="291" parent="245" name="trim">
+    <column id="291" parent="245" name="trimestre">
       <Position>4</Position>
       <DataType>int(2)|0s</DataType>
       <ColumnKind>normal</ColumnKind>

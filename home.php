@@ -299,10 +299,16 @@ $connection->close();
                         <?php if($_SESSION['admin'] == 1) {?>
                             <td><button onclick="window.location.href = 'listbenevole.php';" name="listebenevole" class="btn btn-primary">Liste des Bénevoles</button></td>
                         <?php }?>
+                        <?php if($_SESSION['admin'] == 1) {?>
+                            <td><button onclick="window.location.href = 'listeval.php';" name="listeval" class="btn btn-primary">Liste des Évaluations</button></td>
+                        <?php }?>
                     </tr>
                     <tr>
                         <?php if($_SESSION['admin'] == 1) {?>
-                            <td><button onclick="window.location.href = 'serverbenevole.php';" name="exportbenevole" class="btn btn-success">Exporter sous Excel</button></td>
+                            <td><button onclick="window.location.href = 'serverbenevole.php';" name="exportbenevole" class="btn btn-success">Exporter Bénevoles</button></td>
+                        <?php }?>
+                        <?php if($_SESSION['admin'] == 1) {?>
+                            <td><button onclick="window.location.href = 'servereval.php';" name="exporteval" class="btn btn-success">Exporter Évaluations</button></td>
                         <?php }?>
                     </tr>
                 </table>
