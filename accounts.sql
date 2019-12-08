@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  ven. 15 nov. 2019 à 20:58
+-- Généré le :  Dim 08 déc. 2019 à 00:58
 -- Version du serveur :  10.1.40-MariaDB
 -- Version de PHP :  7.1.29
 
@@ -95,7 +95,9 @@ INSERT INTO `client` (`id`, `id_interv`, `interv`, `date_creation`, `date_clotur
   (5, 3, 'interv2', '2019-10-20', NULL, 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', '0000-00-00', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 0, 'Joyeuse', 'Joyeuse', 'Dependance'),
   (6, 3, 'interv2', '2019-10-20', NULL, 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', '0000-00-00', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 0, 'Joyeuse', 'Joyeuse', 'Dependance'),
   (7, 3, 'interv2', '2019-10-20', NULL, 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', '0000-00-00', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 0, 'Joyeuse', 'Joyeuse', 'Dependance'),
-  (8, 3, 'interv2', '2019-10-20', NULL, 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', '0000-00-00', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 0, 'Joyeuse', 'Joyeuse', 'Dependance');
+  (8, 3, 'interv2', '2019-10-20', NULL, 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', '0000-00-00', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 0, 'Joyeuse', 'Joyeuse', 'Dependance'),
+  (9, 1, 'admin', '2019-12-06', NULL, 'test2', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', '0000-00-00', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 0, 'Joyeuse', 'Joyeuse', 'Sexualite'),
+  (10, 1, 'admin', '2019-12-06', NULL, 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', '0000-00-00', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 'test1', 4, 'Angoissee', 'Joyeuse', 'Dependance');
 
 -- --------------------------------------------------------
 
@@ -113,6 +115,30 @@ CREATE TABLE `comments` (
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `evaluation`
+--
+
+CREATE TABLE `evaluation` (
+  `id` int(11) NOT NULL,
+  `id_interv` int(11) DEFAULT NULL,
+  `interv` varchar(50) DEFAULT NULL,
+  `trimestre` int(2) DEFAULT NULL,
+  `annee` int(4) DEFAULT NULL,
+  `note` int(3) DEFAULT NULL,
+  `comm` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `evaluation`
+--
+
+INSERT INTO `evaluation` (`id`, `id_interv`, `interv`, `trimestre`, `annee`, `note`, `comm`) VALUES
+  (5, 2, 'interv1', 3, 2019, 54, 'test'),
+  (6, 3, 'interv2', 3, 2019, 85, 'Eval2');
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `rdv`
 --
 
@@ -121,23 +147,26 @@ CREATE TABLE `rdv` (
   `id_interv` int(11) DEFAULT NULL,
   `interv` varchar(50) DEFAULT NULL,
   `id_cli` int(11) DEFAULT NULL,
-  `date_rdv` date DEFAULT NULL
+  `date_rdv` date DEFAULT NULL,
+  `type` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `rdv`
 --
 
-INSERT INTO `rdv` (`id`, `id_interv`, `interv`, `id_cli`, `date_rdv`) VALUES
-  (1, 2, 'interv1', 1, '2019-10-20'),
-  (2, 2, 'interv1', 2, '2019-10-20'),
-  (3, 2, 'interv1', 3, '2019-10-20'),
-  (4, 3, 'interv2', 4, '2019-10-20'),
-  (5, 3, 'interv2', 5, '2019-10-20'),
-  (6, 3, 'interv2', 6, '2019-10-20'),
-  (7, 3, 'interv2', 7, '2019-10-20'),
-  (8, 3, 'interv2', 8, '2019-10-20'),
-  (9, 3, 'interv2', 7, '2019-10-20');
+INSERT INTO `rdv` (`id`, `id_interv`, `interv`, `id_cli`, `date_rdv`, `type`) VALUES
+  (1, 2, 'interv1', 1, '2019-10-20', NULL),
+  (2, 2, 'interv1', 2, '2019-10-20', NULL),
+  (3, 2, 'interv1', 3, '2019-10-20', NULL),
+  (4, 3, 'interv2', 4, '2019-10-20', NULL),
+  (5, 3, 'interv2', 5, '2019-10-20', NULL),
+  (6, 3, 'interv2', 6, '2019-10-20', NULL),
+  (7, 3, 'interv2', 7, '2019-10-20', NULL),
+  (8, 3, 'interv2', 8, '2019-10-20', NULL),
+  (9, 3, 'interv2', 7, '2019-10-20', NULL),
+  (10, 1, 'admin', 9, '2019-12-06', 'Ecoute'),
+  (11, 1, 'admin', 10, '2019-12-06', 'Suivi');
 
 -- --------------------------------------------------------
 
@@ -216,6 +245,12 @@ ALTER TABLE `comments`
   ADD PRIMARY KEY (`comment_id`);
 
 --
+-- Index pour la table `evaluation`
+--
+ALTER TABLE `evaluation`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Index pour la table `rdv`
 --
 ALTER TABLE `rdv`
@@ -247,7 +282,7 @@ ALTER TABLE `benevole`
 -- AUTO_INCREMENT pour la table `client`
 --
 ALTER TABLE `client`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT pour la table `comments`
@@ -256,10 +291,16 @@ ALTER TABLE `comments`
   MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT pour la table `evaluation`
+--
+ALTER TABLE `evaluation`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT pour la table `rdv`
 --
 ALTER TABLE `rdv`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT pour la table `statis`
