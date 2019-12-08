@@ -61,10 +61,12 @@ if($today >= $date1_comp AND $today <= $date2_comp) {
     <script src="js/jquery.dataTables.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/popper.min.js"></script>
+    <!--<script src="js/dataTables.bootstrap.min.js"></script>-->
     <script src="js/dataTables.fixedColumns.min.js"></script>
     <script src="js/dataTables.buttons.min.js"></script>
     <script src="js/buttons.flash.min.js"></script>
     <script src="js/jquery-confirm.min.js"></script>
+    <script src="js/ellipsis.js"></script>
 
 
 </head>
@@ -105,7 +107,7 @@ if($today >= $date1_comp AND $today <= $date2_comp) {
             <a href="profile.php"><i class="fas fa-user-circle"></i> <?=$_SESSION['name']?>  Profil</a>
         </li>
         <li>
-            <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Deconnexion</a>
+            <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
         </li>
     </ul>
 </nav>
@@ -150,7 +152,7 @@ if($today >= $date1_comp AND $today <= $date2_comp) {
             <form action="updateval.php" method="post">
                 <div class="modal-body">
                     <input type="hidden" name="eval_id" id="eval_id">
-                    <table id="example" class="eval" style="width:100%">
+                    <table id="eval" class="eval" style="width:50%" align="center">
                         <!-- Row 1 -->
                         <tr>
                             <td><label>ID intervenant:</label></td>
@@ -165,27 +167,23 @@ if($today >= $date1_comp AND $today <= $date2_comp) {
                         <tr>
                             <td><label>Trimestre:</label></td>
                             <td>
-                                <select name="trimestre" id="trimestre" >
-                                        <option value="1">Avril <---> Juin <?=$year_combo?></option>
-                                        <option value="2">Juillet <---> Septembre <?=$year_combo?></option>
-                                        <option value="3">Octobre <---> Decembre <?=$year_combo?></option>
-                                        <option value="4">Janvier <---> Mars <?=$year_combo + 1?></option>
-                                </select>
+                                <input type="text" id="trimestre" name="trimestre" readonly>
                             </td>
                         </tr>
                         <!-- Row 4 -->
                         <tr>
                             <td><label>Année:</label></td>
-                            <td><input type="text" id="year" name="year" readonly></td>
+                            <td><input type="text" id="annee" name="annee" readonly></td>
                         </tr>
                         <!-- Row 5 -->
                         <tr>
                             <td><label>Note:</label></td>
                             <td><input type="number" id="note" name="note" min="0" max="100"></td>
                         </tr>
+                        <!-- Row 6 -->
                         <tr>
                             <td><label>Commentaire:</label></td>
-                            <td><textarea rows = "3" cols = "50" id="com" name = "com"></td>
+                            <td><textarea rows = "3" cols = "50" id="comm" name = "comm"></textarea></td>
                         </tr>
                     </table>
                 </div>
@@ -221,9 +219,14 @@ if($today >= $date1_comp AND $today <= $date2_comp) {
                 "serverSide": true,
                 "order": [],
                 "columnDefs": [
-                    { "orderable": false, "targets": 7 }
+                    { "orderable": false, "targets": 7 },
+                    { "targets": 6, "render": $.fn.dataTable.render.ellipsis(10) },
                 ],
                 "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+                "fixedColumns": {
+                    rightColumns: 1,
+                    leftColumns: 0
+                },
                 "dom": 'lfrtip',
                 "buttons": [
                     {
@@ -243,7 +246,17 @@ if($today >= $date1_comp AND $today <= $date2_comp) {
                     "url":'lang/French.json'
                 }
             });
+
         }
+
+        $.fn.dataTable.render.ellipsis = function ( cutoff ) {
+            return function (data, type, row) {
+
+                    return type === 'display' && data.length > cutoff ?
+                        data.substr( 0, cutoff ) +'…' :
+                        data;
+            }
+        };
 
         $(document).on('click', '.editbtn', function() {
 
@@ -255,13 +268,13 @@ if($today >= $date1_comp AND $today <= $date2_comp) {
                 data:{eval_id:eval_id},
                 dataType:"json",
                 success:function(data){
-                    $('#id_eval').val(data.id);
+                    $('#eval_id').val(data.id);
                     $('#id_interv').val(data.id_interv);
                     $('#interv').val(data.interv);
                     $('#trimestre').val(data.trimestre);
-                    $('#year').val(data.year);
+                    $('#annee').val(data.annee);
                     $('#note').val(data.note);
-                    $('#com').val(data.com);
+                    $('#comm').val(data.comm);
                 }
             });
         });
@@ -274,7 +287,7 @@ if($today >= $date1_comp AND $today <= $date2_comp) {
                 type: 'orange',
                 animation: 'rotate',
                 closeAnimation: 'rotate',
-                content: 'Vous etes sur de vouloir continuer la suppression ?',
+                content: 'Vous êtes sur de vouloir continuer la suppression ?',
                 buttons: {
                     Confirmer: function () {
                         $.ajax({

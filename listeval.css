@@ -83,6 +83,10 @@ th, td { white-space: nowrap; }
     width: 163px;
     margin: 10px;
 }
+.eval textarea {
+    width: 163px;
+    margin: 10px;
+}
 .pime-grid-button{
     float:left
 }

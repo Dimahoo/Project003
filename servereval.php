@@ -11,15 +11,15 @@ use PhpOffice\PhpSpreadsheet\IOFactory;
 $spreadsheet = new Spreadsheet();
 $sheet = $spreadsheet->getActiveSheet();
 $sheet->setCellValue('A1', '#');
-$sheet->setCellValue('B1', 'id_interv');
-$sheet->setCellValue('C1', 'interv');
-$sheet->setCellValue('D1', 'trimestre');
-$sheet->setCellValue('E1', 'year');
-$sheet->setCellValue('F1', 'note');
-$sheet->setCellValue('G1', 'com');
+$sheet->setCellValue('B1', 'ID INTERVENANT');
+$sheet->setCellValue('C1', 'INTERVENANT');
+$sheet->setCellValue('D1', 'TRIMESTRE');
+$sheet->setCellValue('E1', 'ANNÉE');
+$sheet->setCellValue('F1', 'NOTE');
+$sheet->setCellValue('G1', 'COMMENTAIRE');
 
 
-$sql = "select * from eval";
+$sql = "select * from evaluation";
 $result = $conn->query($sql);
 if($result->num_rows > 0){
 	$n = 1;
@@ -29,9 +29,9 @@ if($result->num_rows > 0){
         $sheet->setCellValue('B'.$rowNum, $row['id_interv']);
         $sheet->setCellValue('C'.$rowNum, $row['interv']);
         $sheet->setCellValue('D'.$rowNum, $row['trimestre']);
-        $sheet->setCellValue('E'.$rowNum, $row['year']);
+        $sheet->setCellValue('E'.$rowNum, $row['annee']);
         $sheet->setCellValue('F'.$rowNum, $row['note']);
-        $sheet->setCellValue('G'.$rowNum, $row['com']);
+        $sheet->setCellValue('G'.$rowNum, $row['comm']);
 		$n++;
 	}
 }

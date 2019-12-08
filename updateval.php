@@ -8,10 +8,10 @@ if(isset($_POST['updateval'])) {
     $id = $_POST['eval_id'];
 
     $note = $connection->real_escape_string($_POST['note']);
-    $com = $connection->real_escape_string($_POST['com']);
+    $comm = $connection->real_escape_string($_POST['comm']);
 
 
-    $query = "UPDATE eval SET note='$note', com='$com' WHERE id='$id'";
+    $query = "UPDATE evaluation SET note='$note', comm='$comm' WHERE id='$id'";
 
 
     $query_run = mysqli_query($connection,$query);

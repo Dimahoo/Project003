@@ -11,13 +11,13 @@ use PhpOffice\PhpSpreadsheet\IOFactory;
 $spreadsheet = new Spreadsheet();
 $sheet = $spreadsheet->getActiveSheet();
 $sheet->setCellValue('A1', '#');
-$sheet->setCellValue('B1', 'Date entree en vigeur');
-$sheet->setCellValue('C1', 'Role');
-$sheet->setCellValue('D1', 'Nom');
-$sheet->setCellValue('E1', 'Prenom');
-$sheet->setCellValue('F1', 'Sexe');
-$sheet->setCellValue('G1', 'Tache');
-$sheet->setCellValue('H1', 'Date de sortie');
+$sheet->setCellValue('B1', 'DATE ENTRÉE EN VIGEUR');
+$sheet->setCellValue('C1', 'ROLE');
+$sheet->setCellValue('D1', 'NOM');
+$sheet->setCellValue('E1', 'PRENOM');
+$sheet->setCellValue('F1', 'SEXE');
+$sheet->setCellValue('G1', 'TACHE');
+$sheet->setCellValue('H1', 'DATE DE SORTIE');
 
 
 $sql = "select * from benevole";

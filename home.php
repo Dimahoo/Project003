@@ -227,7 +227,7 @@ $connection->close();
             <table class="menu1">
                 <tr>
                     <?php if($_SESSION['admin'] == 0 OR $_SESSION['admin'] == 1) {?>
-                        <td><button onclick="window.location.href = 'ecoute.php';" name="ecoute" class="btn btn-primary">Fiche d'Écoute & Suivi</button></td>
+                        <td><button onclick="window.location.href = 'ecoute.php';" name="ecoute" class="btn btn-primary">Fiche Écoute & Suivi</button></td>
                     <?php }?>
                     <?php if($_SESSION['admin'] == 2 OR $_SESSION['admin'] == 1) {?>
                         <td><button onclick="window.location.href = 'statistic.php';" name="statistic" class="btn btn-primary">Fiche des Statistiques</button></td>
@@ -235,18 +235,18 @@ $connection->close();
                 </tr>
                 <tr>
                     <?php if($_SESSION['admin'] == 0 OR $_SESSION['admin'] == 1) {?>
-                        <td><button onclick="window.location.href = 'listecoute.php';" name="listecoute" class="btn btn-primary">Liste d'Écoute & Suivi</button></td>
+                        <td><button onclick="window.location.href = 'listecoute.php';" name="listecoute" class="btn btn-primary">Liste Écoute & Suivi</button></td>
                     <?php }?>
                     <?php if($_SESSION['admin'] == 2 OR $_SESSION['admin'] == 1) {?>
-                        <td><button onclick="window.location.href = 'liststatis.php';" name="liststatis" class="btn btn-primary">Liste des statistiques</button></td>
+                        <td><button onclick="window.location.href = 'liststatis.php';" name="liststatis" class="btn btn-primary">Liste des Statistiques</button></td>
                     <?php }?>
                 </tr>
                 <tr>
                     <?php if($_SESSION['admin'] == 0 OR $_SESSION['admin'] == 1) {?>
-                        <td><button onclick="window.location.href = 'serverecoute.php';" name="exportecoute" class="btn btn-success">Exporter fiches écoute</button></td>
+                        <td><button onclick="window.location.href = 'serverecoute.php';" name="exportecoute" class="btn btn-success">Exporter Écoute & Suivi</button></td>
                     <?php }?>
                     <?php if($_SESSION['admin'] == 2 OR $_SESSION['admin'] == 1) {?>
-                        <td><button onclick="window.location.href = 'serverstatis.php';" name="exportstatis" class="btn btn-success">Exporter statistiques</button></td>
+                        <td><button onclick="window.location.href = 'serverstatis.php';" name="exportstatis" class="btn btn-success">Exporter Statistiques</button></td>
                     <?php }?>
                 </tr>
                 <tr>
@@ -256,7 +256,7 @@ $connection->close();
                 </tr>
                 <tr>
                     <?php if($_SESSION['admin'] == 0 OR $_SESSION['admin'] == 1) {?>
-                        <td><button onclick="window.location.href = 'serverclient.php';" name="exportclient" class="btn btn-success">Exporter clients</button></td>
+                        <td><button onclick="window.location.href = 'serverclient.php';" name="exportclient" class="btn btn-success">Exporter Clients</button></td>
                     <?php }?>
                 </tr>
                 <tr>
@@ -292,7 +292,7 @@ $connection->close();
                             <td><button onclick="window.location.href = 'benevole.php';" name="benevole" class="btn btn-primary">Fiche des Bénevoles</button></td>
                         <?php }?>
                         <?php if($_SESSION['admin'] == 1) {?>
-                            <td><button onclick="window.location.href = 'evalinterv.php';" name="benevole" class="btn btn-primary">Eval. intervenants</button></td>
+                            <td><button onclick="window.location.href = 'evalinterv.php';" name="benevole" class="btn btn-primary">Eval. Intervenants</button></td>
                         <?php }?>
                     </tr>
                     <tr>

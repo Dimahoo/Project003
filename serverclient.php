@@ -1,4 +1,6 @@
 <?php
+// We need to use sessions, so you should always start sessions using the below code.
+session_start();
 
 require 'connect.php';
 require 'vendor/autoload.php';
@@ -11,29 +13,29 @@ use PhpOffice\PhpSpreadsheet\IOFactory;
 $spreadsheet = new Spreadsheet();
 $sheet = $spreadsheet->getActiveSheet();
 $sheet->setCellValue('A1', '#');
-$sheet->setCellValue('B1', 'ID intervenant');
-$sheet->setCellValue('C1', 'Intervenant');
-$sheet->setCellValue('D1', 'ID client');
-$sheet->setCellValue('E1', 'Date rdv');
-$sheet->setCellValue('F1', 'Description');
-$sheet->setCellValue('G1', 'Type appelant');
-$sheet->setCellValue('H1', 'Mode intervention');
-$sheet->setCellValue('I1', 'Type intervention');
-$sheet->setCellValue('J1', 'Langue');
-$sheet->setCellValue('K1', 'Duree');
-$sheet->setCellValue('L1', 'Date arrivee au Canada');
-$sheet->setCellValue('M1', 'Referee par');
-$sheet->setCellValue('N1', 'Sexe');
-$sheet->setCellValue('O1', 'Age');
-$sheet->setCellValue('P1', 'Situation financiere');
-$sheet->setCellValue('Q1', 'Origine');
-$sheet->setCellValue('R1', 'Status au Canada');
-$sheet->setCellValue('S1', 'Probleme mentale');
-$sheet->setCellValue('T1', 'Etat civil');
-$sheet->setCellValue('U1', 'Nombre enfant');
-$sheet->setCellValue('V1', 'Etat psychologique avant intervention');
-$sheet->setCellValue('W1', 'Etat psychologique apres intervention');
-$sheet->setCellValue('X1', 'Motif consultation');
+$sheet->setCellValue('B1', 'ID INTERVENANT');
+$sheet->setCellValue('C1', 'INTERVENANT');
+$sheet->setCellValue('D1', 'DATE CREATION');
+$sheet->setCellValue('E1', 'DATE CLOTURE');
+$sheet->setCellValue('F1', 'DESCRIPTION');
+$sheet->setCellValue('G1', 'TYPE APPELANT');
+$sheet->setCellValue('H1', 'MODE INTERVENTION');
+$sheet->setCellValue('I1', 'TYPE INTERVENTION');
+$sheet->setCellValue('J1', 'LANGUE');
+$sheet->setCellValue('K1', 'DURÉE');
+$sheet->setCellValue('L1', 'DATE ARRIVÉE AU CANADA');
+$sheet->setCellValue('M1', 'REFERÉE PAR');
+$sheet->setCellValue('N1', 'SEXE');
+$sheet->setCellValue('O1', 'AGE');
+$sheet->setCellValue('P1', 'SITUATION FINANCIÈRE');
+$sheet->setCellValue('Q1', 'ORIGINE');
+$sheet->setCellValue('R1', 'STATUS CANADA');
+$sheet->setCellValue('S1', 'PROBLÈME MENTALE');
+$sheet->setCellValue('T1', 'ÉTAT CIVIL');
+$sheet->setCellValue('U1', 'NOMBRE ENFANT');
+$sheet->setCellValue('V1', 'ÉTAT PSYCHOLOGIQUE AVANT INTERVENTION');
+$sheet->setCellValue('W1', 'ÉTAT PSYCHOLOGIQUE APRÈS INTERVENTION');
+$sheet->setCellValue('X1', 'MOTIF CONSULTATION');
 
 
 if($_SESSION['admin'] == 1) {
@@ -51,32 +53,34 @@ if($result->num_rows > 0){
 		$rowNum = $n + 1;
 		$sheet->setCellValue('A'.$rowNum, $n);
         $sheet->setCellValue('B'.$rowNum, $row['id_interv']);
-        $sheet->setCellValue('C'.$rowNum, $row['id_cli']);
-        $sheet->setCellValue('D'.$rowNum, $row['interv']);
-        $sheet->setCellValue('E'.$rowNum, $row['date_rdv']);
-        $sheet->setCellValue('E'.$rowNum, $row['description']);
-        $sheet->setCellValue('F'.$rowNum, $row['type_appelant']);
-        $sheet->setCellValue('G'.$rowNum, $row['mode_interv']);
-        $sheet->setCellValue('H'.$rowNum, $row['type_interv']);
-        $sheet->setCellValue('I'.$rowNum, $row['langue']);
-        $sheet->setCellValue('J'.$rowNum, $row['duree']);
-        $sheet->setCellValue('K'.$rowNum, $row['ref_par']);
-        $sheet->setCellValue('L'.$rowNum, $row['date_arrivee']);
-        $sheet->setCellValue('M'.$rowNum, $row['sexe']);
-        $sheet->setCellValue('N'.$rowNum, $row['age']);
-        $sheet->setCellValue('O'.$rowNum, $row['situ_finance']);
-        $sheet->setCellValue('P'.$rowNum, $row['origine']);
-        $sheet->setCellValue('Q'.$rowNum, $row['status_canada']);
-        $sheet->setCellValue('R'.$rowNum, $row['prob_mentale']);
-        $sheet->setCellValue('S'.$rowNum, $row['etat_civil']);
-        $sheet->setCellValue('T'.$rowNum, $row['nbr_enfant']);
-        $sheet->setCellValue('U'.$rowNum, $row['psy_apres_interv']);
-        $sheet->setCellValue('V'.$rowNum, $row['psy_avant_interv']);
-        $sheet->setCellValue('W'.$rowNum, $row['motif_consult']);
+        $sheet->setCellValue('C'.$rowNum, $row['interv']);
+        $sheet->setCellValue('D'.$rowNum, $row['date_creation']);
+        $sheet->setCellValue('E'.$rowNum, $row['date_cloture']);
+        $sheet->setCellValue('F'.$rowNum, $row['description']);
+        $sheet->setCellValue('G'.$rowNum, $row['type_appelant']);
+        $sheet->setCellValue('H'.$rowNum, $row['mode_interv']);
+        $sheet->setCellValue('I'.$rowNum, $row['type_interv']);
+        $sheet->setCellValue('J'.$rowNum, $row['langue']);
+        $sheet->setCellValue('K'.$rowNum, $row['duree']);
+        $sheet->setCellValue('L'.$rowNum, $row['ref_par']);
+        $sheet->setCellValue('M'.$rowNum, $row['date_arrivee']);
+        $sheet->setCellValue('N'.$rowNum, $row['sexe']);
+        $sheet->setCellValue('O'.$rowNum, $row['age']);
+        $sheet->setCellValue('P'.$rowNum, $row['situ_finance']);
+        $sheet->setCellValue('Q'.$rowNum, $row['origine']);
+        $sheet->setCellValue('R'.$rowNum, $row['status_canada']);
+        $sheet->setCellValue('S'.$rowNum, $row['prob_mentale']);
+        $sheet->setCellValue('T'.$rowNum, $row['etat_civil']);
+        $sheet->setCellValue('U'.$rowNum, $row['nbr_enfant']);
+        $sheet->setCellValue('V'.$rowNum, $row['psy_apres_interv']);
+        $sheet->setCellValue('W'.$rowNum, $row['psy_avant_interv']);
+        $sheet->setCellValue('X'.$rowNum, $row['motif_consult']);
 
 		$n++;
 	}
 }
+
+$sheet->getStyle('A1:X1')->applyFromArray(array('font' => array('bold' => true)));
 
 $filename = 'sample-'.time().'.xlsx';
 // Redirect output to a client's web browser (Xlsx)

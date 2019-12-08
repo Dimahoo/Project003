@@ -967,7 +967,7 @@
     <table id="242" parent="2" name="benevole"/>
     <table id="243" parent="2" name="client"/>
     <table id="244" parent="2" name="comments"/>
-    <table id="245" parent="2" name="eval"/>
+    <table id="245" parent="2" name="evaluation"/>
     <table id="246" parent="2" name="rdv"/>
     <table id="247" parent="2" name="statis"/>
     <table id="248" parent="2" name="users"/>
@@ -1197,7 +1197,7 @@
       <DataType>int(2)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="292" parent="245" name="year">
+    <column id="292" parent="245" name="annee">
       <Position>5</Position>
       <DataType>int(4)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
@@ -1207,9 +1207,9 @@
       <DataType>int(3)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="294" parent="245" name="com">
+    <column id="294" parent="245" name="comm">
       <Position>7</Position>
-      <DataType>varchar(500)|0s</DataType>
+      <DataType>varchar(50)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <key id="295" parent="245" name="PRIMARY">

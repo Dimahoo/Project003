@@ -77,6 +77,21 @@ $interv2 = mysqli_query($connection, $query2) or die(mysqli_error());
         });
         <?php $_SESSION['addeval'] = 0 ?>
     }
+    if ('<?php echo $_SESSION['existeval']?>' == 1) {
+        $.alert({
+            title: 'Notification!',
+            icon: 'fa fa-warning',
+            type: 'orange',
+            animation: 'rotate',
+            content: 'Évaluation déjà existante!',
+            buttons: {
+                Fermer: function () {
+                    this.setCloseAnimation('rotate');
+                }
+            }
+        });
+        <?php $_SESSION['existeval'] = 0 ?>
+    }
 </script>
 <body class="loggedin">
 <nav class="navtop">

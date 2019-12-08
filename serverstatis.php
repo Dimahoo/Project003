@@ -11,12 +11,12 @@ use PhpOffice\PhpSpreadsheet\IOFactory;
 $spreadsheet = new Spreadsheet();
 $sheet = $spreadsheet->getActiveSheet();
 $sheet->setCellValue('A1', '#');
-$sheet->setCellValue('B1', 'Date ajout');
-$sheet->setCellValue('C1', 'Description');
-$sheet->setCellValue('D1', 'Sexe');
-$sheet->setCellValue('E1', 'Origine');
-$sheet->setCellValue('F1', 'Langue utilisee');
-$sheet->setCellValue('G1', 'Mode intervention');
+$sheet->setCellValue('B1', 'DATE AJOUT');
+$sheet->setCellValue('C1', 'DESCRIPTION');
+$sheet->setCellValue('D1', 'SEXE');
+$sheet->setCellValue('E1', 'ORIGINE');
+$sheet->setCellValue('F1', 'LANGUE UTILISÉE');
+$sheet->setCellValue('G1', 'MODE INTERVENTION');
 
 
 $sql = "select * from statis";

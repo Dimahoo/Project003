@@ -12,11 +12,11 @@ use PhpOffice\PhpSpreadsheet\IOFactory;
 $spreadsheet = new Spreadsheet();
 $sheet = $spreadsheet->getActiveSheet();
 $sheet->setCellValue('A1', '#');
-$sheet->setCellValue('B1', 'ID intervenant');
-$sheet->setCellValue('C1', 'Intervenant');
-$sheet->setCellValue('D1', 'ID client');
-$sheet->setCellValue('E1', 'Date rdv');
-$sheet->setCellValue('F1', 'Type');
+$sheet->setCellValue('B1', 'ID INTERVENANT');
+$sheet->setCellValue('C1', 'INTERVENANT');
+$sheet->setCellValue('D1', 'ID CLIENT');
+$sheet->setCellValue('E1', 'DATE RDV');
+$sheet->setCellValue('F1', 'TYPE');
 
 if($_SESSION['admin'] == 1) {
 
@@ -41,6 +41,8 @@ if($result->num_rows > 0){
 		$n++;
 	}
 }
+
+$sheet->getStyle('A1:X1')->applyFromArray(array('font' => array('bold' => true)));
 
 $filename = 'sample-'.time().'.xlsx';
 // Redirect output to a client's web browser (Xlsx)
