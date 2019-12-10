@@ -26,18 +26,14 @@ $today = $year . '-' . $month . '-' . $day;
     <link href="benevole.css" rel="stylesheet" type="text/css">
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <link href="css/jquery-confirm.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.dataTables.min.js"></script>
     <script src="js/dataTables.bootstrap.min.js"></script>
+    <script src="js/jquery-confirm.min.js"></script>
 </head>
-<script>
-    if (<?php echo $_SESSION['cli_exist'] ?> == 1) {
-        alert("Identifiant client non existant!");
-        <?php $_SESSION['cli_exist'] = 0 ?>
-    }
-</script>
 <body class="loggedin">
 <nav class="navtop">
     <p>Website Title</p>

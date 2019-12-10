@@ -123,8 +123,8 @@ $connection->close();
     <link href="home.css" rel="stylesheet" type="text/css">
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/dataTables.bootstrap.min.css" rel="stylesheet" />
-    <link href="css/morris.css" rel="stylesheet" />
     <link href="css/jquery-confirm.min.css" rel="stylesheet" />
+    <link href="css/morris.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery-confirm.min.js"></script>
