@@ -17,7 +17,9 @@ $sheet->setCellValue('D1', 'NOM');
 $sheet->setCellValue('E1', 'PRENOM');
 $sheet->setCellValue('F1', 'SEXE');
 $sheet->setCellValue('G1', 'TACHE');
-$sheet->setCellValue('H1', 'DATE DE SORTIE');
+$sheet->setCellValue('H1', 'LANGUE');
+$sheet->setCellValue('I1', 'DOMAINE');
+$sheet->setCellValue('J1', 'DATE DE SORTIE');
 
 
 $sql = "select * from benevole";
@@ -33,7 +35,9 @@ if($result->num_rows > 0){
         $sheet->setCellValue('E'.$rowNum, $row['prenom']);
         $sheet->setCellValue('F'.$rowNum, $row['sexe']);
         $sheet->setCellValue('G'.$rowNum, $row['tache']);
-        $sheet->setCellValue('H'.$rowNum, $row['date_sortie']);
+        $sheet->setCellValue('H'.$rowNum, $row['langue']);
+        $sheet->setCellValue('I'.$rowNum, $row['domaine']);
+        $sheet->setCellValue('J'.$rowNum, $row['date_sortie']);
 		$n++;
 	}
 }
