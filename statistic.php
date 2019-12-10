@@ -77,6 +77,8 @@ $today = $year . '-' . $month . '-' . $day;
                                     <option value="">Choisissez ...</option>
                                     <option>Information</option>
                                     <option>Ecoute</option>
+                                    <option>Suivi</option>
+                                    <option>Intervention</option>
                                     <option>Formulaire</option>
                                     <option>Cours d'anglais</option>
                                     <option>Atelier</option>
@@ -85,7 +87,10 @@ $today = $year . '-' . $month . '-' . $day;
                                     <option>Activites culturelles</option>
                                     <option>Cafe francais</option>
                                     <option>Magasin</option>
+                                    <option>Partage</option>
                                     <option>Assermentation</option>
+                                    <option>Reference</option>
+                                    <option>Traduction</option>
                                     <option>Autre</option>
                                 </select>
                             </td>
@@ -98,6 +103,7 @@ $today = $year . '-' . $month . '-' . $day;
                                     <option value="">Choisissez ...</option>
                                     <option>Homme</option>
                                     <option>Femme</option>
+                                    <option>Autre</option>
                                 </select>
                             </td>
                         </tr>
@@ -374,6 +380,7 @@ $today = $year . '-' . $month . '-' . $day;
                                     <option>Espagnol</option>
                                     <option>Francais</option>
                                     <option>Persan</option>
+                                    <option>Russe</option>
                                 </select>
                             </td>
                         </tr>

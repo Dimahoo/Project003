@@ -15,6 +15,7 @@ $year = date('Y');
 
 $today = $year . '-' . $month . '-' . $day;
 
+
 ?>
 
 <!DOCTYPE html>
@@ -69,7 +70,7 @@ $today = $year . '-' . $month . '-' . $day;
         <thead>
         <tr>
             <form action="addbenevole.php" method="post">
-                    <table id="example" class="benevole" style="width:50%" align="center">
+                    <table id="benevole" class="benevole" style="width:50%" align="center">
                         <!-- Row 1 -->
                         <tr>
                             <td><label>Date entree en vigueur:</label></td>
@@ -80,7 +81,7 @@ $today = $year . '-' . $month . '-' . $day;
                             <td><label>Role:</label></td>
                             <td>
                                 <select name="role" id="role" required>
-                                    <option value="">Choisissez ...</option>
+                                    <option>---</option>
                                     <option>Benevole</option>
                                     <option>Stagiaire</option>
                                 </select>
@@ -101,18 +102,34 @@ $today = $year . '-' . $month . '-' . $day;
                             <td><label>Sexe:</label></td>
                             <td>
                                 <select name="sexe" id="sexe" required>
-                                    <option value="">Choisissez ...</option>
+                                    <option>---</option>
                                     <option>Homme</option>
                                     <option>Femme</option>
+                                    <option>Autre</option>
                                 </select>
                             </td>
                         </tr>
                         <!-- Row6 -->
                         <tr>
+                            <td><label>Langue:</label></td>
+                            <td>
+                                <select name="langue" id="langue" required>
+                                    <option>---</option>
+                                    <option>Arabe</option>
+                                    <option>Anglais</option>
+                                    <option>Espaniol</option>
+                                    <option>Francais</option>
+                                    <option>Person</option>
+                                    <option>Russe</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <!-- Row7 -->
+                        <tr>
                             <td><label>Tache:</label></td>
                             <td>
                                 <select name="tache" id="tache" required>
-                                    <option value="">Choisissez ...</option>
+                                    <option>---</option>
                                     <option>Tache1</option>
                                     <option>Tache2</option>
                                     <option>Tache3</option>
@@ -121,8 +138,22 @@ $today = $year . '-' . $month . '-' . $day;
                                 </select>
                             </td>
                         </tr>
+                        <!-- Row8 -->
+                        <tr>
+                            <td><label>Domaine:</label></td>
+                            <td>
+                                <select name="domaine" id="domaine" required>
+                                    <option>---</option>
+                                    <option>Domaine1</option>
+                                    <option>Domaine2</option>
+                                    <option>Domaine3</option>
+                                    <option>Domaine4</option>
+                                    <option>Domaine5</option>
+                                </select>
+                            </td>
+                        </tr>
                     </table>
-                        <!-- Row7 buttons -->
+                        <!-- Row9 buttons -->
                     <table id="example" class="button" style="width:15%" align="right" >
                         <tr><td>&nbsp;</td></tr>
                         <tr><td>&nbsp;</td></tr>

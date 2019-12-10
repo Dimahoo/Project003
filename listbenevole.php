@@ -117,6 +117,8 @@ $today = $year . '-' . $month . '-' . $day;
                         <th>Prenom</th>
                         <th>Sexe</th>
                         <th>Tache</th>
+                        <th>Domaine</th>
+                        <th>Langue</th>
                         <th>Date_sortie</th>
                         <th style="width: 110px;">Action</th>
                     </tr>
@@ -151,7 +153,7 @@ $today = $year . '-' . $month . '-' . $day;
                             <td><label>Role:</label></td>
                             <td>
                                 <select name="role" id="role" required>
-                                    <option value="">Choisissez ...</option>
+                                    <option>---</option>
                                     <option>Benevole</option>
                                     <option>Stagiaire</option>
                                 </select>
@@ -172,7 +174,7 @@ $today = $year . '-' . $month . '-' . $day;
                             <td><label>Sexe:</label></td>
                             <td>
                                 <select name="sexe" id="sexe" required>
-                                    <option value="">Choisissez ...</option>
+                                    <option>---</option>
                                     <option>Homme</option>
                                     <option>Femme</option>
                                 </select>
@@ -180,10 +182,25 @@ $today = $year . '-' . $month . '-' . $day;
                         </tr>
                         <!-- Row6 -->
                         <tr>
+                            <td><label>Langue:</label></td>
+                            <td>
+                                <select name="langue" id="langue" required>
+                                    <option>---</option>
+                                    <option>Arabe</option>
+                                    <option>Anglais</option>
+                                    <option>Espaniol</option>
+                                    <option>Francais</option>
+                                    <option>Person</option>
+                                    <option>Russe</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <!-- Row7 -->
+                        <tr>
                             <td><label>Tache:</label></td>
                             <td>
                                 <select name="tache" id="tache" required>
-                                    <option value="">Choisissez ...</option>
+                                    <option>---</option>
                                     <option>Tache1</option>
                                     <option>Tache2</option>
                                     <option>Tache3</option>
@@ -192,14 +209,28 @@ $today = $year . '-' . $month . '-' . $day;
                                 </select>
                             </td>
                         </tr>
-                        <!-- Row7 -->
+                        <!-- Row8 -->
+                        <tr>
+                            <td><label>Domaine:</label></td>
+                            <td>
+                                <select name="domaine" id="domaine" required>
+                                    <option>---</option>
+                                    <option>Domaine1</option>
+                                    <option>Domaine2</option>
+                                    <option>Domaine3</option>
+                                    <option>Domaine4</option>
+                                    <option>Domaine5</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <!-- Row9 -->
                         <tr>
                             <td><label>Date Sortie:</label></td>
                             <td><input id="date_sortie" name="date_sortie" type="date"></td>
                         </tr>
                     </table>
                 </div>
-                <!-- Row8 buttons -->
+                <!-- Row10 buttons -->
                 <div class="modal-footer">
                     <table id="button" class="button" style="width:15%" align="right">
                         <tr>
@@ -230,7 +261,7 @@ $today = $year . '-' . $month . '-' . $day;
                 "serverSide": true,
                 "order": [],
                 "columnDefs": [
-                    { "orderable": false, "targets": 8 }
+                    { "orderable": false, "targets": 10 }
                 ],
                 "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
                 "fixedColumns": {
@@ -275,6 +306,8 @@ $today = $year . '-' . $month . '-' . $day;
                     $('#prenom').val(data.prenom);
                     $('#sexe').val(data.sexe);
                     $('#tache').val(data.tache);
+                    $('#domaine').val(data.tache);
+                    $('#langue').val(data.tache);
                     $('#date_sortie').val(data.date_sortie);
                 }
             });

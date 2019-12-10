@@ -130,21 +130,6 @@ $connection->close();
     <script src="js/jquery-confirm.min.js"></script>
 </head>
 <script>
-    if ('<?php echo $_SESSION['addeval']?>' == 1) {
-        $.alert({
-            title: 'Notification!',
-            icon: 'fa fa-warning',
-            type: 'orange',
-            animation: 'rotate',
-            content: 'Nouvel utilisateur crée!',
-            buttons: {
-                Fermer: function () {
-                    this.setCloseAnimation('rotate');
-                }
-            }
-        });
-        <?php $_SESSION['addprof'] = 0 ?>
-    }
     if ('<?php echo $_SESSION['addecoute']?>' == 1) {
         $.alert({
             title: 'Notification!',
@@ -189,6 +174,21 @@ $connection->close();
             }
         });
         <?php $_SESSION['addbene'] = 0 ?>
+    }
+    if ('<?php echo $_SESSION['addeval']?>' == 1) {
+        $.alert({
+            title: 'Notification!',
+            icon: 'fa fa-warning',
+            type: 'orange',
+            animation: 'rotate',
+            content: 'Nouvelle évaluation crée!',
+            buttons: {
+                Fermer: function () {
+                    this.setCloseAnimation('rotate');
+                }
+            }
+        });
+        <?php $_SESSION['addeval'] = 0 ?>
     }
 </script>
 <body class="loggedin">

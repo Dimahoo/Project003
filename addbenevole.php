@@ -25,19 +25,25 @@ if(isset($_POST['validate'])) {
         $prenom = $mysqli->real_escape_string($_POST['prenom']);
         $sexe = $mysqli->real_escape_string($_POST['sexe']);
         $tache = $mysqli->real_escape_string($_POST['tache']);
+        $domaine = $mysqli->real_escape_string($_POST['domaine']);
+        $langue = $mysqli->real_escape_string($_POST['langue']);
 
         $query = "INSERT INTO benevole (date_entree,
                                         role,
                                         nom,
                                         prenom,
                                         sexe,
-                                        tache)
+                                        tache,
+                                        domaine,
+                                        langue)
                                VALUES ('$date_entree',
                                        '$role', 
                                        '$nom',
                                        '$prenom',
                                        '$sexe',
-                                       '$tache')";
+                                       '$tache',
+                                       '$domaine',
+                                       '$langue')";
 
         $query_run = mysqli_query($mysqli, $query);
 
