@@ -33,7 +33,7 @@ $today = $year . '-' . $month . '-' . $day;
 </head>
 <body class="loggedin">
 <nav class="navtop">
-    <p>Website Title</p>
+    <p>Multi-Écoute</p>
     <ul>
         <li><a href="home.php"><i class="fas fa-home"></i> Page d'acceuil</a></li>
         <li></li>
@@ -51,7 +51,7 @@ $today = $year . '-' . $month . '-' . $day;
             <a href="profile.php"><i class="fas fa-user-circle"></i> <?=$_SESSION['name']?>  Profil</a>
         </li>
         <li>
-            <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Deconnexion</a>
+            <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
         </li>
     </ul>
 </nav>
@@ -74,7 +74,7 @@ $today = $year . '-' . $month . '-' . $day;
                             <td><label>Description:</label></td>
                             <td>
                                 <select name="description" id="description" required>
-                                    <option value="">Choisissez ...</option>
+                                    <option>---</option>
                                     <option>Information</option>
                                     <option>Ecoute</option>
                                     <option>Suivi</option>
@@ -100,7 +100,7 @@ $today = $year . '-' . $month . '-' . $day;
                             <td><label>Sexe:</label></td>
                             <td>
                                 <select name="sexe" id="sexe" required>
-                                    <option value="">Choisissez ...</option>
+                                    <option>---</option>
                                     <option>Homme</option>
                                     <option>Femme</option>
                                     <option>Autre</option>
@@ -112,7 +112,7 @@ $today = $year . '-' . $month . '-' . $day;
                             <td><label>Origine:</label></td>
                             <td>
                                 <select name="origine" id="origine" required>
-                                    <option value="">Choisissez ...</option>
+                                    <option value="">---</option>
                                     <!-- A -->
                                     <option value="Afghanistan">Afghanistan </option>
                                     <option value="Afrique_Centrale">Afrique_Centrale </option>
@@ -374,7 +374,7 @@ $today = $year . '-' . $month . '-' . $day;
                             <td><label>Langue utilisée:</label></td>
                             <td>
                                 <select name="langue" id="langue" required>
-                                    <option value="">Choisissez ...</option>
+                                    <option value="">---</option>
                                     <option>Anglais</option>
                                     <option>Arabe</option>
                                     <option>Espagnol</option>
@@ -389,7 +389,7 @@ $today = $year . '-' . $month . '-' . $day;
                             <td><label>Mode intervention:</label></td>
                             <td>
                                 <select name="mode_interv" id="mode_interv" required>
-                                    <option value="">Choisissez ...</option>
+                                    <option value="">---</option>
                                     <option>Telephone</option>
                                     <option>Face a face</option>
                                 </select>

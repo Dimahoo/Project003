@@ -12,8 +12,8 @@
 </br>
 </br>
 </br>
-</br>
 <div class="login">
+    <img src="images/Logo2.png" alt="Trulli" style="width:40%;" >
     <h1>Identification</h1>
     <form action="authenticate.php" method="post">
         <input type="text" name="username" placeholder="Nom utilisateur" id="username" required>

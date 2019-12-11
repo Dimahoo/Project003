@@ -19,6 +19,7 @@ session_start();
 </br>
 </br>
 <div class="login">
+    <img src="images/Logo2.png" alt="Trulli" style="width:40%;" >
     <h1>Identification</h1>
     <form action="authenticate.php" method="post">
         <div class="alert alert-error"><?= $_SESSION['message'] ?></div>

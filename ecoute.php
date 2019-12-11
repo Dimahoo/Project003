@@ -52,7 +52,7 @@ $today = $year . '-' . $month . '-' . $day;
 </script>
 <body class="loggedin">
 <nav class="navtop">
-    <p>Website Title</p>
+    <p>Multi-Écoute</p>
     <ul>
         <li><a href="home.php"><i class="fas fa-home"></i> Page d'acceuil</a></li>
         <li></li>
@@ -260,7 +260,7 @@ $today = $year . '-' . $month . '-' . $day;
                                     <option>TT</option>
                                 </select>
                             </td>
-                            <td><label>Problème au sante mentale:</label></td>
+                            <td><label>Problème de sante mentale:</label></td>
                             <td>
                                 <select name="prob_mentale" id="prob_mentale">
                                     <option>---</option>

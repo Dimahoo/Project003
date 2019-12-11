@@ -76,7 +76,7 @@ $today = $year . '-' . $month . '-' . $day;
 </script>
 <body class="loggedin">
 <nav class="navtop">
-    <p>Website Title</p>
+    <p>Multi-Écoute</p>
     <ul>
         <li><a href="home.php"><i class="fas fa-home"></i> Page d'acceuil</a></li>
         <li></li>
@@ -145,12 +145,12 @@ $today = $year . '-' . $month . '-' . $day;
                     <table id="benevole" class="benevole" style="width:50%" align="center">
                         <!-- Row 1 -->
                         <tr>
-                            <td><label>Date Entree:</label></td>
+                            <td><label>Date Entrée:</label></td>
                             <td><input id="date_entree" name="date_entree" type="date"></td>
                         </tr>
                         <!-- Row2 -->
                         <tr>
-                            <td><label>Role:</label></td>
+                            <td><label>Rôle:</label></td>
                             <td>
                                 <select name="role" id="role" required>
                                     <option>---</option>
@@ -166,7 +166,7 @@ $today = $year . '-' . $month . '-' . $day;
                         </tr>
                         <!-- Row4 -->
                         <tr>
-                            <td><label>Prenom:</label></td>
+                            <td><label>Prénom:</label></td>
                             <td><input type="text" name="prenom" id="prenom"></td>
                         </tr>
                         <!-- Row5 -->
@@ -177,6 +177,7 @@ $today = $year . '-' . $month . '-' . $day;
                                     <option>---</option>
                                     <option>Homme</option>
                                     <option>Femme</option>
+                                    <option>Autre</option>
                                 </select>
                             </td>
                         </tr>
@@ -192,36 +193,19 @@ $today = $year . '-' . $month . '-' . $day;
                                     <option>Francais</option>
                                     <option>Person</option>
                                     <option>Russe</option>
+                                    <option>Autre</option>
                                 </select>
                             </td>
                         </tr>
                         <!-- Row7 -->
                         <tr>
-                            <td><label>Tache:</label></td>
-                            <td>
-                                <select name="tache" id="tache" required>
-                                    <option>---</option>
-                                    <option>Tache1</option>
-                                    <option>Tache2</option>
-                                    <option>Tache3</option>
-                                    <option>Tache4</option>
-                                    <option>Tache5</option>
-                                </select>
-                            </td>
+                            <td><label>Tâche:</label></td>
+                            <td><input type="text" name="tache" id="tache"></td>
                         </tr>
                         <!-- Row8 -->
                         <tr>
                             <td><label>Domaine:</label></td>
-                            <td>
-                                <select name="domaine" id="domaine" required>
-                                    <option>---</option>
-                                    <option>Domaine1</option>
-                                    <option>Domaine2</option>
-                                    <option>Domaine3</option>
-                                    <option>Domaine4</option>
-                                    <option>Domaine5</option>
-                                </select>
-                            </td>
+                            <td><input type="text" name="domaine" id="domaine"></td>
                         </tr>
                         <!-- Row9 -->
                         <tr>
@@ -306,8 +290,8 @@ $today = $year . '-' . $month . '-' . $day;
                     $('#prenom').val(data.prenom);
                     $('#sexe').val(data.sexe);
                     $('#tache').val(data.tache);
-                    $('#domaine').val(data.tache);
-                    $('#langue').val(data.tache);
+                    $('#domaine').val(data.domaine);
+                    $('#langue').val(data.langue);
                     $('#date_sortie').val(data.date_sortie);
                 }
             });

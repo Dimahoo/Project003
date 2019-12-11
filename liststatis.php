@@ -76,7 +76,7 @@ $today = $year . '-' . $month . '-' . $day;
 </script>
 <body class="loggedin">
 <nav class="navtop">
-    <p>Website Title</p>
+    <p>Multi-Écoute</p>
     <ul>
         <li><a href="home.php"><i class="fas fa-home"></i> Page d'acceuil</a></li>
         <li></li>
@@ -94,7 +94,7 @@ $today = $year . '-' . $month . '-' . $day;
             <a href="profile.php"><i class="fas fa-user-circle"></i> <?=$_SESSION['name']?>  Profil</a>
         </li>
         <li>
-            <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Deconnexion</a>
+            <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
         </li>
     </ul>
 </nav>

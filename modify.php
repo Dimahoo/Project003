@@ -62,7 +62,7 @@ $sql = $mysqli->query("SELECT * FROM users") or die($mysqli->error);
 </script>
 <body class="loggedin">
 <nav class="navtop">
-    <p>Website Title</p>
+    <p>Multi-Écoute</p>
     <ul>
         <li><a href="home.php"><i class="fas fa-home"></i> Page d'acceuil</a></li>
         <li></li>

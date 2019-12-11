@@ -89,7 +89,7 @@ if($today >= $date1_comp AND $today <= $date2_comp) {
 </script>
 <body class="loggedin">
 <nav class="navtop">
-    <p>Website Title</p>
+    <p>Multi-Écoute</p>
     <ul>
         <li><a href="home.php"><i class="fas fa-home"></i> Page d'acceuil</a></li>
         <li></li>

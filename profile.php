@@ -42,7 +42,7 @@ $admin = $row[5]
 </head>
 <body class="loggedin">
 <nav class="navtop">
-    <p>Website Title</p>
+    <p>Multi-Écoute</p>
     <ul>
         <li><a href="home.php"><i class="fas fa-home"></i> Home</a></li>
         <li></li>
