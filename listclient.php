@@ -170,14 +170,19 @@ $today = $year . '-' . $month . '-' . $day;
                             <td><label>Description:</label></td>
                             <td>
                                 <select name="description" id="description">
-                                    <option>test1</option>
-                                    <option>test2</option>
+                                    <option>---</option>
+                                    <option>Suivi</option>
+                                    <option>Ecoute</option>
                                 </select>
                             </td>
                             <td><label>Type d'appelant:</label></td>
                             <td>
                                 <select name="type_appelant" id="type_appelant">
-                                    <option>test1</option>
+                                    <option>---</option>
+                                    <option>Regulier</option>
+                                    <option>General</option>
+                                    <option>Tierce personne</option>
+                                    <option>Autre</option>
                                 </select>
                             </td>
                         </tr>
@@ -186,19 +191,34 @@ $today = $year . '-' . $month . '-' . $day;
                             <td><label>Mode d'intervention:</label></td>
                             <td>
                                 <select name="mode_interv" id="mode_interv">
-                                    <option>test1</option>
+                                    <option>---</option>
+                                    <option>Face a face</option>
+                                    <option>Telephone</option>
+                                    <option>Autre</option>
                                 </select>
                             </td>
                             <td><label>Type d'intervention:</label></td>
                             <td>
                                 <select name="type_interv" id="type_interv">
-                                    <option>test1</option>
+                                    <option>---</option>
+                                    <option>Ecoute</option>
+                                    <option>Appel Obscene</option>
+                                    <option>Raccrochage</option>
+                                    <option>Intervention Psychosociale</option>
+                                    <option>Autre</option>
                                 </select>
                             </td>
                             <td><label>Langue utilisée:</label></td>
                             <td>
                                 <select name="langue" id="langue">
-                                    <option>test1</option>
+                                    <option>---</option>
+                                    <option>Arabe</option>
+                                    <option>Anglais</option>
+                                    <option>Espagnol</option>
+                                    <option>Francais</option>
+                                    <option>Persan</option>
+                                    <option>Russe</option>
+                                    <option>Autre</option>
                                 </select>
                             </td>
                         </tr>
@@ -207,13 +227,32 @@ $today = $year . '-' . $month . '-' . $day;
                             <td><label>Durée:</label></td>
                             <td>
                                 <select name="duree" id="duree">
-                                    <option>test1</option>
+                                    <option>---</option>
+                                    <option>< 5 min</option>
+                                    <option>5-15 min</option>
+                                    <option>15-30 min</option>
+                                    <option>30-45 min</option>
+                                    <option>45-60 min</option>
+                                    <option>> 1h<option>
                                 </select>
                             </td>
                             <td><label>Réferée Par:</label></td>
                             <td>
                                 <select name="ref_par" id="ref_par">
-                                    <option>test1</option>
+                                    <option>---</option>
+                                    <option>CLSC</option>
+                                    <option>PRAIDA</option>
+                                    <option>CLE</option>
+                                    <option>CDN</option>
+                                    <option>CLSC</option>
+                                    <option>ORGANISME QUARTIER</option>
+                                    <option>CLSC</option>
+                                    <option>IMM CA</option>
+                                    <option>MICC</option>
+                                    <option>AUTRE CENTRE D ECOUTE</option>
+                                    <option>AMI FAMILLE</option>
+                                    <option>PROJET GENESE</option>
+                                    <option>AUTRE</option>
                                 </select>
                             </td>
                             <td><label >Date arrivée au canada:</label></td>
@@ -224,19 +263,36 @@ $today = $year . '-' . $month . '-' . $day;
                             <td><label>Sexe:</label></td>
                             <td>
                                 <select name="sexe" id="sexe">
-                                    <option>test1</option>
+                                    <option>---</option>
+                                    <option>Homme</option>
+                                    <option>Femme</option>
+                                    <option>Autre</option>
                                 </select>
                             </td>
                             <td><label>Âge:</label></td>
                             <td>
                                 <select name="age" id="age">
-                                    <option>test1</option>
+                                    <option>---</option>
+                                    <option>15 - 24</option>
+                                    <option>25 - 34</option>
+                                    <option>35 - 44</option>
+                                    <option>45 - 54</option>
+                                    <option>55 - 64</option>
+                                    <option>65 et +<option>
                                 </select>
                             </td>
                             <td><label>Situation Financière:</label></td>
                             <td>
                                 <select name="situ_finance" id="situ_finance">
-                                    <option>test1</option>
+                                    <option>---</option>
+                                    <option>Aide sociale</option>
+                                    <option>Chomage</option>
+                                    <option>Salaire mininum</option>
+                                    <option>Etudiant</option>
+                                    <option>Sans revenu</option>
+                                    <option>Pension Vieillesse</option>
+                                    <option>Travail</option>
+                                    <option>Autre</option>
                                 </select>
                             </td>
                         </tr>
@@ -245,19 +301,40 @@ $today = $year . '-' . $month . '-' . $day;
                             <td><label>Origine:</label></td>
                             <td>
                                 <select name="origine" id="origine">
-                                    <option>test1</option>
+                                    <option>---</option>
+                                    <option>Asiatique</option>
+                                    <option>Moyen Orient</option>
+                                    <option>Afrique</option>
+                                    <option>Afrique du nord</option>
+                                    <option>Afrique du sud et centrale</option>
+                                    <option>Amerique du nord</option>
+                                    <option>Europe de l est</option>
+                                    <option>Europeen</option>
+                                    <option>Latino et Caraibe</option>
+                                    <option>Canadien</option>
+                                    <option>Autre</option>
                                 </select>
                             </td>
                             <td><label>Status au Canada:</label></td>
                             <td>
                                 <select name="status_canada" id="status_canada">
-                                    <option>test1</option>
+                                    <option>---</option>
+                                    <option>DA</option>
+                                    <option>RA</option>
+                                    <option>RP</option>
+                                    <option>CIT</option>
+                                    <option>ET</option>
+                                    <option>T</option>
+                                    <option>SS</option>
+                                    <option>TT</option>
                                 </select>
                             </td>
                             <td><label>Problème de sante mentale:</label></td>
                             <td>
                                 <select name="prob_mentale" id="prob_mentale">
-                                    <option>test1</option>
+                                    <option>---</option>
+                                    <option>OUI</option>
+                                    <option>NON</option>
                                 </select>
                             </td>
                         </tr>
@@ -266,7 +343,13 @@ $today = $year . '-' . $month . '-' . $day;
                             <td><label>État civil:</label></td>
                             <td>
                                 <select name="etat_civil" id="etat_civil">
-                                    <option>test1</option>
+                                    <option>---</option>
+                                    <option>M</option>
+                                    <option>C</option>
+                                    <option>V</option>
+                                    <option>S</option>
+                                    <option>D</option>
+                                    <option>CF</option>
                                 </select>
                             </td>
                             <td><label>Nombre enfants:</label></td>
@@ -276,15 +359,14 @@ $today = $year . '-' . $month . '-' . $day;
                             <td><label class="long">État psychologique après l'intervention:</label></td>
                             <td>
                                 <select name="psy_apres_interv" id="psy_apres_interv">
-                                    <option>Joyeuse</option>
-                                    <option>Colerique</option>
-                                    <option>Deprimee</option>
-                                    <option>Mal dans sa peau</option>
-                                    <option>Angoissee</option>
-                                    <option>Agressive</option>
-                                    <option>Confuse</option>
-                                    <option>Incoherante</option>
-                                    <option>Triste</option>
+                                    <option>---</option>
+                                    <option>Soulagee</option>
+                                    <option>Motivee</option>
+                                    <option>Calme</option>
+                                    <option>A de l espoir</option>
+                                    <option>Pire</option>
+                                    <option>Status quo</option>
+                                    <option>Piste de solution</option>
                                     <option>Autre</option>
                                 </select>
                             </td>

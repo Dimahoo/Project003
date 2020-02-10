@@ -117,6 +117,7 @@ $today = $year . '-' . $month . '-' . $day;
                                     <option>Regulier</option>
                                     <option>General</option>
                                     <option>Tierce personne</option>
+                                    <option>Autre</option>
                                 </select>
                             </td>
                         </tr>
@@ -128,6 +129,7 @@ $today = $year . '-' . $month . '-' . $day;
                                     <option>---</option>
                                     <option>Face a face</option>
                                     <option>Telephone</option>
+                                    <option>Autre</option>
                                 </select>
                             </td>
                             <td><label>Type d'intervention:</label></td>
@@ -138,6 +140,7 @@ $today = $year . '-' . $month . '-' . $day;
                                     <option>Appel Obscene</option>
                                     <option>Raccrochage</option>
                                     <option>Intervention Psychosociale</option>
+                                    <option>Autre</option>
                                 </select>
                             </td>
                             <td><label>Langue utilisée:</label></td>
@@ -146,10 +149,11 @@ $today = $year . '-' . $month . '-' . $day;
                                     <option>---</option>
                                     <option>Arabe</option>
                                     <option>Anglais</option>
-                                    <option>Espaniol</option>
+                                    <option>Espagnol</option>
                                     <option>Francais</option>
-                                    <option>Person</option>
+                                    <option>Persan</option>
                                     <option>Russe</option>
+                                    <option>Autre</option>
                                 </select>
                             </td>
                         </tr>
@@ -239,11 +243,11 @@ $today = $year . '-' . $month . '-' . $day;
                                     <option>Afrique du nord</option>
                                     <option>Afrique du sud et centrale</option>
                                     <option>Amerique du nord</option>
-                                    <option>CLSC</option>
                                     <option>Europe de l est</option>
                                     <option>Europeen</option>
                                     <option>Latino et Caraibe</option>
                                     <option>Canadien</option>
+                                    <option>Autre</option>
                                 </select>
                             </td>
                             <td><label>Status au Canada:</label></td>
