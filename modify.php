@@ -131,9 +131,17 @@ $sql = $mysqli->query("SELECT * FROM users") or die($mysqli->error);
                         <label>Email</label>
                         <input type="email" name="email" id="email" class="form-control" placeholder="Email" required>
                     </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" name="password" id="password" class="form-control" placeholder="password">
+                    </div>
                     <div class="form-group form-check">
                         <input type="checkbox" name="admin" id="admin" class="form-check-input" value="Yes">
                         <label class="form-check-label" for="exampleCheck1">Admin</label>
+                    </div>
+                    <div class="form-group form-check">
+                        <input type="checkbox" name="adj" id="adj" class="form-check-input" value="Yes">
+                        <label class="form-check-label" for="exampleCheck1">Adj. admin</label>
                     </div>
             </div>
             <div class="modal-footer">
@@ -168,7 +176,24 @@ $sql = $mysqli->query("SELECT * FROM users") or die($mysqli->error);
             });
         }
 
-    $(document).on('click', '.editbtn', function() {
+        $("#admin").click(function(){
+
+
+            if ($(this).is(":checked")) {
+
+                $("#adj").prop("checked", false);
+            }
+        });
+
+        $("#adj").click(function(){
+
+            if ($(this).is(":checked")) {
+
+                $("#admin").prop("checked", false);
+            }
+        });
+
+        $(document).on('click', '.editbtn', function() {
 
             $('#editmodal').modal('show');
 
@@ -187,6 +212,12 @@ $sql = $mysqli->query("SELECT * FROM users") or die($mysqli->error);
                 $("#admin").prop('checked', true);
             } else {
                 $("#admin").prop('checked', false);
+            }
+            if (data[3] == 2)
+            {
+                $("#adj").prop('checked', true);
+            } else {
+                $("#adj").prop('checked', false);
             }
         });
     });
