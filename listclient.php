@@ -487,6 +487,7 @@ $today = $year . '-' . $month . '-' . $day;
                     $('#langue').val(data.langue);
                     $('#duree').val(data.duree);
                     $('#ref_par').val(data.ref_par);
+                    $('#date_arrivee').val(data.date_arrivee);
                     $('#sexe').val(data.sexe);
                     $('#age').val(data.age);
                     $('#situ_finance').val(data.situ_finance);
