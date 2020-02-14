@@ -16,11 +16,13 @@ if(isset($_POST['updatebene'])) {
     $domaine = $connection->real_escape_string($_POST['domaine']);
     $langue = $connection->real_escape_string($_POST['langue']);
     $date_sortie = $connection->real_escape_string($_POST['date_sortie']);
+    $eval = $connection->real_escape_string($_POST['eval']);
+    $comment = $connection->real_escape_string($_POST['comment']);
 
     if($date_sortie != '') {
-        $query = "UPDATE benevole SET date_entree='$date_entree', role='$role', nom='$nom', prenom='$prenom', sexe='$sexe', tache='$tache',domaine='$domaine',langue='$langue', date_sortie='$date_sortie' WHERE id='$id'";
+        $query = "UPDATE benevole SET date_entree='$date_entree', role='$role', nom='$nom', prenom='$prenom', sexe='$sexe', tache='$tache',domaine='$domaine',langue='$langue', date_sortie='$date_sortie', eval='$eval', comment='$comment' WHERE id='$id'";
     } else {
-        $query = "UPDATE benevole SET date_entree='$date_entree', role='$role', nom='$nom', prenom='$prenom', sexe='$sexe', tache='$tache',domaine='$domaine',langue='$langue' WHERE id='$id'";
+        $query = "UPDATE benevole SET date_entree='$date_entree', role='$role', nom='$nom', prenom='$prenom', sexe='$sexe', tache='$tache',domaine='$domaine',langue='$langue', eval='$eval', comment='$comment' WHERE id='$id'";
     }
 
     $query_run = mysqli_query($connection,$query);

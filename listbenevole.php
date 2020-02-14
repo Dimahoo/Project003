@@ -120,6 +120,8 @@ $today = $year . '-' . $month . '-' . $day;
                         <th>Domaine</th>
                         <th>Langue</th>
                         <th>Date_sortie</th>
+                        <th>Evaluation</th>
+                        <th>Commentaire</th>
                         <th style="width: 110px;">Action</th>
                     </tr>
                     </thead>
@@ -212,6 +214,16 @@ $today = $year . '-' . $month . '-' . $day;
                             <td><label>Date Sortie:</label></td>
                             <td><input id="date_sortie" name="date_sortie" type="date"></td>
                         </tr>
+                        <!-- Row10 -->
+                        <tr>
+                            <td><label>Evaluation:</label></td>
+                            <td><input type="number" id="eval" name="eval"></td>
+                        </tr>
+                        <!-- Row11 -->
+                        <tr>
+                            <td><label>Commentaire:</label></td>
+                            <td><input type="text" id="comment" name="comment"></td>
+                        </tr>
                     </table>
                 </div>
                 <!-- Row10 buttons -->
@@ -243,9 +255,10 @@ $today = $year . '-' . $month . '-' . $day;
             var dataTable = $('#datatableid').DataTable({
                 "processing": true,
                 "serverSide": true,
+                "scrollX": true,
                 "order": [],
                 "columnDefs": [
-                    { "orderable": false, "targets": 10 }
+                    { "orderable": false, "targets": 12 }
                 ],
                 "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
                 "fixedColumns": {
@@ -293,6 +306,8 @@ $today = $year . '-' . $month . '-' . $day;
                     $('#domaine').val(data.domaine);
                     $('#langue').val(data.langue);
                     $('#date_sortie').val(data.date_sortie);
+                    $('#eval').val(data.eval);
+                    $('#comment').val(data.comment);
                 }
             });
         });
