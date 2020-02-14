@@ -7,11 +7,9 @@
     <link href="login.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-</br>
-</br>
-</br>
-</br>
-</br>
+<nav class="navtop">
+    <img class="logo" src="images/Logo_white_4.png" alt="">
+</nav>
 <div class="login">
     <img src="images/Logo2.png" alt="Trulli" style="width:40%;" >
     <h1>Identification</h1>

@@ -20,9 +20,6 @@ if(isset($_POST['updatedata'])) {
     if ($_POST['adj'] == 'Yes') {
 
         $admin = 2;
-    } else {
-
-        $admin = 0;
     }
 
     if ($_POST['password'] != '') {
